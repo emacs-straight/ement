@@ -1202,7 +1202,8 @@ Interactively, set the current buffer's ROOM's TOPIC."
                                                      '("*Ement Taxy*" "*Ement Rooms*")))
                                            (window-list))))
             ;; Rooms buffer already displayed: select its window and move to next unread room.
-            (with-selected-window rooms-window
+            (progn
+              (select-window rooms-window)
               (funcall (pcase-exhaustive major-mode
                          ('ement-room-list-mode #'ement-room-list-next-unread)
                          ('ement-taxy-mode #'ement-taxy-next-unread))))
@@ -2745,7 +2746,8 @@ the first and last nodes in the buffer, respectively."
                           (ewoc-prev ewoc event-node)))))))
 
 (defun ement-room--coalesce-nodes (a b ewoc)
-  "Try to coalesce events in nodes A and B in EWOC, returning absorbing node if done."
+  "Try to coalesce events in nodes A and B in EWOC.
+Return absorbing node if coalesced."
   (cl-labels ((coalescable-p
                (node) (or (and (ement-event-p (ewoc-data node))
                                (member (ement-event-type (ewoc-data node)) '("m.room.member")))
