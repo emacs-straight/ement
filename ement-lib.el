@@ -56,6 +56,7 @@
 
 (defvar ement-room-buffer-name-prefix)
 (defvar ement-room-buffer-name-suffix)
+(defvar ement-room-leave-kill-buffer)
 (defvar ement-room-prism)
 (defvar ement-room-prism-color-adjustment)
 (defvar ement-room-prism-minimum-contrast)
@@ -100,21 +101,81 @@ the request."
       (ement-api session endpoint :method 'post :data (json-encode data)
         :then then))))
 
-(defun ement-forget-room (room session)
-  "Forget ROOM on SESSION."
-  (interactive (ement-complete-room))
-  (pcase-let* (((cl-struct ement-room id display-name) room)
-               (endpoint (format "rooms/%s/forget" (url-hexify-string id))))
-    (when (yes-or-no-p (format "Forget room \"%s\" (%s)? " display-name id))
+(defun ement-room-leave (room session &optional force-p)
+  "Leave ROOM on SESSION.
+If FORCE-P, leave without prompting.  ROOM may be an `ement-room'
+struct, or a room ID or alias string."
+  ;; TODO: Rename `room' argument to `room-or-id'.
+  (interactive (ement-complete-room :session (ement-complete-session)))
+  (cl-assert room) (cl-assert session)
+  (cl-etypecase room
+    (ement-room)
+    (string (setf room (ement-afirst (or (equal room (ement-room-canonical-alias it))
+                                         (equal room (ement-room-id it)))
+                         (ement-session-rooms session)))))
+  (when (or force-p (yes-or-no-p (format "Leave room %s? " (ement--format-room room))))
+    (pcase-let* (((cl-struct ement-room id) room)
+                 (endpoint (format "rooms/%s/leave" (url-hexify-string id))))
       (ement-api session endpoint :method 'post :data ""
         :then (lambda (_data)
-                ;; NOTE: The spec does not seem to indicate that the action of forgetting
-                ;; a room is synced to other clients, so it seems that we need to remove
-                ;; the room from the session here.
-                (setf (ement-session-rooms session)
-                      (cl-remove room (ement-session-rooms session)))
-                ;; TODO: Indicate forgotten in footer in room buffer.
-                (message "Room \"%s\" (%s) forgotten." display-name id))))))
+                (when ement-room-leave-kill-buffer
+                  ;; NOTE: This generates a symbol and sets its function value to a lambda
+                  ;; which removes the symbol from the hook, removing itself from the hook.
+                  ;; TODO: When requiring Emacs 27, use `letrec'.
+                  (let* ((leave-fn-symbol (gensym (format "ement-leave-%s" room)))
+                         (leave-fn (lambda (_session)
+                                     (remove-hook 'ement-sync-callback-hook leave-fn-symbol)
+                                     ;; FIXME: Probably need to unintern the symbol.
+                                     (when-let ((buffer (map-elt (ement-room-local room) 'buffer)))
+                                       (when (buffer-live-p buffer)
+                                         (kill-buffer buffer))))))
+                    (setf (symbol-function leave-fn-symbol) leave-fn)
+                    (add-hook 'ement-sync-callback-hook leave-fn-symbol)))
+                (message "Left room: %s" (ement--format-room room)))
+        :else (lambda (plz-error)
+                (pcase-let* (((cl-struct plz-error response) plz-error)
+                             ((cl-struct plz-response status body) response)
+                             ((map error) (json-read-from-string body)))
+                  (pcase status
+                    (429 (error "Unable to leave room %s: %s" room error))
+                    (_ (error "Unable to leave room %s: %s %S" room status plz-error)))))))))
+(defalias 'ement-leave-room #'ement-room-leave)
+
+(defun ement-forget-room (room session &optional force-p)
+  "Forget ROOM on SESSION.
+If FORCE-P (interactively, with prefix), prompt to leave the room
+when necessary, and forget the room without prompting."
+  (interactive (pcase-let ((`(,room ,session) (ement-complete-room)))
+                 (list room session current-prefix-arg)))
+  (pcase-let* (((cl-struct ement-room id display-name status) room)
+               (endpoint (format "rooms/%s/forget" (url-hexify-string id))))
+    (pcase status
+      ('join (if (and force-p
+                      (yes-or-no-p (format "Leave and forget room %s? (WARNING: You will not be able to rejoin the room to access its content.) "
+                                           (ement--format-room room))))
+                 (progn
+                   ;; TODO: Use `letrec'.
+                   (let* ((forget-fn-symbol (gensym (format "ement-forget-%s" room)))
+                          (forget-fn (lambda (_session)
+                                       (when (equal 'leave (ement-room-status room))
+                                         (remove-hook 'ement-sync-callback-hook forget-fn-symbol)
+                                         ;; FIXME: Probably need to unintern the symbol.
+                                         (ement-forget-room room session 'force)))))
+                     (setf (symbol-function forget-fn-symbol) forget-fn)
+                     (add-hook 'ement-sync-callback-hook forget-fn-symbol))
+                   (ement-leave-room room session 'force))
+               (user-error "Room %s is joined (must be left before forgetting)"
+                           (ement--format-room room))))
+      ('leave (when (or force-p (yes-or-no-p (format "Forget room \"%s\" (%s)? " display-name id)))
+                (ement-api session endpoint :method 'post :data ""
+                  :then (lambda (_data)
+                          ;; NOTE: The spec does not seem to indicate that the action of forgetting
+                          ;; a room is synced to other clients, so it seems that we need to remove
+                          ;; the room from the session here.
+                          (setf (ement-session-rooms session)
+                                (cl-remove room (ement-session-rooms session)))
+                          ;; TODO: Indicate forgotten in footer in room buffer.
+                          (message "Room \"%s\" (%s) forgotten." display-name id))))))))
 
 (defun ement-ignore-user (user-id session &optional unignore-p)
   "Ignore USER-ID on SESSION.
@@ -230,7 +291,7 @@ members, show in a new buffer; otherwise show in echo area."
                       (heading "Avatar: ") (or avatar "") "\n\n"
                       (heading "ID: ") "<" (id room-id) ">" "\n"
                       (heading "Alias: ") "<" (id canonical-alias) ">" "\n\n"
-                      (heading "Topic: ") (propertize topic 'face 'font-lock-comment-face) "\n\n"
+                      (heading "Topic: ") (propertize (or topic "[none]") 'face 'font-lock-comment-face) "\n\n"
                       (heading "Retrieved events: ") (number-to-string (length timeline)) "\n"
                       (heading "  spanning: ")
                       (format-time-string "%Y-%m-%d %H:%M:%S"
@@ -813,14 +874,14 @@ m.replace metadata)."
   "Return ROOM formatted with name, alias, ID, and optionally TOPIC.
 Suitable for use in completion, etc."
   (if topic
-      (format "%s <%s> (<%s>): \"%s\""
+      (format "\"%s\" <%s> (<%s>): \"%s\""
               (or (ement-room-display-name room)
                   (setf (ement-room-display-name room)
                         (ement--room-display-name room)))
               (ement-room-canonical-alias room)
               (ement-room-id room)
               (ement-room-topic room))
-    (format "%s <%s> (<%s>)"
+    (format "\"%s\" <%s> (<%s>)"
             (or (ement-room-display-name room)
                 (setf (ement-room-display-name room)
                       (ement--room-display-name room)))

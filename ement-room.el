@@ -474,13 +474,13 @@ line."
                  (const :tag "Always show date" " %Y-%m-%d %H:%M ")
                  string))
 
-(defcustom ement-room-timestamp-header-with-date-format " %Y-%m-%d (%A) %H:%M\n"
+(defcustom ement-room-timestamp-header-with-date-format " %Y-%m-%d (%A)\n"
   ;; FIXME: In Emacs 27+, maybe use :extend t instead of adding a newline.
   "Format string for timestamp headers where date changes.
 See function `format-time-string'.  If this string ends in a
 newline, its background color will extend to the end of the
 line."
-  :type '(choice (const " %Y-%m-%d (%A) %H:%M\n")
+  :type '(choice (const " %Y-%m-%d (%A)\n")
                  string))
 
 (defcustom ement-room-replace-edited-messages t
@@ -1289,45 +1289,6 @@ buffer).  It receives two arguments, the room and the session."
                   (_ (error "Unable to join room %s: %s %S" id-or-alias status plz-error))))))))
 (defalias 'ement-join-room #'ement-room-join)
 
-(defun ement-room-leave (room session)
-  "Leave ROOM on SESSION.
-ROOM may be an `ement-room' struct, or a room ID or alias
-string."
-  (interactive (ement-complete-room :session (ement-complete-session)))
-  (cl-assert room) (cl-assert session)
-  (cl-etypecase room
-    (ement-room)
-    (string (setf room (ement-afirst (or (equal room (ement-room-canonical-alias it))
-                                         (equal room (ement-room-id it)))
-                         (ement-session-rooms session)))))
-  (when (yes-or-no-p (format "Leave room %s? " (ement--format-room room)))
-    (pcase-let* (((cl-struct ement-room id) room)
-                 (endpoint (format "rooms/%s/leave" (url-hexify-string id))))
-      (ement-api session endpoint :method 'post :data ""
-        :then (lambda (_data)
-                (when ement-room-leave-kill-buffer
-                  ;; NOTE: This generates a symbol and sets its function value to a lambda
-                  ;; which removes the symbol from the hook, removing itself from the hook.
-                  ;; TODO: When requiring Emacs 27, use `letrec'.
-                  (let* ((leave-fn-symbol (gensym (format "ement-leave-%s" room)))
-                         (leave-fn (lambda (_session)
-                                     (remove-hook 'ement-sync-callback-hook leave-fn-symbol)
-                                     ;; FIXME: Probably need to unintern the symbol.
-                                     (when-let ((buffer (map-elt (ement-room-local room) 'buffer)))
-                                       (when (buffer-live-p buffer)
-                                         (kill-buffer buffer))))))
-                    (setf (symbol-function leave-fn-symbol) leave-fn)
-                    (add-hook 'ement-sync-callback-hook leave-fn-symbol)))
-                (message "Left room: %s" (ement--format-room room)))
-        :else (lambda (plz-error)
-                (pcase-let* (((cl-struct plz-error response) plz-error)
-                             ((cl-struct plz-response status body) response)
-                             ((map error) (json-read-from-string body)))
-                  (pcase status
-                    (429 (error "Unable to leave room %s: %s" room error))
-                    (_ (error "Unable to leave room %s: %s %S" room status plz-error)))))))))
-(defalias 'ement-leave-room #'ement-room-leave)
-
 (defun ement-room-goto-prev ()
   "Go to the previous message in buffer."
   (interactive)
@@ -2080,18 +2041,20 @@ Needed to display things in the header line."
 
 ;;;;; Imenu
 
+(defconst ement-room-timestamp-header-imenu-format "%Y-%m-%d (%A) %H:%M"
+  "Format string for timestamps in Imenu indexes.")
+
 (defun ement-room--imenu-create-index-function ()
   "Return Imenu index for the current buffer.
 For use as `imenu-create-index-function'."
   (let ((timestamp-nodes (ement-room--ewoc-collect-nodes
                           ement-ewoc (lambda (node)
                                        (pcase (ewoc-data node)
-                                         (`(ts . ,_) t)))))
-        (timestamp-format (string-trim ement-room-timestamp-header-with-date-format)))
+                                         (`(ts . ,_) t))))))
     (cl-loop for node in timestamp-nodes
              collect (pcase-let*
                          ((`(ts ,timestamp) (ewoc-data node))
-                          (formatted (format-time-string timestamp-format timestamp)))
+                          (formatted (format-time-string ement-room-timestamp-header-imenu-format timestamp)))
                        (cons formatted (ewoc-location node))))))
 
 ;;;;; Occur
@@ -2725,7 +2688,9 @@ the first and last nodes in the buffer, respectively."
                             ((or 'ement-room-read-receipt-marker 'ement-room-fully-read-marker) t)))))
           (unless (equal (time-to-days a-ts) (time-to-days b-ts))
             ;; Different date: bind format to print date.
-            (setf ement-room-timestamp-header-format ement-room-timestamp-header-with-date-format))
+            (let ((ement-room-timestamp-header-format ement-room-timestamp-header-with-date-format))
+              ;; Insert the date-only header.
+              (setf node-a (ewoc-enter-after ewoc node-a (list 'ts b-ts)))))
           (with-silent-modifications
             ;; Avoid marking a buffer as modified just because we inserted a ts
             ;; header (this function may be called after other events which shouldn't
@@ -2838,20 +2803,26 @@ Search starts from node START and moves by NEXT."
                         while node
                         when (funcall pred (ewoc-data node))
                         return node))
-              (event-node-p (data)
-                            (or (ement-event-p data)
-                                (ement-room-membership-events-p data)))
+              (timestamped-node-p (data)
+                                  (pcase data
+                                    ((pred ement-event-p) t)
+                                    ((pred ement-room-membership-events-p) t)
+                                    (`(ts . ,_) t)))
               (node-ts (data)
-                       (cl-etypecase data
-                         (ement-event (ement-event-origin-server-ts data))
-                         ;; Not sure whether to use earliest or latest ts; let's try this for now.
-                         (ement-room-membership-events (ement-room-membership-events-earliest-ts data))))
+                       (pcase data
+                         ((pred ement-event-p) (ement-event-origin-server-ts data))
+                         ((pred ement-room-membership-events-p)
+                          ;; Not sure whether to use earliest or latest ts; let's try this for now.
+                          (ement-room-membership-events-earliest-ts data))
+                         (`(ts ,ts)
+                          ;; Matrix server timestamps are in ms, so we must convert back.
+                          (* 1000 ts))))
               (node< (a b)
                      "Return non-nil if event A's timestamp is before B's."
                      (< (node-ts a) (node-ts b))))
     (ement-debug "INSERTING NEW EVENT: " (format-event event))
     (let* ((ewoc ement-ewoc)
-           (event-node-before (ement-room--ewoc-node-before ewoc event #'node< :pred #'event-node-p))
+           (event-node-before (ement-room--ewoc-node-before ewoc event #'node< :pred #'timestamped-node-p))
            new-node)
       ;; HACK: Insert after any read markers.
       (cl-loop for node-after-node-before = (ewoc-next ewoc event-node-before)

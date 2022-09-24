@@ -219,6 +219,11 @@ These bindings are common to all of the following buffer types:
 +  Show buffer of next unread room: ~SPC~
 +  Move between room names: ~TAB~ / ~<backtab>~
 
+*** Directory buffers
+
++ View/join a room: ~RET~ / ~mouse-1~
++ Load next batch of rooms: ~+~
+
 *** Mentions/notifications buffers
 
 +  Move between events: ~TAB~ / ~<backtab>~
@@ -283,9 +288,19 @@ Note that, while ~matrix-client~ remains usable, and probably will for some time
 
 ** 0.3-pre
 
-*Added*
+*Additions*
 + Command ~ement-directory~ shows a server's room directory.
 + Command ~ement-directory-search~ searches a server's room directory.
++ Command ~ement-directory-next~ fetches the next batch of rooms in a directory.
++ Command ~ement-leave-room~ accepts a ~FORCE-P~ argument (interactively, with prefix) to leave a room without prompting.
++ Command ~ement-forget-room~ accepts a ~FORCE-P~ argument (interactively, with prefix) to also leave the room, and to forget it without prompting.
+
+*Changes*
++ Minor improvements to date/time headers.
+
+*Fixes*
++ Command ~ement-describe-room~ for rooms without topics.
++ Improve insertion of old messages around existing timestamp headers.
 
 ** 0.2.1
 
