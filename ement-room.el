@@ -895,7 +895,7 @@ spec) without requiring all events to use the same margin width."
                                     (setf (ement-user-message-color sender)
                                           (let ((message-color (color-desaturate-name (ement--user-color sender)
                                                                                       ement-room-prism-message-desaturation)))
-                                            (if (color-dark-p (color-name-to-rgb (face-background 'default)))
+                                            (if (ement--color-dark-p (color-name-to-rgb (face-background 'default)))
                                                 (color-lighten-name message-color ement-room-prism-message-lightening)
                                               (color-darken-name message-color ement-room-prism-message-lightening))))))))
                (redacted-face (when (or local-redacted-by unsigned-redacted-by)
@@ -1917,11 +1917,18 @@ and erases the buffer."
         imenu-create-index-function #'ement-room--imenu-create-index-function
         ;; TODO: Use EWOC header/footer for, e.g. typing messages.
         ement-ewoc (ewoc-create #'ement-room--pp-thing))
-  (when (boundp 'browse-url-handlers)
-    ;; NOTE: This variable was added in Emacs 28.1.  In earlier versions, these links
-    ;; won't work within Ement.
-    (setq-local browse-url-handlers (cons (cons ement-room-matrix.to-url-regexp #'ement-room-browse-url)
-                                          browse-url-handlers)))
+  ;; Set the URL handler.  Note that `browse-url-handlers' was added in 28.1;
+  ;; prior to that `browse-url-browser-function' served double-duty.
+  ;; TODO: Remove compat code when requiring Emacs >=28.
+  (let ((handler (cons ement-room-matrix.to-url-regexp #'ement-room-browse-url)))
+    (if (boundp 'browse-url-handlers)
+        (setq-local browse-url-handlers (cons handler browse-url-handlers))
+      (setq-local browse-url-browser-function
+                  (cons handler
+                        (if (consp browse-url-browser-function)
+                            browse-url-browser-function
+                          (and browse-url-browser-function
+                               (list (cons "." browse-url-browser-function))))))))
   (setq-local completion-at-point-functions
               '(ement-room--complete-members-at-point ement-room--complete-rooms-at-point))  
   (setq-local dnd-protocol-alist (append '(("^file:///" . ement-room-dnd-upload-file)

@@ -52,7 +52,10 @@
   (and (featurep 'dbusbind)
        (require 'dbus nil :no-error)
        (dbus-ignore-errors (dbus-get-unique-name :session))
-       (dbus-ping :session "org.freedesktop.Notifications"))
+       ;; By default, emacs waits up to 25 seconds for a PONG.  Realistically, if there's
+       ;; no pong after 2000ms, there's pretty sure no notification service connected or
+       ;; the system's setup has issues.
+       (dbus-ping :session "org.freedesktop.Notifications" 2000))
   "Whether D-Bus notifications are usable.")
 
 ;;;; Customization
@@ -322,7 +325,7 @@ If ROOM has no existing buffer, do nothing."
             (let ((color (color-desaturate-name
                           (ement--prism-color (ement-room-id room) :contrast-with (face-foreground 'default))
                           50)))
-              (if (color-dark-p (color-name-to-rgb (face-background 'default)))
+              (if (ement--color-dark-p (color-name-to-rgb (face-background 'default)))
                   (color-darken-name color 25)
                 (color-lighten-name color 25))))))
 

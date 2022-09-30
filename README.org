@@ -286,7 +286,7 @@ Note that, while ~matrix-client~ remains usable, and probably will for some time
 :TOC:      :depth 0
 :END:
 
-** 0.3-pre
+** 0.3
 
 *Additions*
 + Command ~ement-directory~ shows a server's room directory.
@@ -302,6 +302,8 @@ Note that, while ~matrix-client~ remains usable, and probably will for some time
 *Fixes*
 + Command ~ement-describe-room~ for rooms without topics.
 + Improve insertion of old messages around existing timestamp headers.
++ Reduce D-Bus notification system check timeout to 2 seconds (from the default of 25).
++ Compatibility with Emacs 27.
 
 ** 0.2.1
 
