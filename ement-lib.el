@@ -60,6 +60,7 @@
 (defvar ement-room-prism)
 (defvar ement-room-prism-color-adjustment)
 (defvar ement-room-prism-minimum-contrast)
+(defvar ement-room-unread-only-counts-notifications)
 
 ;;;; Compatibility
 
@@ -1139,7 +1140,8 @@ is not at the latest known message event."
                  (not (zerop highlight_count))))
         ;; NOTE: This is *WAY* too complicated, but it seems roughly equivalent to doesRoomHaveUnreadMessages() from
         ;; <https://github.com/matrix-org/matrix-react-sdk/blob/7fa01ffb068f014506041bce5f02df4f17305f02/src/Unread.ts#L52>.
-        (when timeline
+        (when (and (not ement-room-unread-only-counts-notifications)
+                   timeline)
           ;; A room should rarely, if ever, have a nil timeline, but in case it does
           ;; (which apparently can happen, given user reports), it should not be
           ;; considered unread.
@@ -1171,7 +1173,7 @@ is not at the latest known message event."
                      ;; the user doesn't miss any messages, but it's unclear whether this
                      ;; is really correct or best.)
                      t)
-                    ((not (equal our-id (ement-user-id (ement-event-sender (car timeline)))))
+                    ((equal our-id (ement-user-id (ement-event-sender (car timeline))))
                      ;; We sent the last event: the room is read.
                      nil)
                     ((and first-counting-event
