@@ -152,14 +152,15 @@ Used to, e.g. call `ement-room-compose-org'.")
     (define-key map (kbd "r m") #'ement-list-members)
     (define-key map (kbd "r t") #'ement-room-set-topic)
     (define-key map (kbd "r f") #'ement-room-set-message-format)
-    (define-key map (kbd "r n") #'ement-room-set-notifications)
+    (define-key map (kbd "r n") #'ement-room-set-notification-state)
     (define-key map (kbd "r T") #'ement-tag-room)
 
     ;; Room membership
     (define-key map (kbd "R c") #'ement-create-room)
     (define-key map (kbd "R j") #'ement-join-room)
     (define-key map (kbd "R l") #'ement-leave-room)
-    (define-key map (kbd "R f") #'ement-forget-room)
+    (define-key map (kbd "R F") #'ement-forget-room)
+    (define-key map (kbd "R n") #'ement-room-set-display-name)
 
     ;; Other
     (define-key map (kbd "g") #'ement-room-sync)
@@ -4149,10 +4150,33 @@ For use in `completion-at-point-functions'."
               ("r m" "List members" ement-list-members)
               ("r t" "Set topic" ement-room-set-topic)
               ("r f" "Set message format" ement-room-set-message-format)
-              ("r n" "Set notification rules" ement-room-set-notifications)
+              ("r n" "Set notification state" ement-room-set-notification-state
+               :description (lambda ()
+                              (let ((state (ement-room-notification-state ement-room ement-session)))
+                                (format "Notifications (%s|%s|%s|%s|%s)"
+                                        (propertize "default"
+                                                    'face (pcase state
+                                                            (`nil 'transient-value)
+                                                            (_ 'transient-inactive-value)))
+                                        (propertize "all-loud"
+                                                    'face (pcase state
+                                                            ('all-loud 'transient-value)
+                                                            (_ 'transient-inactive-value)))
+                                        (propertize "all"
+                                                    'face (pcase state
+                                                            ('all 'transient-value)
+                                                            (_ 'transient-inactive-value)))
+                                        (propertize "mentions"
+                                                    'face (pcase state
+                                                            ('mentions-and-keywords 'transient-value)
+                                                            (_ 'transient-inactive-value)))
+                                        (propertize "none"
+                                                    'face (pcase state
+                                                            ('none 'transient-value)
+                                                            (_ 'transient-inactive-value)))))))
               ("r T" "Tag/untag room" ement-tag-room
                :description (lambda ()
-                              (format "Tag/untag room (%s/%s)"
+                              (format "Tag/untag room (%s|%s)"
                                       (propertize "Fav"
                                                   'face (if (ement--room-tagged-p "m.favourite" ement-room)
                                                             'transient-value 'transient-inactive-value))
@@ -4163,7 +4187,14 @@ For use in `completion-at-point-functions'."
               ("R c" "Create room" ement-create-room)
               ("R j" "Join room" ement-join-room)
               ("R l" "Leave room" ement-leave-room)
-              ("R F" "Forget room" ement-forget-room)]]
+              ("R F" "Forget room" ement-forget-room)
+              ("R n" "Set nick" ement-room-set-display-name
+               :description (lambda ()
+                              (format "Set nick (%s)"
+                                      (propertize (ement--user-displayname-in
+                                                   ement-room (gethash (ement-user-id (ement-session-user ement-session))
+                                                                       ement-users))
+                                                  'face 'transient-value))))]]
   ["Other"
    ("v" "View event" ement-room-view-event)
    ("g" "Sync new messages" ement-room-sync

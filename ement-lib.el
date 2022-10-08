@@ -420,6 +420,53 @@ If DELETE (interactively, with prefix), delete it."
       :then (lambda (data)
               (ement-debug "Changed tag on room" method tag data room)))))
 
+(defun ement-set-display-name (display-name session)
+  "Set DISPLAY-NAME for user on SESSION.
+Sets global displayname."
+  (interactive
+   (let* ((session (ement-complete-session))
+          (display-name (read-string "Set display-name to: " nil nil
+                                     (ement-user-displayname (ement-session-user session)))))
+     (list display-name session)))
+  (pcase-let* (((cl-struct ement-session user) session)
+               ((cl-struct ement-user (id user-id)) user)
+               (endpoint (format "profile/%s/displayname" (url-hexify-string user-id))))
+    (ement-api session endpoint :method 'put :version "v3"
+      :data (json-encode (ement-alist "displayname" display-name))
+      :then (lambda (_data)
+              (message "Ement: Display name set to %S for <%s>" display-name
+                       (ement-user-id (ement-session-user session)))))))
+
+(defun ement-room-set-display-name (display-name room session)
+  "Set DISPLAY-NAME for user in ROOM on SESSION.
+Sets the name only in ROOM, not globally."
+  (interactive
+   (pcase-let* ((`(,room ,session) (or (when (bound-and-true-p ement-room)
+                                         (list ement-room ement-session))
+                                       (ement-complete-room)))
+                (prompt (format "Set display-name in %S to: "
+                                (ement--format-room room)))
+                (display-name (read-string prompt nil nil
+                                           (ement-user-displayname (ement-session-user session)))))
+     (list display-name room session)))
+  ;; NOTE: This does not seem to be documented in the spec, so we imitate the
+  ;; "/myroomnick" command in SlashCommands.tsx from matrix-react-sdk.
+  (pcase-let* (((cl-struct ement-room state) room)
+               ((cl-struct ement-session user) session)
+               ((cl-struct ement-user id) user)
+               (member-event (cl-find-if (lambda (event)
+                                           (and (equal id (ement-event-state-key event))
+                                                (equal "m.room.member" (ement-event-type event))
+                                                (equal "join" (alist-get 'membership (ement-event-content event)))))
+                                         state)))
+    (cl-assert member-event)
+    (setf (alist-get 'displayname (ement-event-content member-event)) display-name)
+    (ement-put-state room "m.room.member" id (ement-event-content member-event) session
+      :then (lambda (_data)
+              (message "Ement: Display name set to %S for <%s> in %S" display-name
+                       (ement-user-id (ement-session-user session))
+                       (ement--format-room room))))))
+
 ;;;;;; Push rules
 
 ;; NOTE: Although v1.4 of the spec is available and describes setting the push rules using
@@ -427,9 +474,60 @@ If DELETE (interactively, with prefix), delete it."
 ;; slightly different.  This implementation will follow Element's initially, because the
 ;; spec is not simple, and imitating Element's requests will make it easier.
 
-(defun ement-room-set-notifications (rule room session)
-  "Set notification RULE for ROOM on SESSION.
-RULE may be nil to set the rules to default, `all',
+(defun ement-room-notification-state (room session)
+  "Return notification state for ROOM on SESSION.
+Returns one of nil (meaning default rules are used), `all-loud',
+`all', `mentions-and-keywords', or `none'."
+  ;; Following the implementation of getRoomNotifsState() in RoomNotifs.ts in matrix-react-sdk.
+
+  ;; TODO: Guest support (in which case the state should be `all').
+  ;; TODO: Store account data as a hash table of event types.
+  (let ((push-rules (cl-find-if (lambda (alist)
+                                  (equal "m.push_rules" (alist-get 'type alist)))
+                                (ement-session-account-data session))))
+    (cl-labels ((override-mute-rule-for-room-p
+                 ;; Following findOverrideMuteRule() in RoomNotifs.ts.
+                 (room) (when-let ((overrides (map-nested-elt push-rules '(content global override))))
+                          (cl-loop for rule in overrides
+                                   when (and (alist-get 'enabled rule)
+                                             (rule-for-room-p rule room))
+                                   return rule)))
+                (rule-for-room-p
+                 ;; Following isRuleForRoom() in RoomNotifs.ts.
+                 (rule room) (and (/= 1 (length (alist-get 'conditions rule)))
+                                  (pcase-let* ((condition (elt (alist-get 'conditions rule) 0))
+                                               ((map kind key pattern) condition))
+                                    (and (equal "event_match" kind)
+                                         (equal "room_id" key)
+                                         (equal (ement-room-id room) pattern)))))
+                (mute-rule-p
+                 (rule) (and (= 1 (length (alist-get 'actions rule)))
+                             (equal "dont_notify" (elt (alist-get 'actions rule) 0))))
+                (tweak-rule-p
+                 (type rule) (pcase-let (((map ('actions `[,action ,alist])) rule))
+                               (and (equal "notify" action)
+                                    (equal type (alist-get 'set_tweak alist))))))
+      ;; If none of these match, nil is returned, meaning that the default rule is used
+      ;; for the room.
+      (if (override-mute-rule-for-room-p room)
+          'none
+        (when-let ((room-rule (cl-find-if (lambda (rule)
+                                            (equal (ement-room-id room) (alist-get 'rule_id rule)))
+                                          (map-nested-elt push-rules '(content global room)))))
+          (cond ((not (alist-get 'enabled room-rule))
+                 ;; NOTE: According to comment in getRoomNotifsState(), this assumes that
+                 ;; the default is to notify for all messages, which "will be 'wrong' for
+                 ;; one to one rooms because they will notify loudly for all messages."
+                 'all)
+                ((mute-rule-p room-rule)
+                 ;; According to comment, a room-level mute still allows mentions to
+                 ;; notify.
+                 'mentions-and-keywords)
+                ((tweak-rule-p "sound" room-rule) 'all-loud)))))))
+
+(defun ement-room-set-notification-state (state room session)
+  "Set notification STATE for ROOM on SESSION.
+STATE may be nil to set the rules to default, `all',
 `mentions-and-keywords', or `none'."
   ;; This merely attempts to reproduce the behavior of Element's simple notification
   ;; options.  It does not attempt to offer all of the features defined in the spec.  And,
@@ -444,25 +542,28 @@ RULE may be nil to set the rules to default, `all',
   ;;
   ;; TODO: Match rules to these user-friendly notification states for presentation.  See
   ;; <https://github.com/matrix-org/matrix-react-sdk/blob/8c67984f50f985aa481df24778078030efa39001/src/RoomNotifs.ts>.
+
+  ;; TODO: Support `all-loud' ("all_messages_loud").
   (interactive
    (pcase-let* ((`(,room ,session) (or (when (bound-and-true-p ement-room)
                                          (list ement-room ement-session))
                                        (ement-complete-room)))
                 (prompt (format "Set notification rules for %s: " (ement--format-room room)))
-                (available-rules (ement-alist "Default" nil
-                                              "All messages" 'all
-                                              "Mentions and keywords" 'mentions-and-keywords
-                                              "None" 'none))
-                (selected-rule (completing-read prompt (mapcar #'car available-rules) nil t))
-                (rule (alist-get selected-rule available-rules nil nil #'equal)))
-     (list rule room session)))
+                (available-states (ement-alist "Default" nil
+                                               "All messages" 'all
+                                               "Mentions and keywords" 'mentions-and-keywords
+                                               "None" 'none))
+                (selected-rule (completing-read prompt (mapcar #'car available-states) nil t))
+                (state (alist-get selected-rule available-states nil nil #'equal)))
+     (list state room session)))
   (cl-labels ((set-rule (kind rule queue message-fn)
                         (pcase-let* (((cl-struct ement-room (id room-id)) room)
                                      (rule-id (url-hexify-string room-id))
                                      (endpoint (format "pushrules/global/%s/%s" kind rule-id))
                                      (method (if rule 'put 'delete))
                                      (then (if rule
-                                               ;; Setting rules requires PUTting the rules, then making a second request to enable them.
+                                               ;; Setting rules requires PUTting the rules, then making a second
+                                               ;; request to enable them.
                                                (lambda (_data)
                                                  (ement-api session (concat endpoint "/enabled") :queue queue :version "r0"
                                                    :method 'put :data (json-encode (ement-alist 'enabled t))
@@ -484,7 +585,7 @@ RULE may be nil to set the rules to default, `all',
                                                 (ement-api-error plz-error))))
                                         (_ ;; Unexpected error: re-signal.
                                          (ement-api-error plz-error)))))))))
-    (pcase-let* ((available-rules
+    (pcase-let* ((available-states
                   (ement-alist
                    nil (ement-alist
                         "override" nil
@@ -507,7 +608,7 @@ RULE may be nil to set the rules to default, `all',
                                                            'key "room_id"
                                                            'pattern (ement-room-id room))))
                           "room" nil)))
-                 (kinds-and-rules (alist-get rule available-rules nil nil #'equal)))
+                 (kinds-and-rules (alist-get state available-states nil nil #'equal)))
       (cl-loop with queue = (make-plz-queue :limit 1)
                with total = (1- (length kinds-and-rules))
                for count from 0
@@ -515,12 +616,27 @@ RULE may be nil to set the rules to default, `all',
                                     (lambda (_data)
                                       (message "Set notification rules for room: %s" (ement--format-room room)))
                                   #'ignore)
-               for (kind . rule) in kinds-and-rules
-               do (set-rule kind rule queue message-fn)))))
+               for (kind . state) in kinds-and-rules
+               do (set-rule kind state queue message-fn)))))
 
 ;;;;; Public functions
 
 ;; These functions could reasonably be called by code in other packages.
+
+(cl-defun ement-put-state
+    (room type key data session
+          &key (then (lambda (response-data)
+                       (ement-debug "State data put on room" response-data data room session))))
+  "Put state event of TYPE with KEY and DATA on ROOM on SESSION.
+DATA should be an alist, which will become the JSON request
+body."
+  (declare (indent defun))
+  (pcase-let* ((endpoint (format "rooms/%s/state/%s/%s"
+                                 (url-hexify-string (ement-room-id room))
+                                 type key)))
+    (ement-api session endpoint :method 'put :data (json-encode data)
+      ;; TODO: Handle error codes.
+      :then then)))
 
 (defun ement-message (format-string &rest args)
   "Call `message' on FORMAT-STRING prefixed with \"Ement: \"."
@@ -806,7 +922,7 @@ period, anywhere in the body."
   "Return non-nil if EVENT mentions \"@room\"."
   (pcase-let (((cl-struct ement-event (content (map body))) event))
     (when body
-      (string-match-p (rx bow "@room" (or ":" (1+ blank))) body))))
+      (string-match-p (rx (or space bos) "@room" eow) body))))
 
 (cl-defun ement-complete-room (&key session predicate
                                     (prompt "Room: ") (suggest t))
