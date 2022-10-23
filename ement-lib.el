@@ -739,6 +739,10 @@ USER is an `ement-user' struct."
 ;; These functions aren't expected to be called by code in other packages (but if that
 ;; were necessary, they could be renamed accordingly).
 
+(defun ement--room-space-p (room)
+  "Return non-nil if ROOM is a space."
+  (equal "m.space" (ement-room-type room)))
+
 (cl-defun ement--prism-color (string &key (contrast-with (face-background 'default nil 'default)))
   "Return a computed color for STRING.
 The color is adjusted to have sufficient contrast with the color
@@ -924,7 +928,7 @@ period, anywhere in the body."
     (when body
       (string-match-p (rx (or space bos) "@room" eow) body))))
 
-(cl-defun ement-complete-room (&key session predicate
+(cl-defun ement-complete-room (&key session (predicate #'identity)
                                     (prompt "Room: ") (suggest t))
   "Return a (room session) list selected from SESSION with completion.
 If SESSION is nil, select from rooms in all of `ement-sessions'.
@@ -941,6 +945,7 @@ suggested room."
                (name-to-room-session
                 (cl-loop for session in sessions
                          append (cl-loop for room in (ement-session-rooms session)
+                                         when (funcall predicate room)
                                          collect (cons (ement--format-room room 'topic)
                                                        (list room session)))))
                (names (mapcar #'car name-to-room-session))
@@ -1218,12 +1223,12 @@ IMAGE should be one as created by, e.g. `create-image'."
 (declare-function eieio-oref "eieio-core")
 (defun ement--room-at-point ()
   "Return room at point.
-Works in major-modes `ement-room-mode', `ement-room-list-mode',
-and `ement-taxy-mode'."
+Works in major-modes `ement-room-mode',
+`ement-tabulated-room-list-mode', and `ement-room-list-mode'."
   (pcase major-mode
     ('ement-room-mode (ement--format-room ement-room 'topic))
-    ('ement-room-list-mode (ement--format-room (tabulated-list-get-id) 'topic))
-    ('ement-taxy-mode
+    ('ement-tabulated-room-list-mode (ement--format-room (tabulated-list-get-id) 'topic))
+    ('ement-room-list-mode
      (cl-typecase (oref (magit-current-section) value)
        (taxy-magit-section nil)
        (t (pcase (oref (magit-current-section) value)
