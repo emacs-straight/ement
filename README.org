@@ -287,7 +287,7 @@ Note that, while ~matrix-client~ remains usable, and probably will for some time
 :TOC:      :depth 0
 :END:
 
-** 0.5-pre
+** 0.5
 
 *Additions*
 + Present "joined-and-left" and "rejoined-and-left" membership event pairs as such.
@@ -295,10 +295,11 @@ Note that, while ~matrix-client~ remains usable, and probably will for some time
 
 *Changes*
 + When selecting a room to view with completion, don't offer spaces.
-+ When selecting a room with completion, empty aliases are omitted instead of being displayed as ~<nil>~.
++ When selecting a room with completion, empty aliases and topics are omitted instead of being displayed as nil.
 
 *Fixes*
 + Use of send-message filter when replying.
++ Replies may be written in compose buffers.
 
 ** 0.4.1
 
