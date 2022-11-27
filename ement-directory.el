@@ -118,8 +118,8 @@
 (ement-directory-define-column "Name" (:max-width 25)
   (pcase-let* (((map name ('room_type type)) item)
                (face (pcase type
-                       ("m.space" 'ement-tabulated-room-list-space)
-                       (_ 'ement-tabulated-room-list-name))))
+                       ("m.space" 'ement-room-list-space)
+                       (_ 'ement-room-list-name))))
     (propertize (or name "[unnamed]")
                 'face face)))
 
@@ -150,6 +150,7 @@
 
 ;; TODO: Pagination of results.
 
+;;;###autoload
 (cl-defun ement-directory (&key server session since (limit 100))
   "View the public room directory on SERVER with SESSION.
 Show up to LIMIT rooms.  Interactively, with prefix, prompt for
@@ -188,12 +189,18 @@ SINCE may be a next-batch token."
                                    (alist-get 'limit ement-directory-etc) limit)
                              (setq-local revert-buffer-function revert-function)
                              (when remaining
+                               ;; FIXME: The server seems to report all of the rooms on
+                               ;; the server as remaining even when searching for a
+                               ;; specific term like "emacs".
+                               ;; TODO: Display this in a more permanent place (like a
+                               ;; header or footer).
                                (message
                                 (substitute-command-keys
                                  "%s rooms remaining (use \\[ement-directory-next] to fetch more)")
                                 remaining)))))))
     (ement-message "Listing %s rooms on %s..." limit server)))
 
+;;;###autoload
 (cl-defun ement-directory-search (query &key server session since (limit 1000))
   "View public rooms on SERVER matching QUERY.
 QUERY is a string used to filter results."

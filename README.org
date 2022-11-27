@@ -287,6 +287,17 @@ Note that, while ~matrix-client~ remains usable, and probably will for some time
 :TOC:      :depth 0
 :END:
 
+** 0.6-pre
+
+*Changes*
++ Improve ~ement-describe-room~ command (formatting, bindings).
+
+** 0.5.1
+
+*Fixes*
++ Autoload ~ement-directory~ commands.
++ Faces in ~ement-directory~ listings.
+
 ** 0.5
 
 *Additions*
@@ -294,6 +305,7 @@ Note that, while ~matrix-client~ remains usable, and probably will for some time
 + Process and show rooms' canonical alias events.
 
 *Changes*
++ The [[https://github.com/alphapapa/taxy.el][taxy.el]]-based room list, with programmable, smart grouping, is now the default ~ement-room-list~.  (The old, ~tabulated-list-mode~-based room list is available as ~ement-tabulated-room-list~.)
 + When selecting a room to view with completion, don't offer spaces.
 + When selecting a room with completion, empty aliases and topics are omitted instead of being displayed as nil.
 
