@@ -999,11 +999,15 @@ Note that, if ROOM has no buffer, STRING is returned unchanged."
                          (ement-afirst (equal room-id (ement-room-id it))
                            (ement-session-rooms session))
                        (cl-assert it nil "Room %S not found on session %S" room-id session-id))))
-    ;; TODO: Put point at the end of the room buffer.  However, this doesn't seem easy or
-    ;; even possible, possibly because the bookmark library itself moves point after this
-    ;; function returns.  My attempts at setting the buffer's and window's points after
-    ;; calling `ement-view-room' have had no effect.
-    (ement-view-room room session)))
+    (ement-view-room room session)
+    ;; HACK: Put point at the end of the room buffer.  This seems unusually difficult,
+    ;; apparently because the bookmark library itself moves point after jumping to a
+    ;; bookmark.  My attempts at setting the buffer's and window's points after calling
+    ;; `ement-view-room' have had no effect.  `bookmark-after-jump-hook' sounds ideal, but
+    ;; it does not seem to actually get run, so we use a timer that runs immediately after
+    ;; `bookmark-jump' returns.
+    (run-at-time nil nil (lambda ()
+                           (goto-char (point-max))))))
 
 ;;;; Commands
 
@@ -3642,7 +3646,7 @@ a copy of the local keymap, and sets `header-line-format'."
            ("ban"
             (format "%s unbanned %s"
                     (sender-name-id-string)
-                    (new-displayname-sender-name-state-key-string)))
+                    state-key))
            (_ (format "%s left%s"
                       (prev-displayname-id-string)
                       (if reason
@@ -3676,66 +3680,62 @@ a copy of the local keymap, and sets `header-line-format'."
 (defun ement-room--format-membership-events (struct room)
   "Return string for STRUCT in ROOM.
 STRUCT should be an `ement-room-membership-events' struct."
-  (cl-labels ((membership-types
-               (event) (pcase-let* (((cl-struct ement-event
-                                                (content (map ('membership new-membership)
-                                                              ;; ('displayname new-displayname)
-                                                              ))
-                                                (unsigned (map ('prev_content
-                                                                (map ('membership prev-membership)
-                                                                     ;; ('displayname prev-displayname)
-                                                                     )))))
-                                     event))
-                         (cons prev-membership new-membership)))
-              (event-user
+  (cl-labels ((event-user
                (event) (propertize (if-let (user (gethash (ement-event-state-key event) ement-users))
                                        (ement--user-displayname-in room user)
                                      (ement-event-state-key event))
                                    'help-echo (concat (ement-room--format-member-event event room)
-                                                      " <" (ement-event-state-key event) ">"))))
+                                                      " <" (ement-event-state-key event) ">")))
+              (old-membership (event) (map-nested-elt (ement-event-unsigned event) '(prev_content membership)))
+              (new-membership (event) (alist-get 'membership (ement-event-content event))))
     (pcase-let* (((cl-struct ement-room-membership-events events) struct))
       (pcase (length events)
         (0 (warn "No events in `ement-room-membership-events' struct"))
         (1 (ement-room--format-member-event (car events) room))
         (_ (let* ((left-events (cl-remove-if-not (lambda (event)
-                                                   (equal "leave" (cdr (membership-types event))))
+                                                   (and (equal "leave" (new-membership event))
+                                                        (not (member (old-membership event) '("ban" "invite")))))
                                                  events))
                   (join-events (cl-remove-if-not (lambda (event)
-                                                   (pcase-let ((`(,old . ,new) (membership-types event)))
-                                                     (and (equal "join" new)
-                                                          (not (equal "join" old)))))
+                                                   (and (equal "join" (new-membership event))
+                                                        (not (equal "join" (old-membership event)))))
                                                  events))
                   (rejoin-events (cl-remove-if-not (lambda (event)
-                                                     (pcase-let ((`(,old . ,new) (membership-types event)))
-                                                       (and (equal "join" new)
-                                                            (equal "leave" old))))
+                                                     (and (equal "join" (new-membership event))
+                                                          (equal "leave" (old-membership event))))
                                                    events))
                   (invite-events (cl-remove-if-not (lambda (event)
-                                                     (equal "invite" (cdr (membership-types event))))
+                                                     (equal "invite" (new-membership event)))
+                                                   events))
+                  (reject-events (cl-remove-if-not (lambda (event)
+                                                     (and (equal "invite" (old-membership event))
+                                                          (equal "leave" (new-membership event))))
                                                    events))
                   (ban-events (cl-remove-if-not (lambda (event)
-                                                  (and (member (cdr (membership-types event)) '("invite" "leave"))
-                                                       (equal "ban" (cdr (membership-types event)))))
+                                                  (and (member (old-membership event) '("invite" "leave"))
+                                                       (equal "ban" (new-membership event))))
                                                 events))
+                  (unban-events (cl-remove-if-not (lambda (event)
+                                                    (and (equal "ban" (old-membership event))
+                                                         (equal "leave" (new-membership event))))
+                                                  events))
                   (kick-and-ban-events (cl-remove-if-not (lambda (event)
-                                                           (and (equal "join" (car (membership-types event)))
-                                                                (equal "ban" (cdr (membership-types event)))))
+                                                           (and (equal "join" (old-membership event))
+                                                                (equal "ban" (new-membership event))))
                                                          events))
                   (rename-events (cl-remove-if-not (lambda (event)
-                                                     (pcase-let ((`(,old . ,new) (membership-types event)))
-                                                       (and (equal "join" new)
-                                                            (equal "join" old)
-                                                            (equal (alist-get 'avatar_url (ement-event-content event))
-                                                                   (map-nested-elt (ement-event-unsigned event)
-                                                                                   '(prev_content avatar_url))))))
+                                                     (and (equal "join" (old-membership event))
+                                                          (equal "join" (new-membership event))
+                                                          (equal (alist-get 'avatar_url (ement-event-content event))
+                                                                 (map-nested-elt (ement-event-unsigned event)
+                                                                                 '(prev_content avatar_url)))))
                                                    events))
                   (avatar-events (cl-remove-if-not (lambda (event)
-                                                     (pcase-let ((`(,old . ,new) (membership-types event)))
-                                                       (and (equal "join" new)
-                                                            (equal "join" old)
-                                                            (not (equal (alist-get 'avatar_url (ement-event-content event))
-                                                                        (map-nested-elt (ement-event-unsigned event)
-                                                                                        '(prev_content avatar_url)))))))
+                                                     (and (equal "join" (old-membership event))
+                                                          (equal "join" (new-membership event))
+                                                          (not (equal (alist-get 'avatar_url (ement-event-content event))
+                                                                      (map-nested-elt (ement-event-unsigned event)
+                                                                                      '(prev_content avatar_url))))))
                                                    events))
                   join-and-leave-events rejoin-and-leave-events)
              ;; Remove apparent duplicates between join/rejoin events.
@@ -3761,8 +3761,9 @@ STRUCT should be an `ement-room-membership-events' struct."
                                                                               :test #'equal :key #'ement-event-state-key)
                                                     when left-event
                                                     collect left-event
-                                                    and do (setf rejoin-events (cl-delete (ement-event-state-key rejoin-event) rejoin-events
-                                                                                          :test #'equal :key #'ement-event-state-key)
+                                                    and do (setf rejoin-events (cl-delete
+                                                                                (ement-event-state-key rejoin-event) rejoin-events
+                                                                                :test #'equal :key #'ement-event-state-key)
                                                                  left-events (cl-delete (ement-event-state-key left-event) left-events
                                                                                         :test #'equal :key #'ement-event-state-key))))
              (format "Membership: %s."
@@ -3773,7 +3774,9 @@ STRUCT should be an `ement-room-membership-events' struct."
                                                            "joined and left" join-and-leave-events
                                                            "rejoined and left" rejoin-and-leave-events
                                                            "invited" invite-events
+                                                           "rejected invitation" reject-events
                                                            "banned" ban-events
+                                                           "unbanned" unban-events
                                                            "kicked and banned" kick-and-ban-events
                                                            "changed name" rename-events
                                                            "changed avatar" avatar-events)
