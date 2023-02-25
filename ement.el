@@ -5,7 +5,7 @@
 ;; Author: Adam Porter <adam@alphapapa.net>
 ;; Maintainer: Adam Porter <adam@alphapapa.net>
 ;; URL: https://github.com/alphapapa/ement.el
-;; Version: 0.6-pre
+;; Version: 0.7-pre
 ;; Package-Requires: ((emacs "27.1") (map "2.1") (plz "0.2") (taxy "0.10") (taxy-magit-section "0.12.1") (svg-lib "0.2.5") (transient "0.3.7"))
 ;; Keywords: comm
 
@@ -236,7 +236,9 @@ the port, e.g.
                () (pcase-let* (((cl-struct ement-session user device-id initial-device-display-name) session)
                                ((cl-struct ement-user id) user)
                                (data (ement-alist "type" "m.login.password"
-                                                  "user" id
+                                                  "identifier"
+                                                  (ement-alist "type" "m.id.user"
+                                                               "user" id)
                                                   "password" password
                                                   "device_id" device-id
                                                   "initial_device_display_name" initial-device-display-name)))
