@@ -150,7 +150,8 @@ the request."
 If FORCE-P, leave without prompting.  ROOM may be an `ement-room'
 struct, or a room ID or alias string."
   ;; TODO: Rename `room' argument to `room-or-id'.
-  (interactive (ement-complete-room :session (ement-complete-session)))
+  (interactive (ement-complete-room :session (ement-complete-session)
+                 :prompt "Leave room: "))
   (cl-assert room) (cl-assert session)
   (cl-etypecase room
     (ement-room)
@@ -189,8 +190,8 @@ struct, or a room ID or alias string."
   "Forget ROOM on SESSION.
 If FORCE-P (interactively, with prefix), prompt to leave the room
 when necessary, and forget the room without prompting."
-  (interactive (pcase-let ((`(,room ,session) (ement-complete-room)))
-                 (list room session current-prefix-arg)))
+  (interactive (ement-complete-room :session (ement-complete-session)
+                 :prompt "Forget room: "))
   (pcase-let* (((cl-struct ement-room id display-name status) room)
                (endpoint (format "rooms/%s/forget" (url-hexify-string id))))
     (pcase status
@@ -361,6 +362,7 @@ If DELETE (interactively, with prefix), delete it."
                                  (url-hexify-string user-id) (url-hexify-string room-id) (url-hexify-string tag)))
                (method (if delete 'delete 'put)))
     ;; TODO: "order".
+    ;; FIXME: Removing a tag on a left room doesn't seem to work (e.g. to unfavorite a room after leaving it, but not forgetting it).
     (ement-api session endpoint :version "v3" :method method :data (unless delete "{}")
       :then (lambda (data)
               (ement-debug "Changed tag on room" method tag data room)))))
@@ -1025,6 +1027,8 @@ e.g. `ement-room-send-org-filter')."
                              :content content :data))))
 
 (defalias 'ement--button-buttonize
+  ;; FIXME: This doesn't set the mouse-face to highlight, and it doesn't use the
+  ;; default-button category.  Neither does `button-buttonize', of course, but why?
   (if (version< emacs-version "28.1")
       (lambda (string callback &optional data)
         "Make STRING into a button and return it.
