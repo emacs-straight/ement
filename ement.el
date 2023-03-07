@@ -5,7 +5,7 @@
 ;; Author: Adam Porter <adam@alphapapa.net>
 ;; Maintainer: Adam Porter <adam@alphapapa.net>
 ;; URL: https://github.com/alphapapa/ement.el
-;; Version: 0.7-pre
+;; Version: 0.7
 ;; Package-Requires: ((emacs "27.1") (map "2.1") (plz "0.2") (taxy "0.10") (taxy-magit-section "0.12.1") (svg-lib "0.2.5") (transient "0.3.7"))
 ;; Keywords: comm
 
@@ -461,7 +461,7 @@ a filter ID).  When unspecified, the value of
                                              (pcase (plz-response-status response)
                                                ((or 429 502) (setf reason "failed")))))
                                           ((pcase curl-error
-                                             (28 (setf reason "timed out")))))
+                                             (`(28 . ,_) (setf reason "timed out")))))
                                     (if reason
                                         (if (not ement-auto-sync)
                                             (run-hook-with-args 'ement-interrupted-sync-hook session)

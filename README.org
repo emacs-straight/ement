@@ -129,6 +129,7 @@ Ement.el is intended to be installed with Emacs's package system, which will ens
       -  ~ement-room-send-image~ to send an image.
       -  ~ement-room-set-topic~ to set a room's topic.
       -  ~ement-room-occur~ to search in a room's known events.
+      -  ~ement-room-override-name~ to override a room's display name.
       -  ~ement-ignore-user~ to ignore a user (or with interactive prefix, un-ignore).
       -  ~ement-room-set-message-format~ to set a room's message format buffer-locally.
       -  ~ement-directory~ to view a room directory.
@@ -201,6 +202,7 @@ These bindings are common to all of the following buffer types:
 + Set topic: ~r t~
 + Set message format: ~r f~
 + Set notification rules: ~r n~
++ Override display name: ~r N~
 + Tag/untag room: ~r T~
 
 *Room membership*
@@ -287,12 +289,26 @@ Note that, while ~matrix-client~ remains usable, and probably will for some time
 :TOC:      :depth 0
 :END:
 
-** 0.7-pre
+** 0.7
+
+*Additions*
+
++ Command ~ement-room-override-name~ sets a local override for a room's display name.  (Especially helpful for 1:1 rooms and bridged rooms.  See [[https://github.com/matrix-org/matrix-spec-proposals/pull/3015#issuecomment-1451017296][MSC3015]].)
 
 *Changes*
 
 + Improve display of room tombstones (displayed at top and bottom of buffer, and new room ID is linked to join).
 + Use descriptive prompts in ~ement-leave-room~ and ~ement-forget-room~ commands.
+
+*Fixes*
+
++ Command ~ement-view-space~ when called from a room buffer.  (Thanks to [[https://github.com/MagicRB][Richard Brežák]] for reporting.)
++ Don't call ~display-buffer~ when reverting room list buffer.  (Fixes [[https://github.com/alphapapa/ement.el/issues/121][#121]].  Thanks to [[https://github.com/mekeor][mekeor]] for reporting.)
++ Retry sync for network timeouts.  (Accidentally broken in v0.6.) 
+
+*Internal*
+
++ Function ~ement-put-account-data~ accepts ~:room~ argument to put on a room's account data.
 
 ** 0.6
 

@@ -723,12 +723,14 @@ unseen user IDs to be input as well."
 	  selected-user))))
 
 (cl-defun ement-put-account-data
-    (session type data &key
+    (session type data &key room
              (then (lambda (received-data)
                      ;; Handle echoed-back account data event (the spec does not explain this,
                      ;; but see <https://github.com/matrix-org/matrix-react-sdk/blob/675b4271e9c6e33be354a93fcd7807253bd27fcd/src/settings/handlers/AccountSettingsHandler.ts#L150>).
                      ;; FIXME: Make session account-data a map instead of a list of events.
-                     (push received-data (ement-session-account-data session))
+                     (if room
+                         (push received-data (ement-room-account-data room))
+                       (push received-data (ement-session-account-data session)))
 
                      ;; NOTE: Commenting out this ement-debug form because a bug in Emacs
                      ;; causes this long string to be interpreted as the function's
@@ -738,10 +740,12 @@ unseen user IDs to be input as well."
                      ;;              (ement-user-id (ement-session-user session)) (json-encode data) received-data)
                      )))
   "Put account data of TYPE with DATA on SESSION.
-Also handle the echoed-back event."
+If ROOM, put it on that room's account data.  Also handle the
+echoed-back event."
   (declare (indent defun))
   (pcase-let* (((cl-struct ement-session (user (cl-struct ement-user (id user-id)))) session)
-               (endpoint (format "user/%s/account_data/%s" (url-hexify-string user-id) type)))
+               (room-part (if room (format "/rooms/%s" (ement-room-id room)) ""))
+               (endpoint (format "user/%s%s/account_data/%s" (url-hexify-string user-id) room-part type)))
     (ement-api session endpoint :method 'put :data (json-encode data)
       :then then)))
 
@@ -986,7 +990,7 @@ suggested room."
                                  (when-let ((suggestion (ement--room-at-point)))
                                    (when (or (not predicate)
                                              (funcall predicate suggestion))
-                                     suggestion))))))
+                                     (ement--format-room suggestion 'topic)))))))
     (alist-get selected-name name-to-room-session nil nil #'string=)))
 
 (cl-defun ement-send-message (room session
@@ -1266,13 +1270,13 @@ IMAGE should be one as created by, e.g. `create-image'."
 Works in major-modes `ement-room-mode',
 `ement-tabulated-room-list-mode', and `ement-room-list-mode'."
   (pcase major-mode
-    ('ement-room-mode (ement--format-room ement-room 'topic))
-    ('ement-tabulated-room-list-mode (ement--format-room (tabulated-list-get-id) 'topic))
+    ('ement-room-mode ement-room)
+    ('ement-tabulated-room-list-mode (tabulated-list-get-id))
     ('ement-room-list-mode
      (cl-typecase (oref (magit-current-section) value)
        (taxy-magit-section nil)
        (t (pcase (oref (magit-current-section) value)
-            (`[,room ,_session] (ement--format-room room 'topic))))))))
+            (`[,room ,_session] room)))))))
 
 (defun ement--room-direct-p (room session)
   "Return non-nil if ROOM on SESSION is a direct chat."
@@ -1343,6 +1347,11 @@ Works in major-modes `ement-room-mode',
                (heroes joined)
                (format "%s, and %s others" (hero-names heroes)
                        (- joined (length heroes))))
+              (name-override
+               () (when-let ((event (alist-get "org.matrix.msc3015.m.room.name.override"
+                                               (ement-room-account-data room)
+                                               nil nil #'equal)))
+                    (map-nested-elt event '(content name))))
               (empty-room
                (heroes joined) (cl-etypecase (length heroes)
                                  ((satisfies zerop) "Empty room")
@@ -1350,7 +1359,8 @@ Works in major-modes `ement-room-mode',
                                                        (hero-names heroes)))
                                  (t (format "Empty room (was %s)"
                                             (heroes-and-others heroes joined))))))
-    (or (latest-event "m.room.name" 'name)
+    (or (name-override)
+        (latest-event "m.room.name" 'name)
         (latest-event "m.room.canonical_alias" 'alias)
         (heroes-name)
         (member-events-name)
