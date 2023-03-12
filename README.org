@@ -113,7 +113,7 @@ Ement.el is intended to be installed with Emacs's package system, which will ens
 
 1.  Call command ~ement-connect~ to connect.  Multiple sessions are supported, so you may call the command again to connect to another account.
 2.  Wait for initial sync to complete (which can take a few moments--initial sync JSON requests can be large).
-3.  Use these commands:
+3.  Use these commands (room-related commands may be called with universal prefix to prompt for the room):
       -  ~ement-list-rooms~ to view the list of joined rooms.
       -  ~ement-view-room~ to view a room's buffer, selected with completion.
       -  ~ement-create-room~ to create a new room.
@@ -121,7 +121,7 @@ Ement.el is intended to be installed with Emacs's package system, which will ens
       -  ~ement-join-room~ to join a room.
       -  ~ement-leave-room~ to leave a room.
       -  ~ement-forget-room~ to forget a room.
-      -  ~ement-tag-room~ to add (or with interactive prefix, remove) a tag on a room (including favorite/low-priority status).
+      -  ~ement-tag-room~ to toggle a tag on a room (including favorite/low-priority status).
       -  ~ement-list-members~ to list members in a room.
       -  ~ement-send-direct-message~ to send a direct message to a user (in an existing direct room, or creating a new one automatically).
       -  ~ement-room-edit-message~ to edit a message at point.
@@ -288,6 +288,18 @@ Note that, while ~matrix-client~ remains usable, and probably will for some time
 :PROPERTIES:
 :TOC:      :depth 0
 :END:
+
+** 0.8-pre
+
+*Changes*
+
++ Room-related commands may be called interactively with a universal prefix to prompt for the room/session (allowing to send events or change settings in rooms other than the current one).
++ Command ~ement-room-list~ reuses an existing window showing the room list when possible.  ([[https://github.com/alphapapa/ement.el/issues/131][#131]].  Thanks to [[https://github.com/jeffbowman][Jeff Bowman]] for suggesting.)
++ Command ~ement-tag-room~ toggles tags (rather than adding by default and removing when called with a prefix).
+
+*Fixes*
+
++ Improve insertion of sender name headers when using the "Elemental" message format.
 
 ** 0.7
 
