@@ -132,6 +132,7 @@ Ement.el is intended to be installed with Emacs's package system, which will ens
       -  ~ement-room-override-name~ to override a room's display name.
       -  ~ement-ignore-user~ to ignore a user (or with interactive prefix, un-ignore).
       -  ~ement-room-set-message-format~ to set a room's message format buffer-locally.
+      -  ~ement-room-toggle-space~ to toggle a room's membership in a space (a way to group rooms in Matrix).
       -  ~ement-directory~ to view a room directory.
       -  ~ement-directory-search~ to search a room directory.
 4.  Use these special buffers to see events from multiple rooms (you can also reply to messages from these buffers!):
@@ -211,6 +212,7 @@ These bindings are common to all of the following buffer types:
 + Join room: ~R j~
 + Leave room: ~R l~
 + Forget room: ~R F~
++ Toggle room's spaces: ~R s~
 
 *Other*
 
@@ -221,6 +223,9 @@ These bindings are common to all of the following buffer types:
 +  Show buffer of room at point: ~RET~
 +  Show buffer of next unread room: ~SPC~
 +  Move between room names: ~TAB~ / ~<backtab>~
+
++  Kill room's buffer: ~k~
++  Toggle room's membership in a space: ~s~
 
 *** Directory buffers
 
@@ -291,11 +296,17 @@ Note that, while ~matrix-client~ remains usable, and probably will for some time
 
 ** 0.8-pre
 
+*Additions*
++ Command ~ement-room-toggle-space~ toggles a room's membership in a space (a way to group rooms in Matrix).
++ Visibility of sections in the room list is saved across sessions.
++ Command ~ement-room-list-kill-buffer~ kills a room's buffer from the room list.
+
 *Changes*
 
 + Room-related commands may be called interactively with a universal prefix to prompt for the room/session (allowing to send events or change settings in rooms other than the current one).
 + Command ~ement-room-list~ reuses an existing window showing the room list when possible.  ([[https://github.com/alphapapa/ement.el/issues/131][#131]].  Thanks to [[https://github.com/jeffbowman][Jeff Bowman]] for suggesting.)
 + Command ~ement-tag-room~ toggles tags (rather than adding by default and removing when called with a prefix).
++ Default room grouping now groups "spaced" rooms separately.
 
 *Fixes*
 

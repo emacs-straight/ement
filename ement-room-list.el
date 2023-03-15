@@ -28,6 +28,7 @@
 (require 'button)
 (require 'rx)
 
+(require 'persist)
 (require 'svg-lib)
 (require 'taxy)
 (require 'taxy-magit-section)
@@ -40,20 +41,31 @@
 
 ;;;; Variables
 
+(declare-function ement-room-toggle-space "ement-room")
+
 (defvar ement-room-list-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "RET") #'ement-room-list-RET)
     (define-key map (kbd "SPC") #'ement-room-list-next-unread)
     (define-key map [tab] #'ement-room-list-section-toggle)
     (define-key map [mouse-1] #'ement-room-list-mouse-1)
+    (define-key map (kbd "k") #'ement-room-list-kill-buffer)
+    (define-key map (kbd "s") #'ement-room-toggle-space)
     map))
 
 (defvar ement-room-list-timestamp-colors nil
   "List of colors used for timestamps.
 Set automatically when `ement-room-list-mode' is activated.")
 
+(defvar ement-room)
+(defvar ement-session)
 (defvar ement-sessions)
 (defvar ement-room-prism-minimum-contrast)
+
+;;;;; Persistent variables
+
+(persist-defvar ement-room-list-visibility-cache nil
+                "Applied to `magit-section-visibility-cache', which see.")
 
 ;;;; Customization
 
@@ -263,18 +275,37 @@ from recent to non-recent for rooms updated in the past hour.")
       "Low-priority")))
 
 (defcustom ement-room-list-default-keys
-  '((space-p space)
+  '(;; First, group all invitations (this group will appear first since the rooms are
+    ;; already sorted first).
     ((membership :status 'invite))
-    (favourite)
-    (buffer)
+    ;; Group all left rooms (this group will appear last, because the rooms are already
+    ;; sorted last).
     ((membership :status 'leave))
-    (low-priority)
+    ;; Group all favorite rooms, which are already sorted first.
+    (favourite)
+    ;; Group all low-priority rooms, which are already sorted last, and within that group,
+    ;; group them by their space, if any.
+    (low-priority space)
+    ;; Group other rooms which are opened in a buffer.
+    (buffer)
+    ;; Group other rooms which are unread.
     (unread)
-    ((latest :name "Last 24h" :newer-than 86400))
-    (latest :name "Older than 90d" :older-than (* 86400 90))
-    people
-    freshness
-    (space))
+    ;; Group other rooms which are in a space by freshness, then by space.
+    ((and :name "Spaced"
+          :keys ((not space-p)
+                 space))
+     freshness space)
+    ;; Group spaces themselves by their parent space (since space headers can't also be
+    ;; items, we have to handle them separately; a bit of a hack, but not too bad).
+    ((and :name "Spaces" :keys (space-p))
+     space)
+    ;; Group rooms which aren't in spaces by their freshness.
+    ((and :name "Unspaced"
+          :keys ((not space)
+                 (not people)))
+     freshness)
+    ;; Group direct rooms by freshness.
+    (people freshness))
   "Default keys."
   :type 'sexp)
 
@@ -555,7 +586,9 @@ DISPLAY-BUFFER-ACTION is nil, the buffer is not displayed."
                (taxy (cl-macrolet ((first-item
                                     (pred) `(lambda (taxy)
                                               (when (taxy-items taxy)
-                                                (,pred (car (taxy-items taxy)))))))
+                                                (,pred (car (taxy-items taxy))))))
+                                   (name= (name) `(lambda (taxy)
+                                                    (equal ,name (taxy-name taxy)))))
                        (thread-last
                          (make-fn
                           :name "Ement Rooms"
@@ -574,12 +607,12 @@ DISPLAY-BUFFER-ACTION is nil, the buffer is not displayed."
                          (taxy-sort #'t>nil #'item-left-p)
                          (taxy-sort* #'string< #'taxy-name)
                          (taxy-sort* #'> #'taxy-latest-ts)
+                         (taxy-sort* #'t<nil (name= "Buffers"))
                          (taxy-sort* #'t<nil (first-item item-unread-p))
                          (taxy-sort* #'t<nil (first-item item-favourite-p))
                          (taxy-sort* #'t<nil (first-item item-invited-p))
-                         (taxy-sort* #'t<nil (first-item item-buffer-p))
                          (taxy-sort* #'t>nil (first-item item-space-p))
-                         (taxy-sort* #'t>nil (first-item item-low-priority-p))
+                         (taxy-sort* #'t>nil (name= "Low-priority"))
                          (taxy-sort* #'t>nil (first-item item-left-p)))))
                (taxy-magit-section-insert-indent-items nil)
                (inhibit-read-only t)
@@ -595,6 +628,9 @@ DISPLAY-BUFFER-ACTION is nil, the buffer is not displayed."
                 window-start (if (get-buffer-window buffer-name)
                                  (window-start (get-buffer-window buffer-name))
                                0))
+          (when ement-room-list-visibility-cache
+            (setf magit-section-visibility-cache ement-room-list-visibility-cache))
+          (add-hook 'kill-buffer-hook #'ement-room-list--cache-visibility nil 'local)
           (delete-all-overlays)
           (erase-buffer)
           (save-excursion
@@ -628,10 +664,26 @@ left."
                               (window-parameters
 			       (no-delete-other-windows . t))))))
 
-(defun ement-room-list-revert (_ignore-auto _noconfirm)
+(defun ement-room-list-revert (&optional _ignore-auto _noconfirm)
   "Revert current Ement-Room-List buffer."
   (interactive)
+  (with-current-buffer "*Ement Room List*"
+    ;; FIXME: This caching of the visibility only supports the main buffer with the
+    ;; default name, not any special ones with different names.
+    (setf ement-room-list-visibility-cache magit-section-visibility-cache))
   (ement-room-list :display-buffer-action nil))
+
+(defun ement-room-list-kill-buffer (room)
+  "Kill ROOM's buffer."
+  (interactive
+   (ement-with-room-and-session
+     (ignore ement-session)
+     (list ement-room)))
+  (pcase-let (((cl-struct ement-room (local (map buffer))) room)
+              (kill-buffer-query-functions))
+    (when (buffer-live-p buffer)
+      (kill-buffer buffer)
+      (ement-room-list-revert))))
 
 (defun ement-room-list-mouse-1 (event)
   "Call `ement-room-list-RET' at EVENT."
@@ -677,6 +729,15 @@ left."
               ement-room-list-timestamp-colors (ement-room-list--timestamp-colors)))
 
 ;;;; Functions
+
+(defun ement-room-list--cache-visibility ()
+  "Save visibility cache.
+Sets `ement-room-list-visibility-cache' to the value of
+`magit-section-visibility-cache'.  To be called in
+`kill-buffer-hook'."
+  (ignore-errors
+    (when magit-section-visibility-cache
+      (setf ement-room-list-visibility-cache magit-section-visibility-cache))))
 
 ;;;###autoload
 (defun ement-room-list-auto-update (_session)

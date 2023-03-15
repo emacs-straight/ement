@@ -196,19 +196,38 @@ reporter's min-value to its max-value."
 
 ;;;;; Room-related macros
 
+;; Prevent compiler from complaining that `value' is an unknown slot.
+(require 'magit-section)
+
 (cl-defmacro ement-with-room-and-session (&rest body)
   "Eval BODY with `ement-room' and `ement-session' bound.
-If in an `ement-room' buffer and `current-prefix-arg' is nil, use
-buffer-local value of `ement-room' and `ement-session';
-otherwise, prompt for them with `ement-complete-room'."
+If in an `ement-room-list-mode' buffer and `current-prefix-arg'
+is nil, use the room and session at point.  If in an `ement-room'
+buffer and `current-prefix-arg' is nil, use buffer-local value of
+`ement-room' and `ement-session'.  Otherwise, prompt for them
+with `ement-complete-room' or that given with :prompt-form.
+
+BODY may begin with property list arguments, including:
+
+  :prompt-form  A Lisp form evaluated for the binding of
+                `ement-room'."
   (declare (indent defun))
-  `(let ((ement-room ement-room)
-         (ement-session ement-session))
-     (when (or current-prefix-arg (not ement-room))
-       (pcase-let ((`(,room ,session) (ement-complete-room :suggest t)))
-         (setf ement-room room
-               ement-session session)))
-     ,@body))
+  (pcase-let* ((plist (cl-loop while (keywordp (car body))
+                               append (list (car body) (cadr body))
+                               and do (setf body (cddr body))))
+               ((map :prompt-form) plist)
+               (prompt-form (or prompt-form
+                                '(ement-complete-room :suggest t))))
+    `(pcase-let* ((`[,list-room ,list-session] (if (eq 'ement-room-list-mode major-mode)
+                                                   (oref (magit-current-section) value)
+                                                 [nil nil]))
+                  (ement-room (or list-room ement-room))
+                  (ement-session (or list-session ement-session)))
+       (when (or current-prefix-arg (not ement-room))
+         (pcase-let ((`(,room ,session) ,prompt-form))
+           (setf ement-room room
+                 ement-session session)))
+       ,@body)))
 
 ;;;; Variables
 
