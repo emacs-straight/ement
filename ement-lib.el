@@ -110,7 +110,7 @@ contrast colour with RGB as background and as foreground."
 ;;;;; Commands
 
 (cl-defun ement-create-room
-    (session &key name alias topic invite direct-p
+    (session &key name alias topic invite direct-p creation-content
              (then (lambda (data)
                      (message "Created new room: %s" (alist-get 'room_id data))))
              (visibility 'private))
@@ -118,7 +118,8 @@ contrast colour with RGB as background and as foreground."
 Then call function THEN with response data.  Optional string
 arguments are NAME, ALIAS, and TOPIC.  INVITE may be a list of
 user IDs to invite.  If DIRECT-P, set the \"is_direct\" flag in
-the request."
+the request.  CREATION-CONTENT may be an alist of extra keys to
+include with the request (see Matrix spec)."
   ;; TODO: Document other arguments.
   ;; SPEC: 10.1.1.
   (declare (indent defun))
@@ -126,7 +127,7 @@ the request."
 		     :name (read-string "New room name: ")
 		     :alias (read-string "New room alias (e.g. \"foo\" for \"#foo:matrix.org\"): ")
 		     :topic (read-string "New room topic: ")
-		     :visibility (completing-read "New room type: " '(private public))))
+		     :visibility (completing-read "New room visibility: " '(private public))))
   (cl-labels ((given-p
 	       (var) (and var (not (string-empty-p var)))))
     (pcase-let* ((endpoint "createRoom")
@@ -141,9 +142,28 @@ the request."
 			 (when invite
 			   (push (cons "invite" invite) it))
 			 (when direct-p
-			   (push (cons "is_direct" t) it)))))
+			   (push (cons "is_direct" t) it))
+                         (when creation-content
+                           (push (cons "creation_content" creation-content) it)))))
       (ement-api session endpoint :method 'post :data (json-encode data)
         :then then))))
+
+(cl-defun ement-create-space
+    (session &key name alias topic
+             (then (lambda (data)
+                     (message "Created new space: %s" (alist-get 'room_id data))))
+             (visibility 'private))
+  "Create new space on SESSION.
+Then call function THEN with response data.  Optional string
+arguments are NAME, ALIAS, and TOPIC."
+  (declare (indent defun))
+  (interactive (list (ement-complete-session)
+		     :name (read-string "New space name: ")
+		     :alias (read-string "New space alias (e.g. \"foo\" for \"#foo:matrix.org\"): ")
+		     :topic (read-string "New space topic: ")
+		     :visibility (completing-read "New space visibility: " '(private public))))
+  (ement-create-room session :name name :alias alias :topic topic :visibility visibility
+    :creation-content (ement-alist "type" "m.space") :then then))
 
 (defun ement-room-leave (room session &optional force-p)
   "Leave ROOM on SESSION.
@@ -177,7 +197,7 @@ struct, or a room ID or alias string."
                                          (kill-buffer buffer))))))
                     (setf (symbol-function leave-fn-symbol) leave-fn)
                     (add-hook 'ement-sync-callback-hook leave-fn-symbol)))
-                (message "Left room: %s" (ement--format-room room)))
+                (ement-message "Left room: %s" (ement--format-room room)))
         :else (lambda (plz-error)
                 (pcase-let* (((cl-struct plz-error response) plz-error)
                              ((cl-struct plz-response status body) response)
@@ -223,7 +243,7 @@ when necessary, and forget the room without prompting."
                           (setf (ement-session-rooms session)
                                 (cl-remove room (ement-session-rooms session)))
                           ;; TODO: Indicate forgotten in footer in room buffer.
-                          (message "Room \"%s\" (%s) forgotten." display-name id))))))))
+                          (ement-message "Forgot room: %s." (ement--format-room room)))))))))
 
 (defun ement-ignore-user (user-id session &optional unignore-p)
   "Ignore USER-ID on SESSION.
@@ -1082,10 +1102,10 @@ e.g. `ement-room-send-org-filter')."
                             (push (cons "formatted_body" formatted-body) it)
                             (push (cons "format" "org.matrix.custom.html") it))))
                (then (or then #'ignore)))
-    (when replying-to-event
-      (setf content (ement--add-reply content replying-to-event room)))
     (when filter
       (setf content (funcall filter content room)))
+    (when replying-to-event
+      (setf content (ement--add-reply content replying-to-event room)))
     (ement-api session endpoint :method 'put :data (json-encode content)
       :then (apply-partially then :room room :session session
                              ;; Data is added when calling back.

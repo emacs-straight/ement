@@ -67,8 +67,12 @@ to sort events and update other slots."
 
 (defun ement-room-membership-events--update (struct)
   "Return STRUCT having sorted its events and updated its slots."
-  ;; Like the room timeline slot, events are sorted latest-first.
-  (setf (ement-room-membership-events-events struct) (cl-sort (ement-room-membership-events-events struct) #'>
+  ;; Like the room timeline slot, events are sorted latest-first.  We also deduplicate
+  ;; them , because it seems that we can end up with multiple copies of a membership event
+  ;; (e.g. when loading old messages).
+  (setf (ement-room-membership-events-events struct) (cl-delete-duplicates (ement-room-membership-events-events struct)
+                                                                           :key #'ement-event-id :test #'equal)
+        (ement-room-membership-events-events struct) (cl-sort (ement-room-membership-events-events struct) #'>
                                                               :key #'ement-event-origin-server-ts)
         (ement-room-membership-events-earliest-ts struct) (ement-event-origin-server-ts
                                                            (car (last (ement-room-membership-events-events struct))))
@@ -4161,8 +4165,8 @@ compatibility), and the result is added to the CONTENT as
                     (with-current-buffer "*Org HTML Export*"
                       (prog1 (string-trim (buffer-string))
                         (kill-buffer)))))))
-    (push (cons "formatted_body" formatted-body) content)
-    (push (cons "format" "org.matrix.custom.html") content)
+    (setf (alist-get "formatted_body" content nil nil #'equal) formatted-body
+          (alist-get "format" content nil nil #'equal) "org.matrix.custom.html")
     content))
 
 (defun ement-room--org-html-src-block (src-block _contents info)

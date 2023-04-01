@@ -5,7 +5,7 @@
 ;; Author: Adam Porter <adam@alphapapa.net>
 ;; Maintainer: Adam Porter <adam@alphapapa.net>
 ;; URL: https://github.com/alphapapa/ement.el
-;; Version: 0.8-pre
+;; Version: 0.8.2-pre
 ;; Package-Requires: ((emacs "27.1") (map "2.1") (persist "0.5") (plz "0.2") (taxy "0.10") (taxy-magit-section "0.12.1") (svg-lib "0.2.5") (transient "0.3.7"))
 ;; Keywords: comm
 
@@ -229,8 +229,14 @@ the port, e.g.
                       (uri-prefix (or uri-prefix (ement--hostname-uri server-name)))
                       (user (make-ement-user :id user-id :username username))
                       (server (make-ement-server :name server-name :uri-prefix uri-prefix))
-                      (transaction-id (ement--initial-transaction-id)))
+                      (transaction-id (ement--initial-transaction-id))
+                      (initial-device-display-name (format "Ement.el: %s@%s"
+                                                           ;; Just to be extra careful:
+                                                           (or user-login-name "[unknown user-login-name]")
+                                                           (or (system-name) "[unknown system-name]")))
+                      (device-id (secure-hash 'sha256 initial-device-display-name)))
                  (make-ement-session :user user :server server :transaction-id transaction-id
+                                     :device-id device-id :initial-device-display-name initial-device-display-name
                                      :events (make-hash-table :test #'equal))))
               (password-login
                () (pcase-let* (((cl-struct ement-session user device-id initial-device-display-name) session)
