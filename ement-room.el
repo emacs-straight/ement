@@ -229,6 +229,12 @@ In that case, sender names are aligned to the margin edge.")
                  (const :tag "Center" center)
                  (const :tag "Right" right)))
 
+(defcustom ement-room-view-hook
+  '(ement-room-view-hook-room-list-auto-update)
+  "Functions called when `ement-room-view' is called.
+Called with two arguments, the room and the session."
+  :type 'hook)
+
 ;;;;; Faces
 
 (defface ement-room-name
@@ -1871,8 +1877,6 @@ reaction string, e.g. \"👍\"."
 
 ;;;; Functions
 
-(declare-function magit-current-section "magit-section")
-
 (defun ement-room-view (room session)
   "Switch to a buffer showing ROOM on SESSION.
 Uses action `ement-view-room-display-buffer-action', which see."
@@ -1886,8 +1890,17 @@ Uses action `ement-view-room-display-buffer-action', which see."
     ;; FIXME: This doesn't seem to work as desired, e.g. when
     ;; `ement-view-room-display-buffer-action' is set to `display-buffer-no-window'; I
     ;; guess because `pop-to-buffer' selects a window.
-    (pop-to-buffer buffer ement-view-room-display-buffer-action)))
+    (pop-to-buffer buffer ement-view-room-display-buffer-action)
+    (run-hook-with-args 'ement-room-view-hook room session)))
 (defalias 'ement-view-room #'ement-room-view)
+
+(defun ement-room-view-hook-room-list-auto-update (_room session)
+  "Call `ement-room-list-auto-update' with SESSION.
+To be used in `ement-room-view-hook', which see."
+  ;; This function is necessary because the hook is called with the room argument, which
+  ;; `ement-room-list-auto-update' doesn't need.
+  (declare (function ement-room-list-auto-update "ement-room-list"))
+  (ement-room-list-auto-update session))
 
 (defun ement-room--buffer-name (room)
   "Return name for ROOM's buffer."
@@ -1906,8 +1919,6 @@ Uses action `ement-view-room-display-buffer-action', which see."
       (goto-char (ewoc-location node))
     (error "Event not found in buffer: %S" (ement-event-id event))))
 
-(declare-function ement--make-event "ement.el")
-(declare-function ement--put-event "ement.el")
 (cl-defun ement-room-retro-callback (room session data
                                           &key (set-prev-batch t))
   "Push new DATA to ROOM on SESSION and add events to room buffer.
@@ -1915,6 +1926,8 @@ If SET-PREV-BATCH is nil, don't set ROOM's prev-batch slot to the
 \"prev_batch\" token in response DATA (this should be set,
 e.g. when filling timeline gaps as opposed to retrieving messages
 before the earliest-seen message)."
+  (declare (function ement--make-event "ement.el")
+           (function ement--put-event "ement.el"))
   (pcase-let* (((cl-struct ement-room local) room)
 	       ((map _start end chunk state) data)
                ((map buffer) local)
@@ -3383,6 +3396,7 @@ If FORMATTED-P, return the formatted body content, when available."
                            ((or "m.text" "m.emote" "m.notice") nil)
                            ("m.image" (ement-room--format-m.image event))
                            ("m.file" (ement-room--format-m.file event))
+                           ("m.video" (ement-room--format-m.video event))
                            (_ (if (or local-redacted-by unsigned-redacted-by)
                                   nil
                                 (format "[unsupported msgtype: %s]" msgtype ))))))
@@ -4110,6 +4124,31 @@ Then invalidate EVENT's node to show the image."
                       (ement--mxc-to-url mxc-url ement-session)))
                (human-size (file-size-human-readable size))
                (string (format "[file: %s (%s) (%s)]" filename mimetype human-size)))
+    (concat (propertize string
+                        'action #'browse-url
+                        'button t
+                        'button-data url
+                        'category t
+                        'face 'button
+                        'follow-link t
+                        'help-echo url
+                        'keymap button-map
+                        'mouse-face 'highlight)
+            (propertize " "
+                        'display '(space :relative-height 1.5)))))
+
+(defun ement-room--format-m.video (event)
+  "Return \"m.video\" EVENT formatted as a string."
+  ;; TODO: Insert thumbnail images when enabled.
+  (pcase-let* (((cl-struct ement-event
+                           (content (map body
+                                         ('info (map mimetype size w h))
+                                         ('url mxc-url))))
+                event)
+               (url (when mxc-url
+                      (ement--mxc-to-url mxc-url ement-session)))
+               (human-size (file-size-human-readable size))
+               (string (format "[video: %s (%s) (%sx%s) (%s)]" body mimetype w h human-size)))
     (concat (propertize string
                         'action #'browse-url
                         'button t
