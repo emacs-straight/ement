@@ -1837,12 +1837,12 @@ reaction string, e.g. \"👍\"."
   (interactive
    (ement-with-room-and-session
      :prompt-form (ement-complete-room :session ement-session
-                    :predicate (lambda (room) (not (ement--room-space-p room))) )
+                    :predicate (lambda (room) (not (ement--space-p room))) )
      (pcase-let* ((prompt (format "Toggle room %S's membership in space: "
                                   (ement--format-room ement-room)))
                   ;; TODO: Use different face for spaces the room is already in.
                   (`(,space ,_session) (ement-complete-room :session ement-session :prompt prompt :suggest nil
-                                         :predicate #'ement--room-space-p)))
+                                         :predicate #'ement--space-p)))
        (list ement-room space ement-session))))
   (pcase-let* (((cl-struct ement-room (id child-id)) room)
                (routing-server (progn
@@ -1882,7 +1882,7 @@ reaction string, e.g. \"👍\"."
 Uses action `ement-view-room-display-buffer-action', which see."
   (interactive (ement-complete-room :session (ement-complete-session) :suggest nil
                  :predicate (lambda (room)
-                              (not (ement--room-space-p room)))))
+                              (not (ement--space-p room)))))
   (pcase-let* (((cl-struct ement-room (local (map buffer))) room))
     (unless (buffer-live-p buffer)
       (setf buffer (ement-room--buffer session room (ement-room--buffer-name room))
@@ -2098,6 +2098,7 @@ see."
   "Return buffer named NAME showing ROOM's events on SESSION.
 If ROOM has no buffer, one is made and stored in the room's local
 data slot."
+  (declare (function ement-view-space "ement-directory"))
   (or (map-elt (ement-room-local room) 'buffer)
       (let ((new-buffer (generate-new-buffer name)))
         (with-current-buffer new-buffer
@@ -2142,7 +2143,23 @@ data slot."
                                                            (kill-buffer)
                                                            (message "Joining room... (buffer will be reopened after joining)")
                                                            (ement-room-join (ement-room-id room) session))))))
-                          (_ ""))))
+                          (_ (if (ement--space-p room)
+                                 (concat (propertize "This room is a space.  It is not for messaging, but only a grouping of other rooms.  "
+                                                     'face 'font-lock-type-face)
+                                         (propertize "[View rooms in this space]"
+                                                     'button '(t)
+                                                     'category 'default-button
+                                                     'mouse-face 'highlight
+                                                     'follow-link t
+                                                     'action (lambda (_button)
+                                                               ;; Kill the room buffer so it can be recreated after joining
+                                                               ;; (which will cleanly update the room's name, footer, etc).
+                                                               (let ((room ement-room)
+                                                                     (session ement-session))
+                                                                 (kill-buffer)
+                                                                 (message "Viewing space...")
+                                                                 (ement-view-space room session)))))
+                               "")))))
             (ewoc-set-hf ement-ewoc header footer))
           (setf
            ;; Clear new-events, because those only matter when a buffer is already open.
@@ -2569,11 +2586,13 @@ function to `ement-room-event-fns', which see."
 
 (defface ement-room-read-receipt-marker
   '((t (:inherit show-paren-match)))
-  "Read marker line in rooms.")
+  "Read marker line in rooms."
+  :group 'ement-room)
 
 (defface ement-room-fully-read-marker
   '((t (:inherit isearch)))
-  "Fully read marker line in rooms.")
+  "Fully read marker line in rooms."
+  :group 'ement-room)
 
 (defcustom ement-room-send-read-receipts t
   "Whether to send read receipts.
@@ -3144,7 +3163,7 @@ seconds."
                                ;; HACK: Rather than using another variable, compare the format strings to
                                ;; determine whether the date is changing: if so, add a newline before the header.
                                (progn
-                                 (cl-incf width 3)
+                                 (cl-incf width 1)
                                  "\n")
                              ""))
             (alignment-space (pcase ement-room-timestamp-header-align
@@ -3679,12 +3698,11 @@ a copy of the local keymap, and sets `header-line-format'."
 (define-widget 'ement-room-membership 'item
   "Widget for membership events."
   ;; FIXME: This makes it hard to add a timestamp according to the buffer's message format spec.
-
-  ;; FIXME: The widget value inserts an extra space before the wrap prefix.  There seems
-  ;; to be no way to fix this while still using a widget for this, so maybe we shouldn't
-  ;; use a widget after all.  But it might be good to keep digging for a solution so that
-  ;; widgets could be used for other things later...
-  :format "%{ %v %}"
+  ;; NOTE: The widget needs something before and after "%v" to correctly apply the
+  ;; `ement-room-membership' face. We could use a zero-width space, but that won't work on
+  ;; a TTY. So we use a regular space but replace it with nothing with a display spec.
+  :format (let ((zws (propertize " " 'display "")))
+            (concat "%{" zws "%v" zws "%}"))
   :sample-face 'ement-room-membership
   :value-create (lambda (widget)
                   (pcase-let* ((event (widget-value widget)))
