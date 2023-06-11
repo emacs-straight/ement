@@ -162,6 +162,7 @@ These bindings are common to all of the following buffer types:
 + Scroll up and mark read: ~SPC~
 + Scroll down: ~S-SPC~
 + Jump to fully-read marker: ~M-SPC~
++ Move read markers to point: ~m~
 + Load older messages: at top of buffer, scroll contents up (i.e. ~S-SPC~, ~M-v~ or ~mwheel-scroll~)
 
 *Switching*
@@ -300,6 +301,7 @@ Note that, while ~matrix-client~ remains usable, and probably will for some time
 
 *Additions*
 + Support for Single Sign-On (SSO) authentication.  ([[https://github.com/alphapapa/ement.el/issues/24][#24]].  Thanks to [[https://github.com/Necronian][Jeffrey Stoffers]] for development, and to [[https://github.com/phil-s][Phil Sainty]], [[https://github.com/FrostyX][Jakub Kadlčík]], and [[https://github.com/oneingan][Juanjo Presa]] for testing.)
++ Bind ~m~ in room buffers to ~ement-room-mark-read~ (which moves read markers to point).
 
 *Changes*
 
@@ -307,6 +309,7 @@ Note that, while ~matrix-client~ remains usable, and probably will for some time
 + Command ~ement-view-room~, when used for a space, shows a footer explaining that the buffer is showing a space rather than a normal room, with a button to call ~ement-view-space~ for it (which lists rooms in the space).
 + Command ~ement-describe-room~ shows whether a room is a space or a normal room.
 + Command ~ement-view-space~ shows the space's name and alias.
++ Command ~ement-room-scroll-up-mark-read~ moves the fully read marker to the top of the window (when the marker's position is within the range of known events), rather than only moving it when at the end of the buffer.  (This eases the process of gradually reading a long backlog of messages.)
 + Improve readme export settings.
 
 *Fixes*
