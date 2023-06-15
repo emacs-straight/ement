@@ -297,7 +297,14 @@ Note that, while ~matrix-client~ remains usable, and probably will for some time
 :TOC:      :depth 0
 :END:
 
-** 0.10-pre
+** 0.11-pre
+
+Nothing new yet.
+
+** 0.10
+
+*Security Fixes*
++ When uploading a GPG-encrypted file (i.e. one whose filename ends in ~.gpg~), if the recipient's private key or the symmetric encryption key were cached by Emacs (or a configured agent, like ~gpg-agent~), Emacs would automatically decrypt the file while reading its contents and then upload the decrypted contents.  (This happened because the function ~insert-file-contents~ was used, which does many things automatically, some of which are not even mentioned in its docstring; refer to its entry in the Elisp Info manual for details.  The fix is to use ~insert-file-contents-literally~ instead.)  Thanks to ~@welkinsl:matrix.org~ for reporting.
 
 *Additions*
 + Support for Single Sign-On (SSO) authentication.  ([[https://github.com/alphapapa/ement.el/issues/24][#24]].  Thanks to [[https://github.com/Necronian][Jeffrey Stoffers]] for development, and to [[https://github.com/phil-s][Phil Sainty]], [[https://github.com/FrostyX][Jakub Kadlčík]], and [[https://github.com/oneingan][Juanjo Presa]] for testing.)
@@ -318,6 +325,8 @@ Note that, while ~matrix-client~ remains usable, and probably will for some time
 + Don't reinitialize ~ement-room-list-mode~ when room list buffer is refreshed.  ([[https://github.com/alphapapa/ement.el/issues/146][#146]].  Thanks to [[https://github.com/treed][Ted Reed]] for reporting.)
 + Don't fetch old events when scrolling to the bottom of a room buffer (only when scrolling to the top).  (Thanks to [[https://github.com/Stebalien][Steven Allen]].)
 + Minor improvements to auto-detection of homeserver URIs.  (See [[https://github.com/alphapapa/ement.el/issues/24#issuecomment-1569518713][#24]].  Thanks to [[https://github.com/phil-s][Phil Sainty]].)
++ Uploading of certain filetypes (e.g. Emacs would decompress some archives before uploading).  Thanks to ~@welkinsl:matrix.org~ for reporting.
++ Messages edited multiple times sometimes weren't correctly replaced.
 
 ** 0.9.3
 
