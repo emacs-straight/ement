@@ -278,7 +278,12 @@ the port, e.g.
                                            "initial_device_display_name" initial-device-display-name)))
                          (ement-api session "login" :method 'post
                            :data (json-encode data)
-                           :then (apply-partially #'ement--login-callback session)))
+                           :then (apply-partially #'ement--login-callback session))
+                         (process-send-string process "HTTP/1.0 202 Accepted
+Content-Type: text/plain; charset=utf-8
+
+Ement: SSO login accepted; session token received.  Connecting to Matrix server.  (You may close this page.)")
+                         (process-send-eof process))
                      (delete-process sso-server-process)
                      (delete-process process))))
                 (sso-login ()
@@ -286,10 +291,14 @@ the port, e.g.
                                  (make-network-process
                                   :name "ement-sso" :family 'ipv4 :host 'local :service ement-sso-server-port
                                   :filter #'sso-filter :server t :noquery t))
-                           (browse-url
-                            (concat (ement-server-uri-prefix (ement-session-server session))
-                                    "/_matrix/client/r0/login/sso/redirect?redirectUrl=http://localhost:"
-                                    (number-to-string ement-sso-server-port))))
+                           ;; Kill server after 2 minutes in case of problems.
+                           (run-at-time 120 nil (lambda ()
+                                                  (when (process-live-p sso-server-process)
+                                                    (delete-process sso-server-process))))
+                           (funcall browse-url-secondary-browser-function
+                                    (concat (ement-server-uri-prefix (ement-session-server session))
+                                            "/_matrix/client/r0/login/sso/redirect?redirectUrl=http://localhost:"
+                                            (number-to-string ement-sso-server-port))))
                 (flows-callback
                  (data) (let ((flows (cl-loop for flow across (map-elt data 'flows)
                                               collect (map-elt flow 'type))))
@@ -542,7 +551,7 @@ a filter ID).  When unspecified, the value of
     (when process
       (setf (map-elt ement-syncs session) process)
       (when (and (not quiet) (ement--sync-messages-p session))
-        (message "Ement: Sync request sent, waiting for response...")))))
+        (ement-message "Sync request sent.  Waiting for response...")))))
 
 (defun ement--sync-callback (session data)
   "Process sync DATA for SESSION.
