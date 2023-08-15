@@ -41,6 +41,7 @@
 
 (require 'color)
 (require 'map)
+(require 'seq)
 (require 'xml)
 
 (require 'ement-api)
@@ -94,40 +95,41 @@ that stray such forms don't remain if the function is removed."
 
 ;; Copied from Emacs 28.  See <https://github.com/alphapapa/ement.el/issues/99>.
 
-;; FIXME: Remove this workaround when possible.
+;; TODO(future): Remove these workarounds when dropping support for Emacs <28.
 
 (eval-and-compile
   (unless (boundp 'color-luminance-dark-limit)
     (defconst ement--color-luminance-dark-limit 0.325
-      "The relative luminance below which a color is considered 'dark'.
-A 'dark' color in this sense provides better contrast with white
-than with black; see `color-dark-p'.
-This value was determined experimentally.")))
+      "The relative luminance below which a color is considered \"dark.\"
+A \"dark\" color in this sense provides better contrast with
+white than with black; see `color-dark-p'.  This value was
+determined experimentally.")))
 
 (defalias 'ement--color-dark-p
   (if (fboundp 'color-dark-p)
       'color-dark-p
-    (lambda (rgb)
-      "Whether RGB is more readable against white than black.
+    (with-suppressed-warnings ((free-vars ement--color-luminance-dark-limit))
+      (lambda (rgb)
+        "Whether RGB is more readable against white than black.
 RGB is a 3-element list (R G B), each component in the range [0,1].
 This predicate can be used both for determining a suitable (black or white)
 contrast colour with RGB as background and as foreground."
-      (unless (<= 0 (apply #'min rgb) (apply #'max rgb) 1)
-        (error "RGB components %S not in [0,1]" rgb))
-      ;; Compute the relative luminance after gamma-correcting (assuming sRGB),
-      ;; and compare to a cut-off value determined experimentally.
-      ;; See https://en.wikipedia.org/wiki/Relative_luminance for details.
-      (let* ((sr (nth 0 rgb))
-             (sg (nth 1 rgb))
-             (sb (nth 2 rgb))
-             ;; Gamma-correct the RGB components to linear values.
-             ;; Use the power 2.2 as an approximation to sRGB gamma;
-             ;; it should be good enough for the purpose of this function.
-             (r (expt sr 2.2))
-             (g (expt sg 2.2))
-             (b (expt sb 2.2))
-             (y (+ (* r 0.2126) (* g 0.7152) (* b 0.0722))))
-        (< y ement--color-luminance-dark-limit)))))
+        (unless (<= 0 (apply #'min rgb) (apply #'max rgb) 1)
+          (error "RGB components %S not in [0,1]" rgb))
+        ;; Compute the relative luminance after gamma-correcting (assuming sRGB),
+        ;; and compare to a cut-off value determined experimentally.
+        ;; See https://en.wikipedia.org/wiki/Relative_luminance for details.
+        (let* ((sr (nth 0 rgb))
+               (sg (nth 1 rgb))
+               (sb (nth 2 rgb))
+               ;; Gamma-correct the RGB components to linear values.
+               ;; Use the power 2.2 as an approximation to sRGB gamma;
+               ;; it should be good enough for the purpose of this function.
+               (r (expt sr 2.2))
+               (g (expt sg 2.2))
+               (b (expt sb 2.2))
+               (y (+ (* r 0.2126) (* g 0.7152) (* b 0.0722))))
+          (< y ement--color-luminance-dark-limit))))))
 
 ;;;; Functions
 
@@ -597,12 +599,15 @@ Returns one of nil (meaning default rules are used), `all-loud',
                                          (equal "room_id" key)
                                          (equal (ement-room-id room) pattern)))))
                 (mute-rule-p
-                 (rule) (and (= 1 (length (alist-get 'actions rule)))
-                             (equal "dont_notify" (elt (alist-get 'actions rule) 0))))
+                 (rule) (when-let ((actions (alist-get 'actions rule)))
+                          (seq-contains-p actions "dont_notify")))
+                  ;; NOTE: Although v1.7 of the spec says that "dont_notify" is
+                  ;; obsolete, the latest revision of matrix-react-sdk (released last week
+                  ;; as v3.77.1) still works as modeled here.
                 (tweak-rule-p
-                 (type rule) (pcase-let (((map ('actions `[,action ,alist])) rule))
-                               (and (equal "notify" action)
-                                    (equal type (alist-get 'set_tweak alist))))))
+                 (type rule) (when-let ((actions (alist-get 'actions rule)))
+                               (and (seq-contains-p actions "notify")
+                                    (seq-contains-p actions `(set_tweak . ,type) 'seq-contains-p)))))
       ;; If none of these match, nil is returned, meaning that the default rule is used
       ;; for the room.
       (if (override-mute-rule-for-room-p room)
@@ -617,7 +622,7 @@ Returns one of nil (meaning default rules are used), `all-loud',
                  'all)
                 ((mute-rule-p room-rule)
                  ;; According to comment, a room-level mute still allows mentions to
-                 ;; notify.
+                 ;; notify.  NOTE: See note above.
                  'mentions-and-keywords)
                 ((tweak-rule-p "sound" room-rule) 'all-loud)))))))
 
@@ -929,8 +934,8 @@ avatars, etc."
            (ratio (/ id-hash (float most-positive-fixnum)))
            (color-num (round (* (* 255 255 255) ratio)))
            (color-rgb (list (/ (float (logand color-num 255)) 255)
-                            (/ (float (lsh (logand color-num 65280) -8)) 255)
-                            (/ (float (lsh (logand color-num 16711680) -16)) 255)))
+                            (/ (float (ash (logand color-num 65280) -8)) 255)
+                            (/ (float (ash (logand color-num 16711680) -16)) 255)))
            (contrast-with-rgb (color-name-to-rgb contrast-with)))
       (when (< (contrast-ratio color-rgb contrast-with-rgb) ement-room-prism-minimum-contrast)
         (setf color-rgb (increase-contrast color-rgb contrast-with-rgb ement-room-prism-minimum-contrast
@@ -1128,23 +1133,26 @@ e.g. `ement-room-send-org-filter')."
                              :content content :data))))
 
 (defalias 'ement--button-buttonize
-  ;; FIXME: This doesn't set the mouse-face to highlight, and it doesn't use the
-  ;; default-button category.  Neither does `button-buttonize', of course, but why?
-  (if (version< emacs-version "28.1")
-      (lambda (string callback &optional data)
-        "Make STRING into a button and return it.
+  ;; This isn't nice, but what can you do.
+  (cond ((version<= "29.1" emacs-version) #'buttonize)
+        ((version<= "28.1" emacs-version) (with-suppressed-warnings ((obsolete button-buttonize))
+                                            #'button-buttonize))
+        ((version< emacs-version "28.1")
+         ;; FIXME: This doesn't set the mouse-face to highlight, and it doesn't use the
+         ;; default-button category.  Neither does `button-buttonize', of course, but why?
+         (lambda (string callback &optional data)
+           "Make STRING into a button and return it.
 When clicked, CALLBACK will be called with the DATA as the
 function argument.  If DATA isn't present (or is nil), the button
 itself will be used instead as the function argument."
-        (propertize string
-                    'face 'button
-                    'button t
-                    'follow-link t
-                    'category t
-                    'button-data data
-                    'keymap button-map
-                    'action callback))
-    #'button-buttonize))
+           (propertize string
+                       'face 'button
+                       'button t
+                       'follow-link t
+                       'category t
+                       'button-data data
+                       'keymap button-map
+                       'action callback)))))
 
 (defun ement--add-reply (data replying-to-event room)
   "Return DATA adding reply data for REPLYING-TO-EVENT in ROOM.

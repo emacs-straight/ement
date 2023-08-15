@@ -295,26 +295,34 @@ Ement: SSO login accepted; session token received.  Connecting to Matrix server.
                            (run-at-time 120 nil (lambda ()
                                                   (when (process-live-p sso-server-process)
                                                     (delete-process sso-server-process))))
-                           (funcall browse-url-secondary-browser-function
-                                    (concat (ement-server-uri-prefix (ement-session-server session))
-                                            "/_matrix/client/r0/login/sso/redirect?redirectUrl=http://localhost:"
-                                            (number-to-string ement-sso-server-port))))
+                           (let ((url (concat (ement-server-uri-prefix (ement-session-server session))
+                                              "/_matrix/client/r0/login/sso/redirect?redirectUrl=http://localhost:"
+                                              (number-to-string ement-sso-server-port))))
+                             (funcall browse-url-secondary-browser-function url)
+                             (message "Browsing to single sign-on page <%s>..." url)))
                 (flows-callback
                  (data) (let ((flows (cl-loop for flow across (map-elt data 'flows)
-                                              collect (map-elt flow 'type))))
+                                              for type = (map-elt flow 'type)
+                                              when (member type '("m.login.password" "m.login.sso"))
+                                              collect type)))
                           (pcase (length flows)
+                            (0 (error "Ement: No supported login flows:  Server:%S  Supported flows:%S"
+                                      (ement-server-uri-prefix (ement-session-server session))
+                                      (map-elt data 'flows)))
                             (1 (pcase (car flows)
                                  ("m.login.password" (password-login))
                                  ("m.login.sso" (sso-login))
-                                 (_ (error "Ement: Unsupported login flow: %s  Server:%s"
-                                           (car flows) (ement-server-uri-prefix (ement-session-server session))))))
+                                 (_ (error "Ement: Unsupported login flow: %s  Server:%S  Supported flows:%S"
+                                           (car flows) (ement-server-uri-prefix (ement-session-server session))
+                                           (map-elt data 'flows)))))
                             (_ (pcase (completing-read "Select authentication method: "
                                                        (cl-loop for flow in flows
                                                                 collect (string-trim-left flow (rx "m.login."))))
                                  ("password" (password-login))
                                  ("sso" (sso-login))
                                  (else (error "Ement: Unsupported login flow:%S  Server:%S  Supported flows:%S"
-                                              else (ement-server-uri-prefix (ement-session-server session)) flows))))))))
+                                              else (ement-server-uri-prefix (ement-session-server session))
+                                              (map-elt data 'flows)))))))))
       (if session
           ;; Start syncing given session.
           (let ((user-id (ement-user-id (ement-session-user session))))
@@ -401,14 +409,16 @@ Useful in, e.g. `ement-disconnect-hook', which see."
   "Run idle timer that updates read receipts.
 To be called from `ement-after-initial-sync-hook'.  Timer is
 stored in `ement-read-receipt-idle-timer'."
-  (setf ement-read-receipt-idle-timer (run-with-idle-timer 3 t #'ement-room-read-receipt-idle-timer)))
+  (unless (timerp ement-read-receipt-idle-timer)
+    (setf ement-read-receipt-idle-timer (run-with-idle-timer 3 t #'ement-room-read-receipt-idle-timer))))
 
 (defun ement--stop-idle-timer (&rest _ignore)
   "Stop idle timer stored in `ement-read-receipt-idle-timer'.
 To be called from `ement-disconnect-hook'."
-  (when (timerp ement-read-receipt-idle-timer)
-    (cancel-timer ement-read-receipt-idle-timer)
-    (setf ement-read-receipt-idle-timer nil)))
+  (unless ement-sessions
+    (when (timerp ement-read-receipt-idle-timer)
+      (cancel-timer ement-read-receipt-idle-timer)
+      (setf ement-read-receipt-idle-timer nil))))
 
 (defun ement-view-initial-rooms (session)
   "View rooms for SESSION configured in `ement-auto-view-rooms'."

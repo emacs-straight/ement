@@ -2628,7 +2628,10 @@ Also, mark room's buffer as unmodified."
   (interactive)
   (if-let ((fully-read-pos (when ement-room-fully-read-marker
                              (ewoc-location ement-room-fully-read-marker))))
-      (setf (point) fully-read-pos (window-start) fully-read-pos)
+      (with-suppressed-warnings ((obsolete point))
+        ;; I like using `point' as a GV, and I object to its being obsoleted (and said so
+        ;; on emacs-devel).
+        (setf (point) fully-read-pos (window-start) fully-read-pos))
     ;; Unlike the fully-read marker, there doesn't seem to be a
     ;; simple way to get the user's read-receipt marker.  So if
     ;; we haven't seen either marker in the retrieved events, we
@@ -3556,8 +3559,8 @@ HTML is rendered to Emacs text using `shr-insert-document'."
            (ratio (/ id-hash (float most-positive-fixnum)))
            (color-num (round (* (* 255 255 255) ratio)))
            (color-rgb (list (/ (float (logand color-num 255)) 255)
-                            (/ (float (lsh (logand color-num 65280) -8)) 255)
-                            (/ (float (lsh (logand color-num 16711680) -16)) 255)))
+                            (/ (float (ash (logand color-num 65280) -8)) 255)
+                            (/ (float (ash (logand color-num 16711680) -16)) 255)))
            (background-rgb (color-name-to-rgb (face-background 'default))))
       (when (< (contrast-ratio color-rgb background-rgb) ement-room-prism-minimum-contrast)
         (setf color-rgb (increase-contrast color-rgb background-rgb ement-room-prism-minimum-contrast
@@ -4050,7 +4053,8 @@ height."
           (image-property image :max-height) nil)
     (with-current-buffer new-buffer
       (erase-buffer)
-      (insert-image image))
+      (insert-image image)
+      (image-mode))
     (pop-to-buffer new-buffer '((display-buffer-pop-up-frame)))
     (set-frame-parameter nil 'fullscreen 'maximized)))
 
