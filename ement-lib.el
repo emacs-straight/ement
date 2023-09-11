@@ -99,8 +99,14 @@ that stray such forms don't remain if the function is removed."
   ;; TODO: Suggest mentioning in manual and docstrings that `json-read', et al do not use
   ;; libjansson, while `json-parse-buffer', et al do.
   (if (fboundp 'json-parse-buffer)
-      (lambda () (json-parse-buffer :object-type 'alist :null-object nil
-                                    :false-object :json-false))
+      (lambda ()
+        (condition-case err
+            (json-parse-buffer :object-type 'alist :null-object nil :false-object :json-false)
+          (json-parse-error
+           (ement-message "`json-parse-buffer' signaled `json-parse-error'; falling back to `json-read'... (%S)"
+                          (error-message-string err))
+           (goto-char (point-min))
+           (json-read))))
     'json-read))
 
 ;;;;; Emacs 28 color features.
@@ -1363,11 +1369,20 @@ can cause undesirable underlining."
 
 (cl-defun ement--text-property-search-forward (property predicate string &key (start 0))
   "Return the position at which PROPERTY in STRING matches PREDICATE.
-Return nil if not found.  Starts searching from START."
+Return nil if not found.  Searches forward from START."
   (declare (indent defun))
   (cl-loop for pos = start then (next-single-property-change pos property string)
            while pos
            when (funcall predicate (get-text-property pos property string))
+           return pos))
+
+(cl-defun ement--text-property-search-backward (property predicate string &key (start 0))
+  "Return the position at which PROPERTY in STRING matches PREDICATE.
+Return nil if not found.  Searches backward from START."
+  (declare (indent defun))
+  (cl-loop for pos = start then (previous-single-property-change pos property string)
+           while (and pos (> pos 1))
+           when (funcall predicate (get-text-property (1- pos) property string))
            return pos))
 
 (defun ement--resize-image (image max-width max-height)
