@@ -1702,23 +1702,17 @@ mentioning the ROOM and CONTENT."
 
 (defun ement-room-edit-message (event room session body)
   "Edit EVENT in ROOM on SESSION to have new BODY.
-The message must be one sent by the local user.  EVENT may be the
-`ement-event' or the event's ID string."
+The message must be one sent by the local user.  If EVENT is
+itself an edit of another event, the original event is edited."
   (interactive (ement-room-with-highlighted-event-at (point)
                  (cl-assert ement-session) (cl-assert ement-room)
                  (pcase-let* ((event (ewoc-data (ewoc-locate ement-ewoc)))
                               ((cl-struct ement-session user) ement-session)
-                              ((cl-struct ement-event sender
-                                          (content (map body ('m.relates_to
-                                                              (map ('event_id replaced-event-id)
-                                                                   ('rel_type relation-type))))))
-                               event)
-                              (ement-room-editing-event event))
+                              ((cl-struct ement-event sender (content (map body))) event)
+                              (ement-room-editing-event event)
+                              (edited-event (ement--original-event-for event ement-session)))
                    (unless (equal (ement-user-id sender) (ement-user-id user))
                      (user-error "You may only edit your own messages"))
-                   (pcase relation-type
-                     ("m.replace"  ;; Editing an already-edited event: use the original event ID.
-                      (setf event replaced-event-id)))
                    ;; Remove any leading asterisk from the plain-text body.
                    (setf body (replace-regexp-in-string (rx bos "*" (1+ space)) "" body t t))
                    (ement-room-with-typing
@@ -1729,7 +1723,7 @@ The message must be one sent by the local user.  EVENT may be the
                        (when (string-empty-p body)
                          (user-error "To delete a message, use command `ement-room-delete-message'"))
                        (when (yes-or-no-p (format "Edit message to: %S? " body))
-                         (list event ement-room ement-session body)))))))
+                         (list edited-event ement-room ement-session body)))))))
   (let* ((endpoint (format "rooms/%s/send/%s/%s" (url-hexify-string (ement-room-id room))
                            "m.room.message" (ement--update-transaction-id session)))
          (new-content (ement-alist "body" body
@@ -1741,9 +1735,7 @@ The message must be one sent by the local user.  EVENT may be the
                                "m.new_content" new-content
                                "m.relates_to" (ement-alist
                                                "rel_type" "m.replace"
-                                               "event_id" (cl-typecase event
-                                                            (string event)
-                                                            (ement-event (ement-event-id event)))))))
+                                               "event_id" (ement-event-id event)))))
     ;; Prepend the asterisk after the filter may have modified the content.  Note that the
     ;; "m.new_content" body does not get the leading asterisk, only the "content" body,
     ;; which is intended as a fallback.
@@ -1760,7 +1752,7 @@ The message must be one sent by the local user.  EVENT may be the
                            ement-room ement-session (read-string "Reason (optional): " nil nil nil 'inherit-input-method))
                    ;; HACK: This isn't really an error, but is there a cleaner way to cancel?
                    (user-error "Message not deleted"))))
-  (ement-redact event room session reason))
+  (ement-redact (ement--original-event-for event session) room session reason))
 
 (defun ement-room-write-reply (event)
   "Write and send a reply to EVENT.
@@ -1778,8 +1770,9 @@ Interactively, to event at point."
                       (setq-local ement-room-replying-to-event event)))
                    (body (ement-room-with-typing
                            (ement-room-read-string prompt nil 'ement-room-message-history
-                                                   nil 'inherit-input-method))))
-        (ement-room-send-message room session :body body :replying-to-event event)))))
+                                                   nil 'inherit-input-method)))
+                   (replying-to-event (ement--original-event-for event ement-session)))
+        (ement-room-send-message room session :body body :replying-to-event replying-to-event)))))
 
 (defun ement-room-send-reaction (key position)
   "Send reaction of KEY to event at POSITION.
@@ -2497,15 +2490,27 @@ function to `ement-room-event-fns', which see."
   (pcase-let* (((cl-struct ement-event (local (map ('redacts redacted-id)))) event)
                ((cl-struct ement-room timeline) ement-room)
                (redacted-event (cl-find redacted-id timeline
-                                        :key #'ement-event-id :test #'equal)))
+                                        :key #'ement-event-id :test #'equal))
+               (redacted-edit-events (cl-remove-if-not (lambda (timeline-event)
+                                                         (pcase-let (((cl-struct ement-event
+                                                                                 (content
+                                                                                  (map ('m.relates_to
+                                                                                        (map ('event_id related-id)
+                                                                                             ('rel_type rel-type))))))
+                                                                      timeline-event))
+                                                           (and (equal redacted-id related-id)
+                                                                (equal "m.replace" rel-type))))
+                                                       timeline)))
+    (ement-debug event redacted-event redacted-edit-events)
+    (cl-loop for edit-event in redacted-edit-events
+             do (cl-pushnew event (alist-get 'redacted-by (ement-event-local edit-event))))
     (when redacted-event
+      (cl-pushnew event (alist-get 'redacted-by (ement-event-local redacted-event)))
       (pcase-let* (((cl-struct ement-event (content
                                             (map ('m.relates_to
                                                   (map ('event_id related-id)
                                                        ('rel_type rel-type))))))
                     redacted-event))
-        ;; Record the redaction in the redacted event's local slot.
-        (cl-pushnew event (alist-get 'redacted-by (ement-event-local redacted-event)))
         (pcase rel-type
           ("m.annotation"
            ;; Redacted annotation/reaction.  NOTE: Since we link annotations in a -room
@@ -2522,13 +2527,22 @@ function to `ement-room-event-fns', which see."
                                (lambda (data)
                                  (and (ement-event-p data)
                                       (equal related-id (ement-event-id data))))))
-               (ewoc-invalidate ement-ewoc node)))))
-        ;; Invalidate the redacted event's node.
-        (when-let (node (ement-room--ewoc-last-matching ement-ewoc
-                          (lambda (data)
-                            (and (ement-event-p data)
-                                 (equal redacted-id (ement-event-id data))))))
-          (ewoc-invalidate ement-ewoc node))))))
+               (ewoc-invalidate ement-ewoc node)))))))
+    ;; Invalidate the redacted event's node.
+    (when-let ((node (ement-room--ewoc-last-matching ement-ewoc
+                       (lambda (data)
+                         (and (ement-event-p data)
+                              (pcase-let (((cl-struct ement-event id
+                                                      (content
+                                                       (map ('m.relates_to
+                                                             (map ('event_id related-id)
+                                                                  ('rel_type rel-type))))))
+                                           data))
+                                (or (equal redacted-id id)
+                                    (and (equal "m.replace" rel-type)
+                                         (equal redacted-id related-id)))))))))
+      (ement-debug node)
+      (ewoc-invalidate ement-ewoc node))))
 
 (ement-room-defevent "m.typing"
   (pcase-let* (((cl-struct ement-session user) ement-session)
@@ -4136,8 +4150,7 @@ height."
   (pcase-let* ((image (copy-sequence (get-text-property pos 'display)))
                (ement-event (ewoc-data (ewoc-locate ement-ewoc pos)))
                ((cl-struct ement-event id) ement-event)
-               (buffer-name (format "*Ement image: %s*" id))
-               (new-buffer (get-buffer-create buffer-name)))
+               (buffer-name (format "*Ement image: %s*" id)))
     (when (fboundp 'imagemagick-types)
       ;; Only do this when ImageMagick is supported.
       ;; FIXME: When requiring Emacs 27+, remove this (I guess?).
@@ -4145,12 +4158,14 @@ height."
     (setf (image-property image :scale) 1.0
           (image-property image :max-width) nil
           (image-property image :max-height) nil)
-    (with-current-buffer new-buffer
-      (erase-buffer)
-      (insert-image image)
-      (image-mode))
-    (pop-to-buffer new-buffer '((display-buffer-pop-up-frame)))
-    (set-frame-parameter nil 'fullscreen 'maximized)))
+    (unless (get-buffer buffer-name)
+      (with-current-buffer (get-buffer-create buffer-name)
+        (erase-buffer)
+        (insert-image image)
+        (image-mode)))
+    (pop-to-buffer buffer-name
+                   '((display-buffer-pop-up-frame
+                      (pop-up-frame-parameters . ((fullscreen . t) (maximized . t))))))))
 
 (defun ement-room--format-m.image (event)
   "Return \"m.image\" EVENT formatted as a string.
