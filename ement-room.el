@@ -252,6 +252,12 @@ Does not include filenames, emotes, etc.")
 Called with two arguments, the room and the session."
   :type 'hook)
 
+(defcustom ement-room-reaction-names-limit 3
+  "Up to this many users, show a reaction's senders' names.
+If more than this many users have sent a reaction, show the
+number of senders instead (and the names in a tooltip)."
+  :type 'natnum)
+
 ;;;;; Faces
 
 (defface ement-room-name
@@ -943,8 +949,8 @@ spec) without requiring all events to use the same margin width."
 
 (ement-room-define-event-formatter ?r
   "Reactions."
-  (ignore room session)
-  (ement-room--format-reactions event))
+  (ignore session)
+  (ement-room--format-reactions event room))
 
 (ement-room-define-event-formatter ?t
   "Timestamp."
@@ -3349,50 +3355,54 @@ Formats according to `ement-room-message-format-spec', which see."
           (propertize " "
                       'display ement-room-event-separator-display-property)))
 
-(defun ement-room--format-reactions (event)
-  "Return formatted reactions to EVENT."
+(defun ement-room--format-reactions (event room)
+  "Return formatted reactions to EVENT in ROOM."
   ;; TODO: Like other events, pop to a buffer showing the raw reaction events when a key is pressed.
-  (if-let ((reactions (map-elt (ement-event-local event) 'reactions)))
-      (cl-labels ((format-reaction (ks)
-                    (pcase-let* ((`(,key . ,senders) ks)
-                                 (key (propertize key 'face 'ement-room-reactions-key))
-                                 (count (propertize (format " (%s)" (length senders))
-                                                    'face 'ement-room-reactions))
-                                 (string
-                                  (propertize (concat key count)
-                                              'button '(t)
-                                              'category 'default-button
-                                              'action #'ement-room-reaction-button-action
-                                              'follow-link t
-                                              'help-echo (lambda (_window buffer _pos)
-                                                           ;; NOTE: If the reaction key string is a Unicode character composed
-                                                           ;; with, e.g. "VARIATION SELECTOR-16", `string-to-char' ignores the
-                                                           ;; composed modifier/variation-selector and just returns the first
-                                                           ;; character of the string.  This should be fine, since it's just
-                                                           ;; for the tooltip.
-                                                           (concat
-                                                            (get-char-code-property (string-to-char key) 'name) ": "
-                                                            (senders-names senders (buffer-local-value 'ement-room buffer))))))
-                                 (local-user-p (cl-member (ement-user-id (ement-session-user ement-session)) senders
-                                                          :key #'ement-user-id :test #'equal)))
-                      (when local-user-p
-                        (add-face-text-property 0 (length string) '(:box (:style pressed-button) :inverse-video t)
-                                                nil string))
-                      (ement--remove-face-property string 'button)
-                      string))
-                  (senders-names (senders room)
-                    (cl-loop for sender in senders
-                             collect (ement--user-displayname-in room sender)
-                             into names
-                             finally return (string-join names ", "))))
+  (cl-labels
+      ((format-reaction (ks)
+         (pcase-let* ((`(,key . ,senders) ks)
+                      (key (propertize key 'face 'ement-room-reactions-key))
+                      (count (propertize (format " (%s)"
+                                                 (if (length> senders ement-room-reaction-names-limit)
+                                                     (length senders)
+                                                   (senders-names senders room)))
+                                         'face 'ement-room-reactions))
+                      (string
+                       (propertize (concat key count)
+                                   'button '(t)
+                                   'category 'default-button
+                                   'action #'ement-room-reaction-button-action
+                                   'follow-link t
+                                   'help-echo (lambda (_window buffer _pos)
+                                                ;; NOTE: If the reaction key string is a Unicode character composed
+                                                ;; with, e.g. "VARIATION SELECTOR-16", `string-to-char' ignores the
+                                                ;; composed modifier/variation-selector and just returns the first
+                                                ;; character of the string.  This should be fine, since it's just
+                                                ;; for the tooltip.
+                                                (concat
+                                                 (get-char-code-property (string-to-char key) 'name) ": "
+                                                 (senders-names senders (buffer-local-value 'ement-room buffer))))))
+                      (local-user-p (cl-member (ement-user-id (ement-session-user ement-session)) senders
+                                               :key #'ement-user-id :test #'equal)))
+           (when local-user-p
+             (add-face-text-property 0 (length string) '(:box (:style pressed-button) :inverse-video t)
+                                     nil string))
+           (ement--remove-face-property string 'button)
+           string))
+       (senders-names (senders room)
+         (cl-loop for sender in senders
+                  collect (ement--user-displayname-in room sender)
+                  into names
+                  finally return (string-join names ", "))))
+    (if-let ((reactions (map-elt (ement-event-local event) 'reactions)))
         (cl-loop with keys-senders
                  for reaction in reactions
                  for key = (map-nested-elt (ement-event-content reaction) '(m.relates_to key))
                  for sender = (ement-event-sender reaction)
                  do (push sender (alist-get key keys-senders nil nil #'string=))
                  finally do (setf keys-senders (cl-sort keys-senders #'> :key (lambda (pair) (length (cdr pair)))))
-                 finally return (concat "\n  " (mapconcat #'format-reaction keys-senders "  "))))
-    ""))
+                 finally return (concat "\n  " (mapconcat #'format-reaction keys-senders "  ")))
+      "")))
 
 (cl-defun ement-room--format-message (event room session &optional (format ement-room-message-format-spec))
   "Return EVENT in ROOM on SESSION formatted according to FORMAT.
