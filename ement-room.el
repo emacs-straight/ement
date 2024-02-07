@@ -3924,14 +3924,14 @@ a copy of the local keymap, and sets `header-line-format'."
                (format "%s left%s"
                        (prev-displayname-id-string)
                        (if reason
-                           (format " (%s)" reason)
+                           (format " (%S)" reason)
                          "")))
               (_ (format "%s kicked %s%s"
                          (sender-name-id-string)
                          (propertize (or prev-displayname state-key)
                                      'help-echo state-key)
                          (if reason
-                             (format " (%s)" reason)
+                             (format " (%S)" reason)
                            "")))))
            ("ban"
             (format "%s unbanned %s"
@@ -3940,7 +3940,7 @@ a copy of the local keymap, and sets `header-line-format'."
            (_ (format "%s left%s"
                       (prev-displayname-id-string)
                       (if reason
-                          (format " (%s)" reason)
+                          (format " (%S)" reason)
                         "")))))
         ("ban"
          (pcase prev-membership
@@ -3950,7 +3950,7 @@ a copy of the local keymap, and sets `header-line-format'."
                     (propertize (or prev-displayname state-key)
                                 'help-echo state-key)
                     (if reason
-                        (format " (%s)" reason)
+                        (format " (%S)" reason)
                       "")))
            ("join"
             (format "%s kicked and banned %s%s"
@@ -3958,7 +3958,7 @@ a copy of the local keymap, and sets `header-line-format'."
                     (propertize (or prev-displayname state-key)
                                 'help-echo state-key)
                     (if reason
-                        (format " (%s)" reason)
+                        (format " (%S)" reason)
                       "")))
            (_ (format "%s sent unrecognized ban event for %s"
                       (sender-name-id-string)
@@ -4011,6 +4011,12 @@ STRUCT should be an `ement-room-membership-events' struct."
                                                     (and (equal "ban" (old-membership event))
                                                          (equal "leave" (new-membership event))))
                                                   events))
+                  (kicked-events (cl-remove-if-not (lambda (event)
+                                                     (and (equal "join" (old-membership event))
+                                                          (equal "leave" (new-membership event))
+                                                          (not (equal (ement-user-id (ement-event-sender event))
+                                                                      (ement-event-state-key event)))))
+                                                   events))
                   (kick-and-ban-events (cl-remove-if-not (lambda (event)
                                                            (and (equal "join" (old-membership event))
                                                                 (equal "ban" (new-membership event))))
@@ -4029,7 +4035,7 @@ STRUCT should be an `ement-room-membership-events' struct."
                                                                       (map-nested-elt (ement-event-unsigned event)
                                                                                       '(prev_content avatar_url))))))
                                                    events))
-                  join-and-leave-events rejoin-and-leave-events)
+                  join-and-leave-events rejoin-and-leave-events kicked-and-rejoined-events)
              ;; Remove apparent duplicates between join/rejoin events.
              (setf join-events (cl-delete-if (lambda (event)
                                                (cl-find (ement-event-state-key event) rejoin-events
@@ -4048,6 +4054,14 @@ STRUCT should be an `ement-room-membership-events' struct."
                                                                                       :test #'equal :key #'ement-event-state-key)
                                                                left-events (cl-delete (ement-event-state-key left-event) left-events
                                                                                       :test #'equal :key #'ement-event-state-key)))
+                   kicked-and-rejoined-events (cl-loop for rejoin-event in rejoin-events
+                                                       for kicked-event = (cl-find (ement-event-state-key rejoin-event) kicked-events
+                                                                                   :test #'equal :key #'ement-event-state-key)
+                                                       when kicked-event collect kicked-event
+                                                       and do (setf rejoin-events (cl-delete (ement-event-state-key kicked-event) rejoin-events
+                                                                                             :test #'equal :key #'ement-event-state-key)
+                                                                    left-events (cl-delete (ement-event-state-key kicked-event) left-events
+                                                                                           :test #'equal :key #'ement-event-state-key)))
                    rejoin-and-leave-events (cl-loop for rejoin-event in rejoin-events
                                                     for left-event = (cl-find (ement-event-state-key rejoin-event) left-events
                                                                               :test #'equal :key #'ement-event-state-key)
@@ -4064,6 +4078,7 @@ STRUCT should be an `ement-room-membership-events' struct."
                                                            "joined" join-events
                                                            "left" left-events
                                                            "joined and left" join-and-leave-events
+                                                           "was kicked and rejoined" kicked-and-rejoined-events
                                                            "rejoined and left" rejoin-and-leave-events
                                                            "invited" invite-events
                                                            "rejected invitation" reject-events
