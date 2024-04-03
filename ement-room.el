@@ -748,8 +748,8 @@ To do the same in lisp code, set the option with `setopt'."
   :type 'key-sequence
   :set #'ement-room-self-insert-option-setter)
 
-(defcustom ement-room-reaction-picker (if (commandp 'emoji-insert)
-                                          'emoji-insert
+(defcustom ement-room-reaction-picker (if (commandp 'emoji-search)
+                                          'emoji-search
                                         #'insert-char)
   "Command used to select a reaction by `ement-room-send-reaction'.
 Should be set to a command that somehow prompts the user for an
@@ -760,7 +760,7 @@ those are not available, one can use `insert-char'."
   :type `(choice
           (const :tag "Complete unicode character name" insert-char)
           ,@(when (commandp 'emoji-insert)
-              '((const :tag "Transient emoji menu" emoji-insert)))
+              '((const :tag "Categorized emoji menu" emoji-insert)))
           ,@(when (commandp 'emoji-search)
               '((const :tag "Complete emoji name" emoji-search)))
           ,@(when (assoc "emoji" input-method-alist)
@@ -2278,12 +2278,16 @@ these all require at least version 29 of Emacs):
      (list (minibuffer-with-setup-hook
                (lambda ()
                  (setq-local after-change-functions
-                             (list (lambda (&rest _) (exit-minibuffer))))
+                             (list (lambda (&rest _)
+                                     (catch 'exit
+                                       (exit-minibuffer))
+                                     (throw 'selected (minibuffer-contents)))))
                  (use-local-map
                   (make-composed-keymap ement-room-reaction-map (current-local-map)))
                  (let ((enable-recursive-minibuffers t))
                    (funcall ement-room-reaction-picker)))
-             (read-string "Reaction: "))
+             (catch 'selected
+               (read-string "Reaction: ")))
            (point))))
   ;; SPEC: MSC2677 <https://github.com/matrix-org/matrix-doc/pull/2677>
   ;; HACK: We could simplify this by storing the key in a text property...
