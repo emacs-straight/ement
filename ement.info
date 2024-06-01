@@ -1,4 +1,4 @@
-This is doc9Pb2Ri.info, produced by makeinfo version 6.8 from
+This is docEbr7hn.info, produced by makeinfo version 6.8 from
 ement.texi.
 
 INFO-DIR-SECTION Emacs
@@ -7,7 +7,7 @@ START-INFO-DIR-ENTRY
 END-INFO-DIR-ENTRY
 
 
-File: doc9Pb2Ri.info,  Node: Top,  Next: Installation,  Up: (dir)
+File: docEbr7hn.info,  Node: Top,  Next: Installation,  Up: (dir)
 
 Ement.el
 ********
@@ -53,6 +53,7 @@ Usage
 
 Changelog
 
+* 0.16-pre: 016-pre.
 * 0.15: 015.
 * 0.14: 014.
 * 0.13: 013.
@@ -94,7 +95,7 @@ Development
 
 
 
-File: doc9Pb2Ri.info,  Node: Installation,  Next: Usage,  Prev: Top,  Up: Top
+File: docEbr7hn.info,  Node: Installation,  Next: Usage,  Prev: Top,  Up: Top
 
 1 Installation
 **************
@@ -110,7 +111,7 @@ File: doc9Pb2Ri.info,  Node: Installation,  Next: Usage,  Prev: Top,  Up: Top
 * Manual::
 
 
-File: doc9Pb2Ri.info,  Node: GNU ELPA,  Next: GNU Guix,  Up: Installation
+File: docEbr7hn.info,  Node: GNU ELPA,  Next: GNU Guix,  Up: Installation
 
 GNU ELPA
 ========
@@ -125,7 +126,7 @@ stable release.
 (https://elpa.gnu.org/devel/ement.html) or from Git (see below).
 
 
-File: doc9Pb2Ri.info,  Node: GNU Guix,  Next: Debian Ubuntu,  Prev: GNU ELPA,  Up: Installation
+File: docEbr7hn.info,  Node: GNU Guix,  Next: Debian Ubuntu,  Prev: GNU ELPA,  Up: Installation
 
 GNU Guix
 ========
@@ -134,7 +135,7 @@ Ement.el is available in GNU Guix (https://guix.gnu.org/) as emacs-ement
 (https://packages.guix.gnu.org/packages/emacs-ement/).
 
 
-File: doc9Pb2Ri.info,  Node: Debian Ubuntu,  Next: Nix,  Prev: GNU Guix,  Up: Installation
+File: docEbr7hn.info,  Node: Debian Ubuntu,  Next: Nix,  Prev: GNU Guix,  Up: Installation
 
 Debian, Ubuntu
 ==============
@@ -144,7 +145,7 @@ Ement.el is available in Debian as elpa-ement
 (https://packages.ubuntu.com/search?suite=default&section=all&arch=any&keywords=elpa-ement&searchon=names).
 
 
-File: doc9Pb2Ri.info,  Node: Nix,  Next: Other distributions,  Prev: Debian Ubuntu,  Up: Installation
+File: docEbr7hn.info,  Node: Nix,  Next: Other distributions,  Prev: Debian Ubuntu,  Up: Installation
 
 Nix
 ===
@@ -154,7 +155,7 @@ emacsPackages.ement
 (https://search.nixos.org/packages?channel=23.05&show=emacsPackages.ement&from=0&size=50&sort=relevance&type=packages&query=ement).
 
 
-File: doc9Pb2Ri.info,  Node: Other distributions,  Next: Git master,  Prev: Nix,  Up: Installation
+File: docEbr7hn.info,  Node: Other distributions,  Next: Git master,  Prev: Nix,  Up: Installation
 
 Other distributions
 ===================
@@ -163,7 +164,7 @@ Ement.el is also available in some other distributions.  See Repology
 (https://repology.org/project/emacs:ement/related) for details.
 
 
-File: doc9Pb2Ri.info,  Node: Git master,  Next: Manual,  Prev: Other distributions,  Up: Installation
+File: docEbr7hn.info,  Node: Git master,  Next: Manual,  Prev: Other distributions,  Up: Installation
 
 Git master
 ==========
@@ -193,7 +194,7 @@ DOOM (https://github.com/doomemacs/doomemacs)), but the author cannot
 offer support for them.
 
 
-File: doc9Pb2Ri.info,  Node: Manual,  Prev: Git master,  Up: Installation
+File: docEbr7hn.info,  Node: Manual,  Prev: Git master,  Up: Installation
 
 Manual
 ======
@@ -203,7 +204,7 @@ will ensure that the required autoloads are generated, etc.  If you
 choose to install it manually, you’re on your own.
 
 
-File: doc9Pb2Ri.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: Top
+File: docEbr7hn.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: Top
 
 2 Usage
 *******
@@ -259,7 +260,7 @@ File: doc9Pb2Ri.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: 
 * Encrypted room support through Pantalaimon::
 
 
-File: doc9Pb2Ri.info,  Node: Bindings,  Next: Tips,  Up: Usage
+File: docEbr7hn.info,  Node: Bindings,  Next: Tips,  Up: Usage
 
 Bindings
 ========
@@ -279,7 +280,7 @@ These bindings are common to all of the following buffer types:
 * Mentions/notifications buffers::
 
 
-File: doc9Pb2Ri.info,  Node: Room buffers,  Next: Room list buffer,  Up: Bindings
+File: docEbr7hn.info,  Node: Room buffers,  Next: Room list buffer,  Up: Bindings
 
 Room buffers
 ------------
@@ -372,7 +373,7 @@ mode.)
      prefix to force new sync): ‘g’
 
 
-File: doc9Pb2Ri.info,  Node: Room list buffer,  Next: Directory buffers,  Prev: Room buffers,  Up: Bindings
+File: docEbr7hn.info,  Node: Room list buffer,  Next: Directory buffers,  Prev: Room buffers,  Up: Bindings
 
 Room list buffer
 ----------------
@@ -385,7 +386,7 @@ Room list buffer
    • Toggle room’s membership in a space: ‘s’
 
 
-File: doc9Pb2Ri.info,  Node: Directory buffers,  Next: Mentions/notifications buffers,  Prev: Room list buffer,  Up: Bindings
+File: docEbr7hn.info,  Node: Directory buffers,  Next: Mentions/notifications buffers,  Prev: Room list buffer,  Up: Bindings
 
 Directory buffers
 -----------------
@@ -394,7 +395,7 @@ Directory buffers
    • Load next batch of rooms: ‘+’
 
 
-File: doc9Pb2Ri.info,  Node: Mentions/notifications buffers,  Prev: Directory buffers,  Up: Bindings
+File: docEbr7hn.info,  Node: Mentions/notifications buffers,  Prev: Directory buffers,  Up: Bindings
 
 Mentions/notifications buffers
 ------------------------------
@@ -405,7 +406,7 @@ Mentions/notifications buffers
      writing): ‘S-<return>’
 
 
-File: doc9Pb2Ri.info,  Node: Tips,  Next: Encrypted room support through Pantalaimon,  Prev: Bindings,  Up: Usage
+File: docEbr7hn.info,  Node: Tips,  Next: Encrypted room support through Pantalaimon,  Prev: Bindings,  Up: Usage
 
 Tips
 ====
@@ -461,7 +462,7 @@ Tips
 * Displaying symbols and emojis::
 
 
-File: doc9Pb2Ri.info,  Node: Displaying symbols and emojis,  Up: Tips
+File: docEbr7hn.info,  Node: Displaying symbols and emojis,  Up: Tips
 
 Displaying symbols and emojis
 -----------------------------
@@ -478,7 +479,7 @@ code:
      (set-fontset-font t 'unicode "Noto Emoji" nil 'append)
 
 
-File: doc9Pb2Ri.info,  Node: Encrypted room support through Pantalaimon,  Prev: Tips,  Up: Usage
+File: docEbr7hn.info,  Node: Encrypted room support through Pantalaimon,  Prev: Tips,  Up: Usage
 
 Encrypted room support through Pantalaimon
 ==========================================
@@ -492,13 +493,14 @@ appropriate hostname and port, like:
      (ement-connect :uri-prefix "http://localhost:8009")
 
 
-File: doc9Pb2Ri.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: Top
+File: docEbr7hn.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: Top
 
 3 Changelog
 ***********
 
 * Menu:
 
+* 0.16-pre: 016-pre.
 * 0.15: 015.
 * 0.14: 014.
 * 0.13: 013.
@@ -531,7 +533,15 @@ File: doc9Pb2Ri.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: T
 * 0.1: 01.
 
 
-File: doc9Pb2Ri.info,  Node: 015,  Next: 014,  Up: Changelog
+File: docEbr7hn.info,  Node: 016-pre,  Next: 015,  Up: Changelog
+
+0.16-pre
+========
+
+Nothing new yet.
+
+
+File: docEbr7hn.info,  Node: 015,  Next: 014,  Prev: 016-pre,  Up: Changelog
 
 0.15
 ====
@@ -615,7 +625,7 @@ Options affecting how images are displayed in room buffers.
 * Image display::
 
 
-File: doc9Pb2Ri.info,  Node: Compose buffer enhancements,  Next: ement-room-self-insert-mode,  Up: 015
+File: docEbr7hn.info,  Node: Compose buffer enhancements,  Next: ement-room-self-insert-mode,  Up: 015
 
 Compose buffer enhancements
 ---------------------------
@@ -675,7 +685,7 @@ Compose buffer enhancements
      or ‘C-s’.)
 
 
-File: doc9Pb2Ri.info,  Node: ement-room-self-insert-mode,  Next: Image display,  Prev: Compose buffer enhancements,  Up: 015
+File: docEbr7hn.info,  Node: ement-room-self-insert-mode,  Next: Image display,  Prev: Compose buffer enhancements,  Up: 015
 
 ‘ement-room-self-insert-mode’
 -----------------------------
@@ -693,7 +703,7 @@ File: doc9Pb2Ri.info,  Node: ement-room-self-insert-mode,  Next: Image display, 
      ‘DEL’.)
 
 
-File: doc9Pb2Ri.info,  Node: Image display,  Prev: ement-room-self-insert-mode,  Up: 015
+File: docEbr7hn.info,  Node: Image display,  Prev: ement-room-self-insert-mode,  Up: 015
 
 Image display
 -------------
@@ -709,7 +719,7 @@ Image display
      height for thumbnail images (by default, 30 pixels).
 
 
-File: doc9Pb2Ri.info,  Node: 014,  Next: 013,  Prev: 015,  Up: Changelog
+File: docEbr7hn.info,  Node: 014,  Next: 013,  Prev: 015,  Up: Changelog
 
 0.14
 ====
@@ -745,7 +755,7 @@ File: doc9Pb2Ri.info,  Node: 014,  Next: 013,  Prev: 015,  Up: Changelog
      (Thanks to Phil Sainty (https://github.com/phil-s).)
 
 
-File: doc9Pb2Ri.info,  Node: 013,  Next: 012,  Prev: 014,  Up: Changelog
+File: docEbr7hn.info,  Node: 013,  Next: 012,  Prev: 014,  Up: Changelog
 
 0.13
 ====
@@ -784,7 +794,7 @@ File: doc9Pb2Ri.info,  Node: 013,  Next: 012,  Prev: 014,  Up: Changelog
    • Command ‘ement-room-flush-colors’ maintains point position.
 
 
-File: doc9Pb2Ri.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
+File: docEbr7hn.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
 
 0.12
 ====
@@ -840,7 +850,7 @@ File: doc9Pb2Ri.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
      discover this problem.)
 
 
-File: doc9Pb2Ri.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
+File: docEbr7hn.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
 
 0.11
 ====
@@ -889,7 +899,7 @@ File: doc9Pb2Ri.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
      Sainty (https://github.com/phil-s).)
 
 
-File: doc9Pb2Ri.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
+File: docEbr7hn.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
 
 0.10
 ====
@@ -958,7 +968,7 @@ File: doc9Pb2Ri.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
      replaced.
 
 
-File: doc9Pb2Ri.info,  Node: 093,  Next: 092,  Prev: 010,  Up: Changelog
+File: docEbr7hn.info,  Node: 093,  Next: 092,  Prev: 010,  Up: Changelog
 
 0.9.3
 =====
@@ -968,7 +978,7 @@ File: doc9Pb2Ri.info,  Node: 093,  Next: 092,  Prev: 010,  Up: Changelog
    • Command ‘ement-room-list-next-unread’.
 
 
-File: doc9Pb2Ri.info,  Node: 092,  Next: 091,  Prev: 093,  Up: Changelog
+File: docEbr7hn.info,  Node: 092,  Next: 091,  Prev: 093,  Up: Changelog
 
 0.9.2
 =====
@@ -978,7 +988,7 @@ File: doc9Pb2Ri.info,  Node: 092,  Next: 091,  Prev: 093,  Up: Changelog
    • Completion in minibuffer.
 
 
-File: doc9Pb2Ri.info,  Node: 091,  Next: 09,  Prev: 092,  Up: Changelog
+File: docEbr7hn.info,  Node: 091,  Next: 09,  Prev: 092,  Up: Changelog
 
 0.9.1
 =====
@@ -987,7 +997,7 @@ File: doc9Pb2Ri.info,  Node: 091,  Next: 09,  Prev: 092,  Up: Changelog
    • Error in ‘ement-room-list’ command upon initial sync.
 
 
-File: doc9Pb2Ri.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
+File: docEbr7hn.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
 
 0.9
 ===
@@ -1027,7 +1037,7 @@ File: doc9Pb2Ri.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
      (https://github.com/chasecaleb) for reporting.)
 
 
-File: doc9Pb2Ri.info,  Node: 083,  Next: 082,  Prev: 09,  Up: Changelog
+File: docEbr7hn.info,  Node: 083,  Next: 082,  Prev: 09,  Up: Changelog
 
 0.8.3
 =====
@@ -1044,7 +1054,7 @@ File: doc9Pb2Ri.info,  Node: 083,  Next: 082,  Prev: 09,  Up: Changelog
      used.)
 
 
-File: doc9Pb2Ri.info,  Node: 082,  Next: 081,  Prev: 083,  Up: Changelog
+File: docEbr7hn.info,  Node: 082,  Next: 081,  Prev: 083,  Up: Changelog
 
 0.8.2
 =====
@@ -1054,7 +1064,7 @@ File: doc9Pb2Ri.info,  Node: 082,  Next: 081,  Prev: 083,  Up: Changelog
    • Deduplicate grouped membership events.
 
 
-File: doc9Pb2Ri.info,  Node: 081,  Next: 08,  Prev: 082,  Up: Changelog
+File: docEbr7hn.info,  Node: 081,  Next: 08,  Prev: 082,  Up: Changelog
 
 0.8.1
 =====
@@ -1062,7 +1072,7 @@ File: doc9Pb2Ri.info,  Node: 081,  Next: 08,  Prev: 082,  Up: Changelog
 Added missing changelog entry (of course).
 
 
-File: doc9Pb2Ri.info,  Node: 08,  Next: 07,  Prev: 081,  Up: Changelog
+File: docEbr7hn.info,  Node: 08,  Next: 07,  Prev: 081,  Up: Changelog
 
 0.8
 ===
@@ -1100,7 +1110,7 @@ File: doc9Pb2Ri.info,  Node: 08,  Next: 07,  Prev: 081,  Up: Changelog
    • Prompts in commands ‘ement-leave-room’ and ‘ement-forget-room’.
 
 
-File: doc9Pb2Ri.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
+File: docEbr7hn.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
 
 0.7
 ===
@@ -1134,7 +1144,7 @@ File: doc9Pb2Ri.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
      on a room’s account data.
 
 
-File: doc9Pb2Ri.info,  Node: 06,  Next: 052,  Prev: 07,  Up: Changelog
+File: docEbr7hn.info,  Node: 06,  Next: 052,  Prev: 07,  Up: Changelog
 
 0.6
 ===
@@ -1159,7 +1169,7 @@ File: doc9Pb2Ri.info,  Node: 06,  Next: 052,  Prev: 07,  Up: Changelog
      (https://github.com/vizs).)
 
 
-File: doc9Pb2Ri.info,  Node: 052,  Next: 051,  Prev: 06,  Up: Changelog
+File: docEbr7hn.info,  Node: 052,  Next: 051,  Prev: 06,  Up: Changelog
 
 0.5.2
 =====
@@ -1169,7 +1179,7 @@ File: doc9Pb2Ri.info,  Node: 052,  Next: 051,  Prev: 06,  Up: Changelog
      homeserver is slow to respond).
 
 
-File: doc9Pb2Ri.info,  Node: 051,  Next: 05,  Prev: 052,  Up: Changelog
+File: docEbr7hn.info,  Node: 051,  Next: 05,  Prev: 052,  Up: Changelog
 
 0.5.1
 =====
@@ -1179,7 +1189,7 @@ File: doc9Pb2Ri.info,  Node: 051,  Next: 05,  Prev: 052,  Up: Changelog
    • Faces in ‘ement-directory’ listings.
 
 
-File: doc9Pb2Ri.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
+File: docEbr7hn.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
 
 0.5
 ===
@@ -1203,7 +1213,7 @@ File: doc9Pb2Ri.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
    • Replies may be written in compose buffers.
 
 
-File: doc9Pb2Ri.info,  Node: 041,  Next: 04,  Prev: 05,  Up: Changelog
+File: docEbr7hn.info,  Node: 041,  Next: 04,  Prev: 05,  Up: Changelog
 
 0.4.1
 =====
@@ -1213,7 +1223,7 @@ File: doc9Pb2Ri.info,  Node: 041,  Next: 04,  Prev: 05,  Up: Changelog
      marker’s position again.
 
 
-File: doc9Pb2Ri.info,  Node: 04,  Next: 031,  Prev: 041,  Up: Changelog
+File: docEbr7hn.info,  Node: 04,  Next: 031,  Prev: 041,  Up: Changelog
 
 0.4
 ===
@@ -1248,7 +1258,7 @@ File: doc9Pb2Ri.info,  Node: 04,  Next: 031,  Prev: 041,  Up: Changelog
    • Highlighting of ‘@room’ mentions.
 
 
-File: doc9Pb2Ri.info,  Node: 031,  Next: 03,  Prev: 04,  Up: Changelog
+File: docEbr7hn.info,  Node: 031,  Next: 03,  Prev: 04,  Up: Changelog
 
 0.3.1
 =====
@@ -1258,7 +1268,7 @@ File: doc9Pb2Ri.info,  Node: 031,  Next: 03,  Prev: 04,  Up: Changelog
      local user, the room is considered read).
 
 
-File: doc9Pb2Ri.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
+File: docEbr7hn.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
 
 0.3
 ===
@@ -1290,7 +1300,7 @@ File: doc9Pb2Ri.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
    • Compatibility with Emacs 27.
 
 
-File: doc9Pb2Ri.info,  Node: 021,  Next: 02,  Prev: 03,  Up: Changelog
+File: docEbr7hn.info,  Node: 021,  Next: 02,  Prev: 03,  Up: Changelog
 
 0.2.1
 =====
@@ -1299,7 +1309,7 @@ File: doc9Pb2Ri.info,  Node: 021,  Next: 02,  Prev: 03,  Up: Changelog
    • Info manual export filename.
 
 
-File: doc9Pb2Ri.info,  Node: 02,  Next: 014 (1),  Prev: 021,  Up: Changelog
+File: docEbr7hn.info,  Node: 02,  Next: 014 (1),  Prev: 021,  Up: Changelog
 
 0.2
 ===
@@ -1333,7 +1343,7 @@ File: doc9Pb2Ri.info,  Node: 02,  Next: 014 (1),  Prev: 021,  Up: Changelog
    • Prevent error when a room avatar image fails to load.
 
 
-File: doc9Pb2Ri.info,  Node: 014 (1),  Next: 013 (1),  Prev: 02,  Up: Changelog
+File: docEbr7hn.info,  Node: 014 (1),  Next: 013 (1),  Prev: 02,  Up: Changelog
 
 0.1.4
 =====
@@ -1342,7 +1352,7 @@ File: doc9Pb2Ri.info,  Node: 014 (1),  Next: 013 (1),  Prev: 02,  Up: Changelog
    • Info manual directory headers.
 
 
-File: doc9Pb2Ri.info,  Node: 013 (1),  Next: 012 (1),  Prev: 014 (1),  Up: Changelog
+File: docEbr7hn.info,  Node: 013 (1),  Next: 012 (1),  Prev: 014 (1),  Up: Changelog
 
 0.1.3
 =====
@@ -1354,7 +1364,7 @@ File: doc9Pb2Ri.info,  Node: 013 (1),  Next: 012 (1),  Prev: 014 (1),  Up: Chang
      be re-enabled in a future release.)
 
 
-File: doc9Pb2Ri.info,  Node: 012 (1),  Next: 011 (1),  Prev: 013 (1),  Up: Changelog
+File: docEbr7hn.info,  Node: 012 (1),  Next: 011 (1),  Prev: 013 (1),  Up: Changelog
 
 0.1.2
 =====
@@ -1367,7 +1377,7 @@ File: doc9Pb2Ri.info,  Node: 012 (1),  Next: 011 (1),  Prev: 013 (1),  Up: Chang
      Tassilo Horn (https://github.com/tsdh).)
 
 
-File: doc9Pb2Ri.info,  Node: 011 (1),  Next: 01,  Prev: 012 (1),  Up: Changelog
+File: docEbr7hn.info,  Node: 011 (1),  Next: 01,  Prev: 012 (1),  Up: Changelog
 
 0.1.1
 =====
@@ -1379,7 +1389,7 @@ File: doc9Pb2Ri.info,  Node: 011 (1),  Next: 01,  Prev: 012 (1),  Up: Changelog
      ‘display-images-p’ returns.
 
 
-File: doc9Pb2Ri.info,  Node: 01,  Prev: 011 (1),  Up: Changelog
+File: docEbr7hn.info,  Node: 01,  Prev: 011 (1),  Up: Changelog
 
 0.1
 ===
@@ -1388,7 +1398,7 @@ After almost two years of development, the first tagged release.
 Submitted to GNU ELPA.
 
 
-File: doc9Pb2Ri.info,  Node: Development,  Next: License,  Prev: Changelog,  Up: Top
+File: docEbr7hn.info,  Node: Development,  Next: License,  Prev: Changelog,  Up: Top
 
 4 Development
 *************
@@ -1402,7 +1412,7 @@ Bug reports, feature requests, suggestions — _oh my_!
 * Rationale::
 
 
-File: doc9Pb2Ri.info,  Node: Copyright Assignment,  Next: Matrix spec in Org format,  Up: Development
+File: docEbr7hn.info,  Node: Copyright Assignment,  Next: Matrix spec in Org format,  Up: Development
 
 Copyright Assignment
 ====================
@@ -1414,7 +1424,7 @@ FSF.  Authors who are interested in doing so may contact assign@gnu.org
 <assign@gnu.org> to request the appropriate form.
 
 
-File: doc9Pb2Ri.info,  Node: Matrix spec in Org format,  Next: Rationale,  Prev: Copyright Assignment,  Up: Development
+File: docEbr7hn.info,  Node: Matrix spec in Org format,  Next: Rationale,  Prev: Copyright Assignment,  Up: Development
 
 Matrix spec in Org format
 =========================
@@ -1423,7 +1433,7 @@ An Org-formatted version of the Matrix spec is available in the
 meta/spec (https://github.com/alphapapa/ement.el/tree/meta/spec) branch.
 
 
-File: doc9Pb2Ri.info,  Node: Rationale,  Prev: Matrix spec in Org format,  Up: Development
+File: docEbr7hn.info,  Node: Rationale,  Prev: Matrix spec in Org format,  Up: Development
 
 Rationale
 =========
@@ -1487,7 +1497,7 @@ only reason to choose ‘matrix-client’ instead is if one is using an
 older version of Emacs that isn’t supported by Ement.el.
 
 
-File: doc9Pb2Ri.info,  Node: License,  Prev: Development,  Up: Top
+File: docEbr7hn.info,  Node: License,  Prev: Development,  Up: Top
 
 5 License
 *********
@@ -1498,62 +1508,63 @@ GPLv3
 
 Tag Table:
 Node: Top188
-Node: Installation1560
-Node: GNU ELPA1799
-Node: GNU Guix2324
-Node: Debian Ubuntu2571
-Node: Nix2920
-Node: Other distributions3242
-Node: Git master3520
-Node: Manual4577
-Node: Usage4865
-Node: Bindings7525
-Node: Room buffers7989
-Node: Room list buffer10991
-Node: Directory buffers11387
-Node: Mentions/notifications buffers11646
-Node: Tips12032
-Node: Displaying symbols and emojis14979
-Node: Encrypted room support through Pantalaimon15594
-Node: Changelog16150
-Node: 01516674
-Node: Compose buffer enhancements20824
-Node: ement-room-self-insert-mode24210
-Node: Image display25091
-Node: 01425747
-Node: 01327147
-Node: 01228747
-Node: 01131505
-Node: 01033604
-Node: 09336992
-Node: 09237215
-Node: 09137400
-Node: 0937562
-Node: 08339230
-Node: 08239858
-Node: 08140003
-Node: 0840135
-Node: 0741761
-Node: 0642937
-Node: 05243734
-Node: 05143947
-Node: 0544140
-Node: 04144982
-Node: 0445186
-Node: 03146698
-Node: 0346913
-Node: 02148137
-Node: 0248269
-Node: 014 (1)49902
-Node: 013 (1)50045
-Node: 012 (1)50342
-Node: 011 (1)50758
-Node: 0151061
-Node: Development51226
-Node: Copyright Assignment51479
-Node: Matrix spec in Org format51957
-Node: Rationale52271
-Node: License55855
+Node: Installation1581
+Node: GNU ELPA1820
+Node: GNU Guix2345
+Node: Debian Ubuntu2592
+Node: Nix2941
+Node: Other distributions3263
+Node: Git master3541
+Node: Manual4598
+Node: Usage4886
+Node: Bindings7546
+Node: Room buffers8010
+Node: Room list buffer11012
+Node: Directory buffers11408
+Node: Mentions/notifications buffers11667
+Node: Tips12053
+Node: Displaying symbols and emojis15000
+Node: Encrypted room support through Pantalaimon15615
+Node: Changelog16171
+Node: 016-pre16716
+Node: 01516821
+Node: Compose buffer enhancements20987
+Node: ement-room-self-insert-mode24373
+Node: Image display25254
+Node: 01425910
+Node: 01327310
+Node: 01228910
+Node: 01131668
+Node: 01033767
+Node: 09337155
+Node: 09237378
+Node: 09137563
+Node: 0937725
+Node: 08339393
+Node: 08240021
+Node: 08140166
+Node: 0840298
+Node: 0741924
+Node: 0643100
+Node: 05243897
+Node: 05144110
+Node: 0544303
+Node: 04145145
+Node: 0445349
+Node: 03146861
+Node: 0347076
+Node: 02148300
+Node: 0248432
+Node: 014 (1)50065
+Node: 013 (1)50208
+Node: 012 (1)50505
+Node: 011 (1)50921
+Node: 0151224
+Node: Development51389
+Node: Copyright Assignment51642
+Node: Matrix spec in Org format52120
+Node: Rationale52434
+Node: License56018
 
 End Tag Table
 
