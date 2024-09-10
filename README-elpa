@@ -442,6 +442,11 @@ Encrypted room support through Pantalaimon
     (whereas previously they were sent to the edit, which caused
     reactions to not be shown).  ([#230], [#277].  Thanks to [Phil
     Sainty] for suggesting, and to [dionisos] for reporting.)
+  ⁃ Set `filter-buffer-substring-function' in room buffers to prevent
+    undesired text properties from being included in copied text.
+    ([#278].  Thanks to [Phil Sainty].)
+  ⁃ Command `ement-disconnect' no longer shows an error message.
+    ([#208].)
 
 
 [MSC3916]
@@ -463,6 +468,10 @@ Encrypted room support through Pantalaimon
 [Phil Sainty] <https://github.com/phil-s>
 
 [dionisos] <https://github.com/dionisos2>
+
+[#278] <https://github.com/alphapapa/ement.el/pull/278>
+
+[#208] <https://github.com/alphapapa/ement.el/issues/208>
 
 
 0.15.1

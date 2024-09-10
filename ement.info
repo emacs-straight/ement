@@ -1,4 +1,4 @@
-This is docSkEA76.info, produced by makeinfo version 6.8 from
+This is doc05ZTTI.info, produced by makeinfo version 6.8 from
 ement.texi.
 
 INFO-DIR-SECTION Emacs
@@ -7,7 +7,7 @@ START-INFO-DIR-ENTRY
 END-INFO-DIR-ENTRY
 
 
-File: docSkEA76.info,  Node: Top,  Next: Installation,  Up: (dir)
+File: doc05ZTTI.info,  Node: Top,  Next: Installation,  Up: (dir)
 
 Ement.el
 ********
@@ -96,7 +96,7 @@ Development
 
 
 
-File: docSkEA76.info,  Node: Installation,  Next: Usage,  Prev: Top,  Up: Top
+File: doc05ZTTI.info,  Node: Installation,  Next: Usage,  Prev: Top,  Up: Top
 
 1 Installation
 **************
@@ -112,7 +112,7 @@ File: docSkEA76.info,  Node: Installation,  Next: Usage,  Prev: Top,  Up: Top
 * Manual::
 
 
-File: docSkEA76.info,  Node: GNU ELPA,  Next: GNU Guix,  Up: Installation
+File: doc05ZTTI.info,  Node: GNU ELPA,  Next: GNU Guix,  Up: Installation
 
 GNU ELPA
 ========
@@ -127,7 +127,7 @@ stable release.
 (https://elpa.gnu.org/devel/ement.html) or from Git (see below).
 
 
-File: docSkEA76.info,  Node: GNU Guix,  Next: Debian Ubuntu,  Prev: GNU ELPA,  Up: Installation
+File: doc05ZTTI.info,  Node: GNU Guix,  Next: Debian Ubuntu,  Prev: GNU ELPA,  Up: Installation
 
 GNU Guix
 ========
@@ -136,7 +136,7 @@ Ement.el is available in GNU Guix (https://guix.gnu.org/) as emacs-ement
 (https://packages.guix.gnu.org/packages/emacs-ement/).
 
 
-File: docSkEA76.info,  Node: Debian Ubuntu,  Next: Nix,  Prev: GNU Guix,  Up: Installation
+File: doc05ZTTI.info,  Node: Debian Ubuntu,  Next: Nix,  Prev: GNU Guix,  Up: Installation
 
 Debian, Ubuntu
 ==============
@@ -146,7 +146,7 @@ Ement.el is available in Debian as elpa-ement
 (https://packages.ubuntu.com/search?suite=default&section=all&arch=any&keywords=elpa-ement&searchon=names).
 
 
-File: docSkEA76.info,  Node: Nix,  Next: Other distributions,  Prev: Debian Ubuntu,  Up: Installation
+File: doc05ZTTI.info,  Node: Nix,  Next: Other distributions,  Prev: Debian Ubuntu,  Up: Installation
 
 Nix
 ===
@@ -156,7 +156,7 @@ emacsPackages.ement
 (https://search.nixos.org/packages?channel=23.05&show=emacsPackages.ement&from=0&size=50&sort=relevance&type=packages&query=ement).
 
 
-File: docSkEA76.info,  Node: Other distributions,  Next: Git master,  Prev: Nix,  Up: Installation
+File: doc05ZTTI.info,  Node: Other distributions,  Next: Git master,  Prev: Nix,  Up: Installation
 
 Other distributions
 ===================
@@ -165,7 +165,7 @@ Ement.el is also available in some other distributions.  See Repology
 (https://repology.org/project/emacs:ement/related) for details.
 
 
-File: docSkEA76.info,  Node: Git master,  Next: Manual,  Prev: Other distributions,  Up: Installation
+File: doc05ZTTI.info,  Node: Git master,  Next: Manual,  Prev: Other distributions,  Up: Installation
 
 Git master
 ==========
@@ -195,7 +195,7 @@ DOOM (https://github.com/doomemacs/doomemacs)), but the author cannot
 offer support for them.
 
 
-File: docSkEA76.info,  Node: Manual,  Prev: Git master,  Up: Installation
+File: doc05ZTTI.info,  Node: Manual,  Prev: Git master,  Up: Installation
 
 Manual
 ======
@@ -205,7 +205,7 @@ will ensure that the required autoloads are generated, etc.  If you
 choose to install it manually, you’re on your own.
 
 
-File: docSkEA76.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: Top
+File: doc05ZTTI.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: Top
 
 2 Usage
 *******
@@ -261,7 +261,7 @@ File: docSkEA76.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: 
 * Encrypted room support through Pantalaimon::
 
 
-File: docSkEA76.info,  Node: Bindings,  Next: Tips,  Up: Usage
+File: doc05ZTTI.info,  Node: Bindings,  Next: Tips,  Up: Usage
 
 Bindings
 ========
@@ -281,7 +281,7 @@ These bindings are common to all of the following buffer types:
 * Mentions/notifications buffers::
 
 
-File: docSkEA76.info,  Node: Room buffers,  Next: Room list buffer,  Up: Bindings
+File: doc05ZTTI.info,  Node: Room buffers,  Next: Room list buffer,  Up: Bindings
 
 Room buffers
 ------------
@@ -374,7 +374,7 @@ mode.)
      prefix to force new sync): ‘g’
 
 
-File: docSkEA76.info,  Node: Room list buffer,  Next: Directory buffers,  Prev: Room buffers,  Up: Bindings
+File: doc05ZTTI.info,  Node: Room list buffer,  Next: Directory buffers,  Prev: Room buffers,  Up: Bindings
 
 Room list buffer
 ----------------
@@ -387,7 +387,7 @@ Room list buffer
    • Toggle room’s membership in a space: ‘s’
 
 
-File: docSkEA76.info,  Node: Directory buffers,  Next: Mentions/notifications buffers,  Prev: Room list buffer,  Up: Bindings
+File: doc05ZTTI.info,  Node: Directory buffers,  Next: Mentions/notifications buffers,  Prev: Room list buffer,  Up: Bindings
 
 Directory buffers
 -----------------
@@ -396,7 +396,7 @@ Directory buffers
    • Load next batch of rooms: ‘+’
 
 
-File: docSkEA76.info,  Node: Mentions/notifications buffers,  Prev: Directory buffers,  Up: Bindings
+File: doc05ZTTI.info,  Node: Mentions/notifications buffers,  Prev: Directory buffers,  Up: Bindings
 
 Mentions/notifications buffers
 ------------------------------
@@ -407,7 +407,7 @@ Mentions/notifications buffers
      writing): ‘S-<return>’
 
 
-File: docSkEA76.info,  Node: Tips,  Next: Encrypted room support through Pantalaimon,  Prev: Bindings,  Up: Usage
+File: doc05ZTTI.info,  Node: Tips,  Next: Encrypted room support through Pantalaimon,  Prev: Bindings,  Up: Usage
 
 Tips
 ====
@@ -463,7 +463,7 @@ Tips
 * Displaying symbols and emojis::
 
 
-File: docSkEA76.info,  Node: Displaying symbols and emojis,  Up: Tips
+File: doc05ZTTI.info,  Node: Displaying symbols and emojis,  Up: Tips
 
 Displaying symbols and emojis
 -----------------------------
@@ -480,7 +480,7 @@ code:
      (set-fontset-font t 'unicode "Noto Emoji" nil 'append)
 
 
-File: docSkEA76.info,  Node: Encrypted room support through Pantalaimon,  Prev: Tips,  Up: Usage
+File: doc05ZTTI.info,  Node: Encrypted room support through Pantalaimon,  Prev: Tips,  Up: Usage
 
 Encrypted room support through Pantalaimon
 ==========================================
@@ -494,7 +494,7 @@ appropriate hostname and port, like:
      (ement-connect :uri-prefix "http://localhost:8009")
 
 
-File: docSkEA76.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: Top
+File: doc05ZTTI.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: Top
 
 3 Changelog
 ***********
@@ -535,7 +535,7 @@ File: docSkEA76.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: T
 * 0.1: 01.
 
 
-File: docSkEA76.info,  Node: 016-pre,  Next: 0151,  Up: Changelog
+File: doc05ZTTI.info,  Node: 016-pre,  Next: 0151,  Up: Changelog
 
 0.16-pre
 ========
@@ -570,9 +570,15 @@ File: docSkEA76.info,  Node: 016-pre,  Next: 0151,  Up: Changelog
      (https://github.com/alphapapa/ement.el/issues/277).  Thanks to Phil
      Sainty (https://github.com/phil-s) for suggesting, and to dionisos
      (https://github.com/dionisos2) for reporting.)
+   • Set ‘filter-buffer-substring-function’ in room buffers to prevent
+     undesired text properties from being included in copied text.
+     (#278 (https://github.com/alphapapa/ement.el/pull/278).  Thanks to
+     Phil Sainty (https://github.com/phil-s).)
+   • Command ‘ement-disconnect’ no longer shows an error message.  (#208
+     (https://github.com/alphapapa/ement.el/issues/208).)
 
 
-File: docSkEA76.info,  Node: 0151,  Next: 015,  Prev: 016-pre,  Up: Changelog
+File: doc05ZTTI.info,  Node: 0151,  Next: 015,  Prev: 016-pre,  Up: Changelog
 
 0.15.1
 ======
@@ -587,7 +593,7 @@ File: docSkEA76.info,  Node: 0151,  Next: 015,  Prev: 016-pre,  Up: Changelog
      to Adam Bark (https://github.com/AdamBark) for reporting.)
 
 
-File: docSkEA76.info,  Node: 015,  Next: 014,  Prev: 0151,  Up: Changelog
+File: doc05ZTTI.info,  Node: 015,  Next: 014,  Prev: 0151,  Up: Changelog
 
 0.15
 ====
@@ -671,7 +677,7 @@ Options affecting how images are displayed in room buffers.
 * Image display::
 
 
-File: docSkEA76.info,  Node: Compose buffer enhancements,  Next: ement-room-self-insert-mode,  Up: 015
+File: doc05ZTTI.info,  Node: Compose buffer enhancements,  Next: ement-room-self-insert-mode,  Up: 015
 
 Compose buffer enhancements
 ---------------------------
@@ -731,7 +737,7 @@ Compose buffer enhancements
      or ‘C-s’.)
 
 
-File: docSkEA76.info,  Node: ement-room-self-insert-mode,  Next: Image display,  Prev: Compose buffer enhancements,  Up: 015
+File: doc05ZTTI.info,  Node: ement-room-self-insert-mode,  Next: Image display,  Prev: Compose buffer enhancements,  Up: 015
 
 ‘ement-room-self-insert-mode’
 -----------------------------
@@ -749,7 +755,7 @@ File: docSkEA76.info,  Node: ement-room-self-insert-mode,  Next: Image display, 
      ‘DEL’.)
 
 
-File: docSkEA76.info,  Node: Image display,  Prev: ement-room-self-insert-mode,  Up: 015
+File: doc05ZTTI.info,  Node: Image display,  Prev: ement-room-self-insert-mode,  Up: 015
 
 Image display
 -------------
@@ -765,7 +771,7 @@ Image display
      height for thumbnail images (by default, 30 pixels).
 
 
-File: docSkEA76.info,  Node: 014,  Next: 013,  Prev: 015,  Up: Changelog
+File: doc05ZTTI.info,  Node: 014,  Next: 013,  Prev: 015,  Up: Changelog
 
 0.14
 ====
@@ -801,7 +807,7 @@ File: docSkEA76.info,  Node: 014,  Next: 013,  Prev: 015,  Up: Changelog
      (Thanks to Phil Sainty (https://github.com/phil-s).)
 
 
-File: docSkEA76.info,  Node: 013,  Next: 012,  Prev: 014,  Up: Changelog
+File: doc05ZTTI.info,  Node: 013,  Next: 012,  Prev: 014,  Up: Changelog
 
 0.13
 ====
@@ -840,7 +846,7 @@ File: docSkEA76.info,  Node: 013,  Next: 012,  Prev: 014,  Up: Changelog
    • Command ‘ement-room-flush-colors’ maintains point position.
 
 
-File: docSkEA76.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
+File: doc05ZTTI.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
 
 0.12
 ====
@@ -896,7 +902,7 @@ File: docSkEA76.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
      discover this problem.)
 
 
-File: docSkEA76.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
+File: doc05ZTTI.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
 
 0.11
 ====
@@ -945,7 +951,7 @@ File: docSkEA76.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
      Sainty (https://github.com/phil-s).)
 
 
-File: docSkEA76.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
+File: doc05ZTTI.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
 
 0.10
 ====
@@ -1014,7 +1020,7 @@ File: docSkEA76.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
      replaced.
 
 
-File: docSkEA76.info,  Node: 093,  Next: 092,  Prev: 010,  Up: Changelog
+File: doc05ZTTI.info,  Node: 093,  Next: 092,  Prev: 010,  Up: Changelog
 
 0.9.3
 =====
@@ -1024,7 +1030,7 @@ File: docSkEA76.info,  Node: 093,  Next: 092,  Prev: 010,  Up: Changelog
    • Command ‘ement-room-list-next-unread’.
 
 
-File: docSkEA76.info,  Node: 092,  Next: 091,  Prev: 093,  Up: Changelog
+File: doc05ZTTI.info,  Node: 092,  Next: 091,  Prev: 093,  Up: Changelog
 
 0.9.2
 =====
@@ -1034,7 +1040,7 @@ File: docSkEA76.info,  Node: 092,  Next: 091,  Prev: 093,  Up: Changelog
    • Completion in minibuffer.
 
 
-File: docSkEA76.info,  Node: 091,  Next: 09,  Prev: 092,  Up: Changelog
+File: doc05ZTTI.info,  Node: 091,  Next: 09,  Prev: 092,  Up: Changelog
 
 0.9.1
 =====
@@ -1043,7 +1049,7 @@ File: docSkEA76.info,  Node: 091,  Next: 09,  Prev: 092,  Up: Changelog
    • Error in ‘ement-room-list’ command upon initial sync.
 
 
-File: docSkEA76.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
+File: doc05ZTTI.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
 
 0.9
 ===
@@ -1083,7 +1089,7 @@ File: docSkEA76.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
      (https://github.com/chasecaleb) for reporting.)
 
 
-File: docSkEA76.info,  Node: 083,  Next: 082,  Prev: 09,  Up: Changelog
+File: doc05ZTTI.info,  Node: 083,  Next: 082,  Prev: 09,  Up: Changelog
 
 0.8.3
 =====
@@ -1100,7 +1106,7 @@ File: docSkEA76.info,  Node: 083,  Next: 082,  Prev: 09,  Up: Changelog
      used.)
 
 
-File: docSkEA76.info,  Node: 082,  Next: 081,  Prev: 083,  Up: Changelog
+File: doc05ZTTI.info,  Node: 082,  Next: 081,  Prev: 083,  Up: Changelog
 
 0.8.2
 =====
@@ -1110,7 +1116,7 @@ File: docSkEA76.info,  Node: 082,  Next: 081,  Prev: 083,  Up: Changelog
    • Deduplicate grouped membership events.
 
 
-File: docSkEA76.info,  Node: 081,  Next: 08,  Prev: 082,  Up: Changelog
+File: doc05ZTTI.info,  Node: 081,  Next: 08,  Prev: 082,  Up: Changelog
 
 0.8.1
 =====
@@ -1118,7 +1124,7 @@ File: docSkEA76.info,  Node: 081,  Next: 08,  Prev: 082,  Up: Changelog
 Added missing changelog entry (of course).
 
 
-File: docSkEA76.info,  Node: 08,  Next: 07,  Prev: 081,  Up: Changelog
+File: doc05ZTTI.info,  Node: 08,  Next: 07,  Prev: 081,  Up: Changelog
 
 0.8
 ===
@@ -1156,7 +1162,7 @@ File: docSkEA76.info,  Node: 08,  Next: 07,  Prev: 081,  Up: Changelog
    • Prompts in commands ‘ement-leave-room’ and ‘ement-forget-room’.
 
 
-File: docSkEA76.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
+File: doc05ZTTI.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
 
 0.7
 ===
@@ -1190,7 +1196,7 @@ File: docSkEA76.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
      on a room’s account data.
 
 
-File: docSkEA76.info,  Node: 06,  Next: 052,  Prev: 07,  Up: Changelog
+File: doc05ZTTI.info,  Node: 06,  Next: 052,  Prev: 07,  Up: Changelog
 
 0.6
 ===
@@ -1215,7 +1221,7 @@ File: docSkEA76.info,  Node: 06,  Next: 052,  Prev: 07,  Up: Changelog
      (https://github.com/vizs).)
 
 
-File: docSkEA76.info,  Node: 052,  Next: 051,  Prev: 06,  Up: Changelog
+File: doc05ZTTI.info,  Node: 052,  Next: 051,  Prev: 06,  Up: Changelog
 
 0.5.2
 =====
@@ -1225,7 +1231,7 @@ File: docSkEA76.info,  Node: 052,  Next: 051,  Prev: 06,  Up: Changelog
      homeserver is slow to respond).
 
 
-File: docSkEA76.info,  Node: 051,  Next: 05,  Prev: 052,  Up: Changelog
+File: doc05ZTTI.info,  Node: 051,  Next: 05,  Prev: 052,  Up: Changelog
 
 0.5.1
 =====
@@ -1235,7 +1241,7 @@ File: docSkEA76.info,  Node: 051,  Next: 05,  Prev: 052,  Up: Changelog
    • Faces in ‘ement-directory’ listings.
 
 
-File: docSkEA76.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
+File: doc05ZTTI.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
 
 0.5
 ===
@@ -1259,7 +1265,7 @@ File: docSkEA76.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
    • Replies may be written in compose buffers.
 
 
-File: docSkEA76.info,  Node: 041,  Next: 04,  Prev: 05,  Up: Changelog
+File: doc05ZTTI.info,  Node: 041,  Next: 04,  Prev: 05,  Up: Changelog
 
 0.4.1
 =====
@@ -1269,7 +1275,7 @@ File: docSkEA76.info,  Node: 041,  Next: 04,  Prev: 05,  Up: Changelog
      marker’s position again.
 
 
-File: docSkEA76.info,  Node: 04,  Next: 031,  Prev: 041,  Up: Changelog
+File: doc05ZTTI.info,  Node: 04,  Next: 031,  Prev: 041,  Up: Changelog
 
 0.4
 ===
@@ -1304,7 +1310,7 @@ File: docSkEA76.info,  Node: 04,  Next: 031,  Prev: 041,  Up: Changelog
    • Highlighting of ‘@room’ mentions.
 
 
-File: docSkEA76.info,  Node: 031,  Next: 03,  Prev: 04,  Up: Changelog
+File: doc05ZTTI.info,  Node: 031,  Next: 03,  Prev: 04,  Up: Changelog
 
 0.3.1
 =====
@@ -1314,7 +1320,7 @@ File: docSkEA76.info,  Node: 031,  Next: 03,  Prev: 04,  Up: Changelog
      local user, the room is considered read).
 
 
-File: docSkEA76.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
+File: doc05ZTTI.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
 
 0.3
 ===
@@ -1346,7 +1352,7 @@ File: docSkEA76.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
    • Compatibility with Emacs 27.
 
 
-File: docSkEA76.info,  Node: 021,  Next: 02,  Prev: 03,  Up: Changelog
+File: doc05ZTTI.info,  Node: 021,  Next: 02,  Prev: 03,  Up: Changelog
 
 0.2.1
 =====
@@ -1355,7 +1361,7 @@ File: docSkEA76.info,  Node: 021,  Next: 02,  Prev: 03,  Up: Changelog
    • Info manual export filename.
 
 
-File: docSkEA76.info,  Node: 02,  Next: 014 (1),  Prev: 021,  Up: Changelog
+File: doc05ZTTI.info,  Node: 02,  Next: 014 (1),  Prev: 021,  Up: Changelog
 
 0.2
 ===
@@ -1389,7 +1395,7 @@ File: docSkEA76.info,  Node: 02,  Next: 014 (1),  Prev: 021,  Up: Changelog
    • Prevent error when a room avatar image fails to load.
 
 
-File: docSkEA76.info,  Node: 014 (1),  Next: 013 (1),  Prev: 02,  Up: Changelog
+File: doc05ZTTI.info,  Node: 014 (1),  Next: 013 (1),  Prev: 02,  Up: Changelog
 
 0.1.4
 =====
@@ -1398,7 +1404,7 @@ File: docSkEA76.info,  Node: 014 (1),  Next: 013 (1),  Prev: 02,  Up: Changelog
    • Info manual directory headers.
 
 
-File: docSkEA76.info,  Node: 013 (1),  Next: 012 (1),  Prev: 014 (1),  Up: Changelog
+File: doc05ZTTI.info,  Node: 013 (1),  Next: 012 (1),  Prev: 014 (1),  Up: Changelog
 
 0.1.3
 =====
@@ -1410,7 +1416,7 @@ File: docSkEA76.info,  Node: 013 (1),  Next: 012 (1),  Prev: 014 (1),  Up: Chang
      be re-enabled in a future release.)
 
 
-File: docSkEA76.info,  Node: 012 (1),  Next: 011 (1),  Prev: 013 (1),  Up: Changelog
+File: doc05ZTTI.info,  Node: 012 (1),  Next: 011 (1),  Prev: 013 (1),  Up: Changelog
 
 0.1.2
 =====
@@ -1423,7 +1429,7 @@ File: docSkEA76.info,  Node: 012 (1),  Next: 011 (1),  Prev: 013 (1),  Up: Chang
      Tassilo Horn (https://github.com/tsdh).)
 
 
-File: docSkEA76.info,  Node: 011 (1),  Next: 01,  Prev: 012 (1),  Up: Changelog
+File: doc05ZTTI.info,  Node: 011 (1),  Next: 01,  Prev: 012 (1),  Up: Changelog
 
 0.1.1
 =====
@@ -1435,7 +1441,7 @@ File: docSkEA76.info,  Node: 011 (1),  Next: 01,  Prev: 012 (1),  Up: Changelog
      ‘display-images-p’ returns.
 
 
-File: docSkEA76.info,  Node: 01,  Prev: 011 (1),  Up: Changelog
+File: doc05ZTTI.info,  Node: 01,  Prev: 011 (1),  Up: Changelog
 
 0.1
 ===
@@ -1444,7 +1450,7 @@ After almost two years of development, the first tagged release.
 Submitted to GNU ELPA.
 
 
-File: docSkEA76.info,  Node: Development,  Next: License,  Prev: Changelog,  Up: Top
+File: doc05ZTTI.info,  Node: Development,  Next: License,  Prev: Changelog,  Up: Top
 
 4 Development
 *************
@@ -1458,7 +1464,7 @@ Bug reports, feature requests, suggestions — _oh my_!
 * Rationale::
 
 
-File: docSkEA76.info,  Node: Copyright Assignment,  Next: Matrix spec in Org format,  Up: Development
+File: doc05ZTTI.info,  Node: Copyright Assignment,  Next: Matrix spec in Org format,  Up: Development
 
 Copyright Assignment
 ====================
@@ -1470,7 +1476,7 @@ FSF.  Authors who are interested in doing so may contact assign@gnu.org
 <assign@gnu.org> to request the appropriate form.
 
 
-File: docSkEA76.info,  Node: Matrix spec in Org format,  Next: Rationale,  Prev: Copyright Assignment,  Up: Development
+File: doc05ZTTI.info,  Node: Matrix spec in Org format,  Next: Rationale,  Prev: Copyright Assignment,  Up: Development
 
 Matrix spec in Org format
 =========================
@@ -1479,7 +1485,7 @@ An Org-formatted version of the Matrix spec is available in the
 meta/spec (https://github.com/alphapapa/ement.el/tree/meta/spec) branch.
 
 
-File: docSkEA76.info,  Node: Rationale,  Prev: Matrix spec in Org format,  Up: Development
+File: doc05ZTTI.info,  Node: Rationale,  Prev: Matrix spec in Org format,  Up: Development
 
 Rationale
 =========
@@ -1543,7 +1549,7 @@ only reason to choose ‘matrix-client’ instead is if one is using an
 older version of Emacs that isn’t supported by Ement.el.
 
 
-File: docSkEA76.info,  Node: License,  Prev: Development,  Up: Top
+File: doc05ZTTI.info,  Node: License,  Prev: Development,  Up: Top
 
 5 License
 *********
@@ -1573,45 +1579,45 @@ Node: Displaying symbols and emojis15016
 Node: Encrypted room support through Pantalaimon15631
 Node: Changelog16187
 Node: 016-pre16748
-Node: 015118223
-Node: 01518798
-Node: Compose buffer enhancements22961
-Node: ement-room-self-insert-mode26347
-Node: Image display27228
-Node: 01427884
-Node: 01329284
-Node: 01230884
-Node: 01133642
-Node: 01035741
-Node: 09339129
-Node: 09239352
-Node: 09139537
-Node: 0939699
-Node: 08341367
-Node: 08241995
-Node: 08142140
-Node: 0842272
-Node: 0743898
-Node: 0645074
-Node: 05245871
-Node: 05146084
-Node: 0546277
-Node: 04147119
-Node: 0447323
-Node: 03148835
-Node: 0349050
-Node: 02150274
-Node: 0250406
-Node: 014 (1)52039
-Node: 013 (1)52182
-Node: 012 (1)52479
-Node: 011 (1)52895
-Node: 0153198
-Node: Development53363
-Node: Copyright Assignment53616
-Node: Matrix spec in Org format54094
-Node: Rationale54408
-Node: License57992
+Node: 015118623
+Node: 01519198
+Node: Compose buffer enhancements23361
+Node: ement-room-self-insert-mode26747
+Node: Image display27628
+Node: 01428284
+Node: 01329684
+Node: 01231284
+Node: 01134042
+Node: 01036141
+Node: 09339529
+Node: 09239752
+Node: 09139937
+Node: 0940099
+Node: 08341767
+Node: 08242395
+Node: 08142540
+Node: 0842672
+Node: 0744298
+Node: 0645474
+Node: 05246271
+Node: 05146484
+Node: 0546677
+Node: 04147519
+Node: 0447723
+Node: 03149235
+Node: 0349450
+Node: 02150674
+Node: 0250806
+Node: 014 (1)52439
+Node: 013 (1)52582
+Node: 012 (1)52879
+Node: 011 (1)53295
+Node: 0153598
+Node: Development53763
+Node: Copyright Assignment54016
+Node: Matrix spec in Org format54494
+Node: Rationale54808
+Node: License58392
 
 End Tag Table
 
