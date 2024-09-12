@@ -447,6 +447,9 @@ Encrypted room support through Pantalaimon
     ([#278].  Thanks to [Phil Sainty].)
   ⁃ Command `ement-disconnect' no longer shows an error message.
     ([#208].)
+  ⁃ Retrieval of earlier events in a just-joined room.  ([#148].  Thanks
+    to [Richard Brežák] for reporting, and to [Phil Sainty] for
+    testing.)
 
 
 [MSC3916]
@@ -472,6 +475,10 @@ Encrypted room support through Pantalaimon
 [#278] <https://github.com/alphapapa/ement.el/pull/278>
 
 [#208] <https://github.com/alphapapa/ement.el/issues/208>
+
+[#148] <https://github.com/alphapapa/ement.el/issues/148>
+
+[Richard Brežák] <https://github.com/MagicRB>
 
 
 0.15.1
