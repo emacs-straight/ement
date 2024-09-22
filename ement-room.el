@@ -2601,7 +2601,8 @@ the previously oldest event."
   ;; into the auto-generated docstring.
   "Hook run after entering `ement-room-mode'."
   :options '(visual-line-mode)
-  :type 'hook)
+  :type 'hook
+  :group 'ement-room)
 
 (define-derived-mode ement-room-mode fundamental-mode
   `("Ement-Room"
@@ -2672,6 +2673,7 @@ via `ement-room-mode-self-insert-keymap-update-hook' (see which)."
   :init-value nil
   :global t
   :keymap nil
+  :group 'ement-room
   ;; Ensure the self-insert and advertised keymaps are up to date.
   (if ement-room-self-insert-mode
       (ement-room-mode-self-insert-keymap-update)
@@ -5370,7 +5372,7 @@ unauthenticated request to old endpoint."
       ;; Send unauthenticated request.
       (plz-run
        (plz-queue ement-images-queue
-         'get (ement--mxc-to-url mxc ement-session) :as 'binary
+         'get (ement--mxc-to-url mxc session) :as 'binary
          :then then :noquery t)))))
 
 (defun ement-room--format-m.image (event session)

@@ -450,6 +450,11 @@ Encrypted room support through Pantalaimon
   ⁃ Retrieval of earlier events in a just-joined room.  ([#148].  Thanks
     to [Richard Brežák] for reporting, and to [Phil Sainty] for
     testing.)
+  ⁃ Cache computed displaynames in rooms (avoiding unnecessary
+    reiteration and recalculation).  ([#298].  Thanks to [Rutherther]
+    for reporting and testing, and to [Phil Sainty].)
+  ⁃ Customization group for options `ement-room-mode-hook' and
+    `ement-room-self-insert-mode'.  (Thanks to [Phil Sainty].)
 
 
 [MSC3916]
@@ -479,6 +484,10 @@ Encrypted room support through Pantalaimon
 [#148] <https://github.com/alphapapa/ement.el/issues/148>
 
 [Richard Brežák] <https://github.com/MagicRB>
+
+[#298] <https://github.com/alphapapa/ement.el/issues/298>
+
+[Rutherther] <https://github.com/Rutherther>
 
 
 0.15.1
