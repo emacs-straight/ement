@@ -1,4 +1,4 @@
-This is docU9Dhql.info, produced by makeinfo version 6.8 from
+This is docjYbhcr.info, produced by makeinfo version 6.8 from
 ement.texi.
 
 INFO-DIR-SECTION Emacs
@@ -7,7 +7,7 @@ START-INFO-DIR-ENTRY
 END-INFO-DIR-ENTRY
 
 
-File: docU9Dhql.info,  Node: Top,  Next: Installation,  Up: (dir)
+File: docjYbhcr.info,  Node: Top,  Next: Installation,  Up: (dir)
 
 Ement.el
 ********
@@ -96,7 +96,7 @@ Development
 
 
 
-File: docU9Dhql.info,  Node: Installation,  Next: Usage,  Prev: Top,  Up: Top
+File: docjYbhcr.info,  Node: Installation,  Next: Usage,  Prev: Top,  Up: Top
 
 1 Installation
 **************
@@ -112,7 +112,7 @@ File: docU9Dhql.info,  Node: Installation,  Next: Usage,  Prev: Top,  Up: Top
 * Manual::
 
 
-File: docU9Dhql.info,  Node: GNU ELPA,  Next: GNU Guix,  Up: Installation
+File: docjYbhcr.info,  Node: GNU ELPA,  Next: GNU Guix,  Up: Installation
 
 GNU ELPA
 ========
@@ -127,7 +127,7 @@ stable release.
 (https://elpa.gnu.org/devel/ement.html) or from Git (see below).
 
 
-File: docU9Dhql.info,  Node: GNU Guix,  Next: Debian Ubuntu,  Prev: GNU ELPA,  Up: Installation
+File: docjYbhcr.info,  Node: GNU Guix,  Next: Debian Ubuntu,  Prev: GNU ELPA,  Up: Installation
 
 GNU Guix
 ========
@@ -136,7 +136,7 @@ Ement.el is available in GNU Guix (https://guix.gnu.org/) as emacs-ement
 (https://packages.guix.gnu.org/packages/emacs-ement/).
 
 
-File: docU9Dhql.info,  Node: Debian Ubuntu,  Next: Nix,  Prev: GNU Guix,  Up: Installation
+File: docjYbhcr.info,  Node: Debian Ubuntu,  Next: Nix,  Prev: GNU Guix,  Up: Installation
 
 Debian, Ubuntu
 ==============
@@ -146,7 +146,7 @@ Ement.el is available in Debian as elpa-ement
 (https://packages.ubuntu.com/search?suite=default&section=all&arch=any&keywords=elpa-ement&searchon=names).
 
 
-File: docU9Dhql.info,  Node: Nix,  Next: Other distributions,  Prev: Debian Ubuntu,  Up: Installation
+File: docjYbhcr.info,  Node: Nix,  Next: Other distributions,  Prev: Debian Ubuntu,  Up: Installation
 
 Nix
 ===
@@ -156,7 +156,7 @@ emacsPackages.ement
 (https://search.nixos.org/packages?channel=23.05&show=emacsPackages.ement&from=0&size=50&sort=relevance&type=packages&query=ement).
 
 
-File: docU9Dhql.info,  Node: Other distributions,  Next: Git master,  Prev: Nix,  Up: Installation
+File: docjYbhcr.info,  Node: Other distributions,  Next: Git master,  Prev: Nix,  Up: Installation
 
 Other distributions
 ===================
@@ -165,7 +165,7 @@ Ement.el is also available in some other distributions.  See Repology
 (https://repology.org/project/emacs:ement/related) for details.
 
 
-File: docU9Dhql.info,  Node: Git master,  Next: Manual,  Prev: Other distributions,  Up: Installation
+File: docjYbhcr.info,  Node: Git master,  Next: Manual,  Prev: Other distributions,  Up: Installation
 
 Git master
 ==========
@@ -195,7 +195,7 @@ DOOM (https://github.com/doomemacs/doomemacs)), but the author cannot
 offer support for them.
 
 
-File: docU9Dhql.info,  Node: Manual,  Prev: Git master,  Up: Installation
+File: docjYbhcr.info,  Node: Manual,  Prev: Git master,  Up: Installation
 
 Manual
 ======
@@ -205,7 +205,7 @@ will ensure that the required autoloads are generated, etc.  If you
 choose to install it manually, you’re on your own.
 
 
-File: docU9Dhql.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: Top
+File: docjYbhcr.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: Top
 
 2 Usage
 *******
@@ -261,7 +261,7 @@ File: docU9Dhql.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: 
 * Encrypted room support through Pantalaimon::
 
 
-File: docU9Dhql.info,  Node: Bindings,  Next: Tips,  Up: Usage
+File: docjYbhcr.info,  Node: Bindings,  Next: Tips,  Up: Usage
 
 Bindings
 ========
@@ -281,7 +281,7 @@ These bindings are common to all of the following buffer types:
 * Mentions/notifications buffers::
 
 
-File: docU9Dhql.info,  Node: Room buffers,  Next: Room list buffer,  Up: Bindings
+File: docjYbhcr.info,  Node: Room buffers,  Next: Room list buffer,  Up: Bindings
 
 Room buffers
 ------------
@@ -374,7 +374,7 @@ mode.)
      prefix to force new sync): ‘g’
 
 
-File: docU9Dhql.info,  Node: Room list buffer,  Next: Directory buffers,  Prev: Room buffers,  Up: Bindings
+File: docjYbhcr.info,  Node: Room list buffer,  Next: Directory buffers,  Prev: Room buffers,  Up: Bindings
 
 Room list buffer
 ----------------
@@ -387,7 +387,7 @@ Room list buffer
    • Toggle room’s membership in a space: ‘s’
 
 
-File: docU9Dhql.info,  Node: Directory buffers,  Next: Mentions/notifications buffers,  Prev: Room list buffer,  Up: Bindings
+File: docjYbhcr.info,  Node: Directory buffers,  Next: Mentions/notifications buffers,  Prev: Room list buffer,  Up: Bindings
 
 Directory buffers
 -----------------
@@ -396,7 +396,7 @@ Directory buffers
    • Load next batch of rooms: ‘+’
 
 
-File: docU9Dhql.info,  Node: Mentions/notifications buffers,  Prev: Directory buffers,  Up: Bindings
+File: docjYbhcr.info,  Node: Mentions/notifications buffers,  Prev: Directory buffers,  Up: Bindings
 
 Mentions/notifications buffers
 ------------------------------
@@ -407,7 +407,7 @@ Mentions/notifications buffers
      writing): ‘S-<return>’
 
 
-File: docU9Dhql.info,  Node: Tips,  Next: Encrypted room support through Pantalaimon,  Prev: Bindings,  Up: Usage
+File: docjYbhcr.info,  Node: Tips,  Next: Encrypted room support through Pantalaimon,  Prev: Bindings,  Up: Usage
 
 Tips
 ====
@@ -463,7 +463,7 @@ Tips
 * Displaying symbols and emojis::
 
 
-File: docU9Dhql.info,  Node: Displaying symbols and emojis,  Up: Tips
+File: docjYbhcr.info,  Node: Displaying symbols and emojis,  Up: Tips
 
 Displaying symbols and emojis
 -----------------------------
@@ -480,7 +480,7 @@ code:
      (set-fontset-font t 'unicode "Noto Emoji" nil 'append)
 
 
-File: docU9Dhql.info,  Node: Encrypted room support through Pantalaimon,  Prev: Tips,  Up: Usage
+File: docjYbhcr.info,  Node: Encrypted room support through Pantalaimon,  Prev: Tips,  Up: Usage
 
 Encrypted room support through Pantalaimon
 ==========================================
@@ -494,7 +494,7 @@ appropriate hostname and port, like:
      (ement-connect :uri-prefix "http://localhost:8009")
 
 
-File: docU9Dhql.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: Top
+File: docjYbhcr.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: Top
 
 3 Changelog
 ***********
@@ -535,7 +535,7 @@ File: docU9Dhql.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: T
 * 0.1: 01.
 
 
-File: docU9Dhql.info,  Node: 016-pre,  Next: 0151,  Up: Changelog
+File: docjYbhcr.info,  Node: 016-pre,  Next: 0151,  Up: Changelog
 
 0.16-pre
 ========
@@ -590,7 +590,7 @@ File: docU9Dhql.info,  Node: 016-pre,  Next: 0151,  Up: Changelog
      (https://github.com/phil-s).)
 
 
-File: docU9Dhql.info,  Node: 0151,  Next: 015,  Prev: 016-pre,  Up: Changelog
+File: docjYbhcr.info,  Node: 0151,  Next: 015,  Prev: 016-pre,  Up: Changelog
 
 0.15.1
 ======
@@ -605,7 +605,7 @@ File: docU9Dhql.info,  Node: 0151,  Next: 015,  Prev: 016-pre,  Up: Changelog
      to Adam Bark (https://github.com/AdamBark) for reporting.)
 
 
-File: docU9Dhql.info,  Node: 015,  Next: 014,  Prev: 0151,  Up: Changelog
+File: docjYbhcr.info,  Node: 015,  Next: 014,  Prev: 0151,  Up: Changelog
 
 0.15
 ====
@@ -689,7 +689,7 @@ Options affecting how images are displayed in room buffers.
 * Image display::
 
 
-File: docU9Dhql.info,  Node: Compose buffer enhancements,  Next: ement-room-self-insert-mode,  Up: 015
+File: docjYbhcr.info,  Node: Compose buffer enhancements,  Next: ement-room-self-insert-mode,  Up: 015
 
 Compose buffer enhancements
 ---------------------------
@@ -749,7 +749,7 @@ Compose buffer enhancements
      or ‘C-s’.)
 
 
-File: docU9Dhql.info,  Node: ement-room-self-insert-mode,  Next: Image display,  Prev: Compose buffer enhancements,  Up: 015
+File: docjYbhcr.info,  Node: ement-room-self-insert-mode,  Next: Image display,  Prev: Compose buffer enhancements,  Up: 015
 
 ‘ement-room-self-insert-mode’
 -----------------------------
@@ -767,7 +767,7 @@ File: docU9Dhql.info,  Node: ement-room-self-insert-mode,  Next: Image display, 
      ‘DEL’.)
 
 
-File: docU9Dhql.info,  Node: Image display,  Prev: ement-room-self-insert-mode,  Up: 015
+File: docjYbhcr.info,  Node: Image display,  Prev: ement-room-self-insert-mode,  Up: 015
 
 Image display
 -------------
@@ -783,7 +783,7 @@ Image display
      height for thumbnail images (by default, 30 pixels).
 
 
-File: docU9Dhql.info,  Node: 014,  Next: 013,  Prev: 015,  Up: Changelog
+File: docjYbhcr.info,  Node: 014,  Next: 013,  Prev: 015,  Up: Changelog
 
 0.14
 ====
@@ -819,7 +819,7 @@ File: docU9Dhql.info,  Node: 014,  Next: 013,  Prev: 015,  Up: Changelog
      (Thanks to Phil Sainty (https://github.com/phil-s).)
 
 
-File: docU9Dhql.info,  Node: 013,  Next: 012,  Prev: 014,  Up: Changelog
+File: docjYbhcr.info,  Node: 013,  Next: 012,  Prev: 014,  Up: Changelog
 
 0.13
 ====
@@ -858,7 +858,7 @@ File: docU9Dhql.info,  Node: 013,  Next: 012,  Prev: 014,  Up: Changelog
    • Command ‘ement-room-flush-colors’ maintains point position.
 
 
-File: docU9Dhql.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
+File: docjYbhcr.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
 
 0.12
 ====
@@ -914,7 +914,7 @@ File: docU9Dhql.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
      discover this problem.)
 
 
-File: docU9Dhql.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
+File: docjYbhcr.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
 
 0.11
 ====
@@ -963,7 +963,7 @@ File: docU9Dhql.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
      Sainty (https://github.com/phil-s).)
 
 
-File: docU9Dhql.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
+File: docjYbhcr.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
 
 0.10
 ====
@@ -1032,7 +1032,7 @@ File: docU9Dhql.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
      replaced.
 
 
-File: docU9Dhql.info,  Node: 093,  Next: 092,  Prev: 010,  Up: Changelog
+File: docjYbhcr.info,  Node: 093,  Next: 092,  Prev: 010,  Up: Changelog
 
 0.9.3
 =====
@@ -1042,7 +1042,7 @@ File: docU9Dhql.info,  Node: 093,  Next: 092,  Prev: 010,  Up: Changelog
    • Command ‘ement-room-list-next-unread’.
 
 
-File: docU9Dhql.info,  Node: 092,  Next: 091,  Prev: 093,  Up: Changelog
+File: docjYbhcr.info,  Node: 092,  Next: 091,  Prev: 093,  Up: Changelog
 
 0.9.2
 =====
@@ -1052,7 +1052,7 @@ File: docU9Dhql.info,  Node: 092,  Next: 091,  Prev: 093,  Up: Changelog
    • Completion in minibuffer.
 
 
-File: docU9Dhql.info,  Node: 091,  Next: 09,  Prev: 092,  Up: Changelog
+File: docjYbhcr.info,  Node: 091,  Next: 09,  Prev: 092,  Up: Changelog
 
 0.9.1
 =====
@@ -1061,7 +1061,7 @@ File: docU9Dhql.info,  Node: 091,  Next: 09,  Prev: 092,  Up: Changelog
    • Error in ‘ement-room-list’ command upon initial sync.
 
 
-File: docU9Dhql.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
+File: docjYbhcr.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
 
 0.9
 ===
@@ -1101,7 +1101,7 @@ File: docU9Dhql.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
      (https://github.com/chasecaleb) for reporting.)
 
 
-File: docU9Dhql.info,  Node: 083,  Next: 082,  Prev: 09,  Up: Changelog
+File: docjYbhcr.info,  Node: 083,  Next: 082,  Prev: 09,  Up: Changelog
 
 0.8.3
 =====
@@ -1118,7 +1118,7 @@ File: docU9Dhql.info,  Node: 083,  Next: 082,  Prev: 09,  Up: Changelog
      used.)
 
 
-File: docU9Dhql.info,  Node: 082,  Next: 081,  Prev: 083,  Up: Changelog
+File: docjYbhcr.info,  Node: 082,  Next: 081,  Prev: 083,  Up: Changelog
 
 0.8.2
 =====
@@ -1128,7 +1128,7 @@ File: docU9Dhql.info,  Node: 082,  Next: 081,  Prev: 083,  Up: Changelog
    • Deduplicate grouped membership events.
 
 
-File: docU9Dhql.info,  Node: 081,  Next: 08,  Prev: 082,  Up: Changelog
+File: docjYbhcr.info,  Node: 081,  Next: 08,  Prev: 082,  Up: Changelog
 
 0.8.1
 =====
@@ -1136,7 +1136,7 @@ File: docU9Dhql.info,  Node: 081,  Next: 08,  Prev: 082,  Up: Changelog
 Added missing changelog entry (of course).
 
 
-File: docU9Dhql.info,  Node: 08,  Next: 07,  Prev: 081,  Up: Changelog
+File: docjYbhcr.info,  Node: 08,  Next: 07,  Prev: 081,  Up: Changelog
 
 0.8
 ===
@@ -1174,7 +1174,7 @@ File: docU9Dhql.info,  Node: 08,  Next: 07,  Prev: 081,  Up: Changelog
    • Prompts in commands ‘ement-leave-room’ and ‘ement-forget-room’.
 
 
-File: docU9Dhql.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
+File: docjYbhcr.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
 
 0.7
 ===
@@ -1208,7 +1208,7 @@ File: docU9Dhql.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
      on a room’s account data.
 
 
-File: docU9Dhql.info,  Node: 06,  Next: 052,  Prev: 07,  Up: Changelog
+File: docjYbhcr.info,  Node: 06,  Next: 052,  Prev: 07,  Up: Changelog
 
 0.6
 ===
@@ -1233,7 +1233,7 @@ File: docU9Dhql.info,  Node: 06,  Next: 052,  Prev: 07,  Up: Changelog
      (https://github.com/vizs).)
 
 
-File: docU9Dhql.info,  Node: 052,  Next: 051,  Prev: 06,  Up: Changelog
+File: docjYbhcr.info,  Node: 052,  Next: 051,  Prev: 06,  Up: Changelog
 
 0.5.2
 =====
@@ -1243,7 +1243,7 @@ File: docU9Dhql.info,  Node: 052,  Next: 051,  Prev: 06,  Up: Changelog
      homeserver is slow to respond).
 
 
-File: docU9Dhql.info,  Node: 051,  Next: 05,  Prev: 052,  Up: Changelog
+File: docjYbhcr.info,  Node: 051,  Next: 05,  Prev: 052,  Up: Changelog
 
 0.5.1
 =====
@@ -1253,7 +1253,7 @@ File: docU9Dhql.info,  Node: 051,  Next: 05,  Prev: 052,  Up: Changelog
    • Faces in ‘ement-directory’ listings.
 
 
-File: docU9Dhql.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
+File: docjYbhcr.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
 
 0.5
 ===
@@ -1277,7 +1277,7 @@ File: docU9Dhql.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
    • Replies may be written in compose buffers.
 
 
-File: docU9Dhql.info,  Node: 041,  Next: 04,  Prev: 05,  Up: Changelog
+File: docjYbhcr.info,  Node: 041,  Next: 04,  Prev: 05,  Up: Changelog
 
 0.4.1
 =====
@@ -1287,7 +1287,7 @@ File: docU9Dhql.info,  Node: 041,  Next: 04,  Prev: 05,  Up: Changelog
      marker’s position again.
 
 
-File: docU9Dhql.info,  Node: 04,  Next: 031,  Prev: 041,  Up: Changelog
+File: docjYbhcr.info,  Node: 04,  Next: 031,  Prev: 041,  Up: Changelog
 
 0.4
 ===
@@ -1322,7 +1322,7 @@ File: docU9Dhql.info,  Node: 04,  Next: 031,  Prev: 041,  Up: Changelog
    • Highlighting of ‘@room’ mentions.
 
 
-File: docU9Dhql.info,  Node: 031,  Next: 03,  Prev: 04,  Up: Changelog
+File: docjYbhcr.info,  Node: 031,  Next: 03,  Prev: 04,  Up: Changelog
 
 0.3.1
 =====
@@ -1332,7 +1332,7 @@ File: docU9Dhql.info,  Node: 031,  Next: 03,  Prev: 04,  Up: Changelog
      local user, the room is considered read).
 
 
-File: docU9Dhql.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
+File: docjYbhcr.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
 
 0.3
 ===
@@ -1364,7 +1364,7 @@ File: docU9Dhql.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
    • Compatibility with Emacs 27.
 
 
-File: docU9Dhql.info,  Node: 021,  Next: 02,  Prev: 03,  Up: Changelog
+File: docjYbhcr.info,  Node: 021,  Next: 02,  Prev: 03,  Up: Changelog
 
 0.2.1
 =====
@@ -1373,7 +1373,7 @@ File: docU9Dhql.info,  Node: 021,  Next: 02,  Prev: 03,  Up: Changelog
    • Info manual export filename.
 
 
-File: docU9Dhql.info,  Node: 02,  Next: 014 (1),  Prev: 021,  Up: Changelog
+File: docjYbhcr.info,  Node: 02,  Next: 014 (1),  Prev: 021,  Up: Changelog
 
 0.2
 ===
@@ -1407,7 +1407,7 @@ File: docU9Dhql.info,  Node: 02,  Next: 014 (1),  Prev: 021,  Up: Changelog
    • Prevent error when a room avatar image fails to load.
 
 
-File: docU9Dhql.info,  Node: 014 (1),  Next: 013 (1),  Prev: 02,  Up: Changelog
+File: docjYbhcr.info,  Node: 014 (1),  Next: 013 (1),  Prev: 02,  Up: Changelog
 
 0.1.4
 =====
@@ -1416,7 +1416,7 @@ File: docU9Dhql.info,  Node: 014 (1),  Next: 013 (1),  Prev: 02,  Up: Changelog
    • Info manual directory headers.
 
 
-File: docU9Dhql.info,  Node: 013 (1),  Next: 012 (1),  Prev: 014 (1),  Up: Changelog
+File: docjYbhcr.info,  Node: 013 (1),  Next: 012 (1),  Prev: 014 (1),  Up: Changelog
 
 0.1.3
 =====
@@ -1428,7 +1428,7 @@ File: docU9Dhql.info,  Node: 013 (1),  Next: 012 (1),  Prev: 014 (1),  Up: Chang
      be re-enabled in a future release.)
 
 
-File: docU9Dhql.info,  Node: 012 (1),  Next: 011 (1),  Prev: 013 (1),  Up: Changelog
+File: docjYbhcr.info,  Node: 012 (1),  Next: 011 (1),  Prev: 013 (1),  Up: Changelog
 
 0.1.2
 =====
@@ -1441,7 +1441,7 @@ File: docU9Dhql.info,  Node: 012 (1),  Next: 011 (1),  Prev: 013 (1),  Up: Chang
      Tassilo Horn (https://github.com/tsdh).)
 
 
-File: docU9Dhql.info,  Node: 011 (1),  Next: 01,  Prev: 012 (1),  Up: Changelog
+File: docjYbhcr.info,  Node: 011 (1),  Next: 01,  Prev: 012 (1),  Up: Changelog
 
 0.1.1
 =====
@@ -1453,7 +1453,7 @@ File: docU9Dhql.info,  Node: 011 (1),  Next: 01,  Prev: 012 (1),  Up: Changelog
      ‘display-images-p’ returns.
 
 
-File: docU9Dhql.info,  Node: 01,  Prev: 011 (1),  Up: Changelog
+File: docjYbhcr.info,  Node: 01,  Prev: 011 (1),  Up: Changelog
 
 0.1
 ===
@@ -1462,7 +1462,7 @@ After almost two years of development, the first tagged release.
 Submitted to GNU ELPA.
 
 
-File: docU9Dhql.info,  Node: Development,  Next: License,  Prev: Changelog,  Up: Top
+File: docjYbhcr.info,  Node: Development,  Next: License,  Prev: Changelog,  Up: Top
 
 4 Development
 *************
@@ -1476,7 +1476,7 @@ Bug reports, feature requests, suggestions — _oh my_!
 * Rationale::
 
 
-File: docU9Dhql.info,  Node: Copyright Assignment,  Next: Matrix spec in Org format,  Up: Development
+File: docjYbhcr.info,  Node: Copyright Assignment,  Next: Matrix spec in Org format,  Up: Development
 
 Copyright Assignment
 ====================
@@ -1488,7 +1488,7 @@ FSF.  Authors who are interested in doing so may contact assign@gnu.org
 <assign@gnu.org> to request the appropriate form.
 
 
-File: docU9Dhql.info,  Node: Matrix spec in Org format,  Next: Rationale,  Prev: Copyright Assignment,  Up: Development
+File: docjYbhcr.info,  Node: Matrix spec in Org format,  Next: Rationale,  Prev: Copyright Assignment,  Up: Development
 
 Matrix spec in Org format
 =========================
@@ -1497,7 +1497,7 @@ An Org-formatted version of the Matrix spec is available in the
 meta/spec (https://github.com/alphapapa/ement.el/tree/meta/spec) branch.
 
 
-File: docU9Dhql.info,  Node: Rationale,  Prev: Matrix spec in Org format,  Up: Development
+File: docjYbhcr.info,  Node: Rationale,  Prev: Matrix spec in Org format,  Up: Development
 
 Rationale
 =========
@@ -1561,7 +1561,7 @@ only reason to choose ‘matrix-client’ instead is if one is using an
 older version of Emacs that isn’t supported by Ement.el.
 
 
-File: docU9Dhql.info,  Node: License,  Prev: Development,  Up: Top
+File: docjYbhcr.info,  Node: License,  Prev: Development,  Up: Top
 
 5 License
 *********
