@@ -415,8 +415,8 @@ Encrypted room support through Pantalaimon
 3 Changelog
 ═══════════
 
-0.16-pre
-────────
+0.16
+────
 
   *Compatibility*
 
@@ -455,6 +455,7 @@ Encrypted room support through Pantalaimon
     for reporting and testing, and to [Phil Sainty].)
   ⁃ Customization group for options `ement-room-mode-hook' and
     `ement-room-self-insert-mode'.  (Thanks to [Phil Sainty].)
+  ⁃ Inheritance for some faces.  ([#303].  Thanks to [Jonas Bernoulli].)
 
 
 [MSC3916]
@@ -488,6 +489,10 @@ Encrypted room support through Pantalaimon
 [#298] <https://github.com/alphapapa/ement.el/issues/298>
 
 [Rutherther] <https://github.com/Rutherther>
+
+[#303] <https://github.com/alphapapa/ement.el/pull/303>
+
+[Jonas Bernoulli] <https://github.com/tarsius>
 
 
 0.15.1
