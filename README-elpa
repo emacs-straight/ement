@@ -415,6 +415,17 @@ Encrypted room support through Pantalaimon
 3 Changelog
 ═══════════
 
+0.17-pre
+────────
+
+  *Additions*
+
+  ⁃ Customization groups for faces.  (Thanks to [Phil Sainty].)
+
+
+[Phil Sainty] <https://github.com/phil-s>
+
+
 0.16
 ────
 

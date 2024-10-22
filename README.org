@@ -297,6 +297,12 @@ Ement.el doesn't support encrypted rooms natively, but it can be used transparen
 :TOC:      :depth 0
 :END:
 
+** 0.17-pre
+
+*Additions*
+
++ Customization groups for faces.  (Thanks to [[https://github.com/phil-s][Phil Sainty]].)
+
 ** 0.16
 
 *Compatibility*
