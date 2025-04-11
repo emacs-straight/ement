@@ -421,6 +421,12 @@ Encrypted room support through Pantalaimon
   *Additions*
 
   ⁃ Customization groups for faces.  (Thanks to [Phil Sainty].)
+  ⁃ Option `ement-room-hide-redacted-message-content', which hides the
+    content of redacted messages by default.  It may be disabled to keep
+    redacted content visible with a strikethrough face, which may be
+    useful for room moderators, but users should keep in mind that doing
+    so will leave unpleasant content visible in the current session,
+    even after being redacted by moderators.
 
   *Changes*
 

@@ -1,4 +1,4 @@
-This is docoRDVuW.info, produced by makeinfo version 6.8 from
+This is docVzgm7G.info, produced by makeinfo version 6.8 from
 ement.texi.
 
 INFO-DIR-SECTION Emacs
@@ -7,7 +7,7 @@ START-INFO-DIR-ENTRY
 END-INFO-DIR-ENTRY
 
 
-File: docoRDVuW.info,  Node: Top,  Next: Installation,  Up: (dir)
+File: docVzgm7G.info,  Node: Top,  Next: Installation,  Up: (dir)
 
 Ement.el
 ********
@@ -97,7 +97,7 @@ Development
 
 
 
-File: docoRDVuW.info,  Node: Installation,  Next: Usage,  Prev: Top,  Up: Top
+File: docVzgm7G.info,  Node: Installation,  Next: Usage,  Prev: Top,  Up: Top
 
 1 Installation
 **************
@@ -113,7 +113,7 @@ File: docoRDVuW.info,  Node: Installation,  Next: Usage,  Prev: Top,  Up: Top
 * Manual::
 
 
-File: docoRDVuW.info,  Node: GNU ELPA,  Next: GNU Guix,  Up: Installation
+File: docVzgm7G.info,  Node: GNU ELPA,  Next: GNU Guix,  Up: Installation
 
 GNU ELPA
 ========
@@ -128,7 +128,7 @@ stable release.
 (https://elpa.gnu.org/devel/ement.html) or from Git (see below).
 
 
-File: docoRDVuW.info,  Node: GNU Guix,  Next: Debian Ubuntu,  Prev: GNU ELPA,  Up: Installation
+File: docVzgm7G.info,  Node: GNU Guix,  Next: Debian Ubuntu,  Prev: GNU ELPA,  Up: Installation
 
 GNU Guix
 ========
@@ -137,7 +137,7 @@ Ement.el is available in GNU Guix (https://guix.gnu.org/) as emacs-ement
 (https://packages.guix.gnu.org/packages/emacs-ement/).
 
 
-File: docoRDVuW.info,  Node: Debian Ubuntu,  Next: Nix,  Prev: GNU Guix,  Up: Installation
+File: docVzgm7G.info,  Node: Debian Ubuntu,  Next: Nix,  Prev: GNU Guix,  Up: Installation
 
 Debian, Ubuntu
 ==============
@@ -147,7 +147,7 @@ Ement.el is available in Debian as elpa-ement
 (https://packages.ubuntu.com/search?suite=default&section=all&arch=any&keywords=elpa-ement&searchon=names).
 
 
-File: docoRDVuW.info,  Node: Nix,  Next: Other distributions,  Prev: Debian Ubuntu,  Up: Installation
+File: docVzgm7G.info,  Node: Nix,  Next: Other distributions,  Prev: Debian Ubuntu,  Up: Installation
 
 Nix
 ===
@@ -157,7 +157,7 @@ emacsPackages.ement
 (https://search.nixos.org/packages?channel=23.05&show=emacsPackages.ement&from=0&size=50&sort=relevance&type=packages&query=ement).
 
 
-File: docoRDVuW.info,  Node: Other distributions,  Next: Git master,  Prev: Nix,  Up: Installation
+File: docVzgm7G.info,  Node: Other distributions,  Next: Git master,  Prev: Nix,  Up: Installation
 
 Other distributions
 ===================
@@ -166,7 +166,7 @@ Ement.el is also available in some other distributions.  See Repology
 (https://repology.org/project/emacs:ement/related) for details.
 
 
-File: docoRDVuW.info,  Node: Git master,  Next: Manual,  Prev: Other distributions,  Up: Installation
+File: docVzgm7G.info,  Node: Git master,  Next: Manual,  Prev: Other distributions,  Up: Installation
 
 Git master
 ==========
@@ -196,7 +196,7 @@ DOOM (https://github.com/doomemacs/doomemacs)), but the author cannot
 offer support for them.
 
 
-File: docoRDVuW.info,  Node: Manual,  Prev: Git master,  Up: Installation
+File: docVzgm7G.info,  Node: Manual,  Prev: Git master,  Up: Installation
 
 Manual
 ======
@@ -206,7 +206,7 @@ will ensure that the required autoloads are generated, etc.  If you
 choose to install it manually, you’re on your own.
 
 
-File: docoRDVuW.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: Top
+File: docVzgm7G.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: Top
 
 2 Usage
 *******
@@ -262,7 +262,7 @@ File: docoRDVuW.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: 
 * Encrypted room support through Pantalaimon::
 
 
-File: docoRDVuW.info,  Node: Bindings,  Next: Tips,  Up: Usage
+File: docVzgm7G.info,  Node: Bindings,  Next: Tips,  Up: Usage
 
 Bindings
 ========
@@ -282,7 +282,7 @@ These bindings are common to all of the following buffer types:
 * Mentions/notifications buffers::
 
 
-File: docoRDVuW.info,  Node: Room buffers,  Next: Room list buffer,  Up: Bindings
+File: docVzgm7G.info,  Node: Room buffers,  Next: Room list buffer,  Up: Bindings
 
 Room buffers
 ------------
@@ -375,7 +375,7 @@ mode.)
      prefix to force new sync): ‘g’
 
 
-File: docoRDVuW.info,  Node: Room list buffer,  Next: Directory buffers,  Prev: Room buffers,  Up: Bindings
+File: docVzgm7G.info,  Node: Room list buffer,  Next: Directory buffers,  Prev: Room buffers,  Up: Bindings
 
 Room list buffer
 ----------------
@@ -388,7 +388,7 @@ Room list buffer
    • Toggle room’s membership in a space: ‘s’
 
 
-File: docoRDVuW.info,  Node: Directory buffers,  Next: Mentions/notifications buffers,  Prev: Room list buffer,  Up: Bindings
+File: docVzgm7G.info,  Node: Directory buffers,  Next: Mentions/notifications buffers,  Prev: Room list buffer,  Up: Bindings
 
 Directory buffers
 -----------------
@@ -397,7 +397,7 @@ Directory buffers
    • Load next batch of rooms: ‘+’
 
 
-File: docoRDVuW.info,  Node: Mentions/notifications buffers,  Prev: Directory buffers,  Up: Bindings
+File: docVzgm7G.info,  Node: Mentions/notifications buffers,  Prev: Directory buffers,  Up: Bindings
 
 Mentions/notifications buffers
 ------------------------------
@@ -408,7 +408,7 @@ Mentions/notifications buffers
      writing): ‘S-<return>’
 
 
-File: docoRDVuW.info,  Node: Tips,  Next: Encrypted room support through Pantalaimon,  Prev: Bindings,  Up: Usage
+File: docVzgm7G.info,  Node: Tips,  Next: Encrypted room support through Pantalaimon,  Prev: Bindings,  Up: Usage
 
 Tips
 ====
@@ -464,7 +464,7 @@ Tips
 * Displaying symbols and emojis::
 
 
-File: docoRDVuW.info,  Node: Displaying symbols and emojis,  Up: Tips
+File: docVzgm7G.info,  Node: Displaying symbols and emojis,  Up: Tips
 
 Displaying symbols and emojis
 -----------------------------
@@ -481,7 +481,7 @@ code:
      (set-fontset-font t 'unicode "Noto Emoji" nil 'append)
 
 
-File: docoRDVuW.info,  Node: Encrypted room support through Pantalaimon,  Prev: Tips,  Up: Usage
+File: docVzgm7G.info,  Node: Encrypted room support through Pantalaimon,  Prev: Tips,  Up: Usage
 
 Encrypted room support through Pantalaimon
 ==========================================
@@ -495,7 +495,7 @@ appropriate hostname and port, like:
      (ement-connect :uri-prefix "http://localhost:8009")
 
 
-File: docoRDVuW.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: Top
+File: docVzgm7G.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: Top
 
 3 Changelog
 ***********
@@ -537,7 +537,7 @@ File: docoRDVuW.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: T
 * 0.1: 01.
 
 
-File: docoRDVuW.info,  Node: 017-pre,  Next: 016,  Up: Changelog
+File: docVzgm7G.info,  Node: 017-pre,  Next: 016,  Up: Changelog
 
 0.17-pre
 ========
@@ -546,6 +546,12 @@ File: docoRDVuW.info,  Node: 017-pre,  Next: 016,  Up: Changelog
 
    • Customization groups for faces.  (Thanks to Phil Sainty
      (https://github.com/phil-s).)
+   • Option ‘ement-room-hide-redacted-message-content’, which hides the
+     content of redacted messages by default.  It may be disabled to
+     keep redacted content visible with a strikethrough face, which may
+     be useful for room moderators, but users should keep in mind that
+     doing so will leave unpleasant content visible in the current
+     session, even after being redacted by moderators.
 
    *Changes*
 
@@ -554,7 +560,7 @@ File: docoRDVuW.info,  Node: 017-pre,  Next: 016,  Up: Changelog
      it, e.g.  when themed).
 
 
-File: docoRDVuW.info,  Node: 016,  Next: 0151,  Prev: 017-pre,  Up: Changelog
+File: docVzgm7G.info,  Node: 016,  Next: 0151,  Prev: 017-pre,  Up: Changelog
 
 0.16
 ====
@@ -612,7 +618,7 @@ File: docoRDVuW.info,  Node: 016,  Next: 0151,  Prev: 017-pre,  Up: Changelog
      Bernoulli (https://github.com/tarsius).)
 
 
-File: docoRDVuW.info,  Node: 0151,  Next: 015,  Prev: 016,  Up: Changelog
+File: docVzgm7G.info,  Node: 0151,  Next: 015,  Prev: 016,  Up: Changelog
 
 0.15.1
 ======
@@ -627,7 +633,7 @@ File: docoRDVuW.info,  Node: 0151,  Next: 015,  Prev: 016,  Up: Changelog
      to Adam Bark (https://github.com/AdamBark) for reporting.)
 
 
-File: docoRDVuW.info,  Node: 015,  Next: 014,  Prev: 0151,  Up: Changelog
+File: docVzgm7G.info,  Node: 015,  Next: 014,  Prev: 0151,  Up: Changelog
 
 0.15
 ====
@@ -711,7 +717,7 @@ Options affecting how images are displayed in room buffers.
 * Image display::
 
 
-File: docoRDVuW.info,  Node: Compose buffer enhancements,  Next: ement-room-self-insert-mode,  Up: 015
+File: docVzgm7G.info,  Node: Compose buffer enhancements,  Next: ement-room-self-insert-mode,  Up: 015
 
 Compose buffer enhancements
 ---------------------------
@@ -771,7 +777,7 @@ Compose buffer enhancements
      or ‘C-s’.)
 
 
-File: docoRDVuW.info,  Node: ement-room-self-insert-mode,  Next: Image display,  Prev: Compose buffer enhancements,  Up: 015
+File: docVzgm7G.info,  Node: ement-room-self-insert-mode,  Next: Image display,  Prev: Compose buffer enhancements,  Up: 015
 
 ‘ement-room-self-insert-mode’
 -----------------------------
@@ -789,7 +795,7 @@ File: docoRDVuW.info,  Node: ement-room-self-insert-mode,  Next: Image display, 
      ‘DEL’.)
 
 
-File: docoRDVuW.info,  Node: Image display,  Prev: ement-room-self-insert-mode,  Up: 015
+File: docVzgm7G.info,  Node: Image display,  Prev: ement-room-self-insert-mode,  Up: 015
 
 Image display
 -------------
@@ -805,7 +811,7 @@ Image display
      height for thumbnail images (by default, 30 pixels).
 
 
-File: docoRDVuW.info,  Node: 014,  Next: 013,  Prev: 015,  Up: Changelog
+File: docVzgm7G.info,  Node: 014,  Next: 013,  Prev: 015,  Up: Changelog
 
 0.14
 ====
@@ -841,7 +847,7 @@ File: docoRDVuW.info,  Node: 014,  Next: 013,  Prev: 015,  Up: Changelog
      (Thanks to Phil Sainty (https://github.com/phil-s).)
 
 
-File: docoRDVuW.info,  Node: 013,  Next: 012,  Prev: 014,  Up: Changelog
+File: docVzgm7G.info,  Node: 013,  Next: 012,  Prev: 014,  Up: Changelog
 
 0.13
 ====
@@ -880,7 +886,7 @@ File: docoRDVuW.info,  Node: 013,  Next: 012,  Prev: 014,  Up: Changelog
    • Command ‘ement-room-flush-colors’ maintains point position.
 
 
-File: docoRDVuW.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
+File: docVzgm7G.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
 
 0.12
 ====
@@ -936,7 +942,7 @@ File: docoRDVuW.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
      discover this problem.)
 
 
-File: docoRDVuW.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
+File: docVzgm7G.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
 
 0.11
 ====
@@ -985,7 +991,7 @@ File: docoRDVuW.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
      Sainty (https://github.com/phil-s).)
 
 
-File: docoRDVuW.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
+File: docVzgm7G.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
 
 0.10
 ====
@@ -1054,7 +1060,7 @@ File: docoRDVuW.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
      replaced.
 
 
-File: docoRDVuW.info,  Node: 093,  Next: 092,  Prev: 010,  Up: Changelog
+File: docVzgm7G.info,  Node: 093,  Next: 092,  Prev: 010,  Up: Changelog
 
 0.9.3
 =====
@@ -1064,7 +1070,7 @@ File: docoRDVuW.info,  Node: 093,  Next: 092,  Prev: 010,  Up: Changelog
    • Command ‘ement-room-list-next-unread’.
 
 
-File: docoRDVuW.info,  Node: 092,  Next: 091,  Prev: 093,  Up: Changelog
+File: docVzgm7G.info,  Node: 092,  Next: 091,  Prev: 093,  Up: Changelog
 
 0.9.2
 =====
@@ -1074,7 +1080,7 @@ File: docoRDVuW.info,  Node: 092,  Next: 091,  Prev: 093,  Up: Changelog
    • Completion in minibuffer.
 
 
-File: docoRDVuW.info,  Node: 091,  Next: 09,  Prev: 092,  Up: Changelog
+File: docVzgm7G.info,  Node: 091,  Next: 09,  Prev: 092,  Up: Changelog
 
 0.9.1
 =====
@@ -1083,7 +1089,7 @@ File: docoRDVuW.info,  Node: 091,  Next: 09,  Prev: 092,  Up: Changelog
    • Error in ‘ement-room-list’ command upon initial sync.
 
 
-File: docoRDVuW.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
+File: docVzgm7G.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
 
 0.9
 ===
@@ -1123,7 +1129,7 @@ File: docoRDVuW.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
      (https://github.com/chasecaleb) for reporting.)
 
 
-File: docoRDVuW.info,  Node: 083,  Next: 082,  Prev: 09,  Up: Changelog
+File: docVzgm7G.info,  Node: 083,  Next: 082,  Prev: 09,  Up: Changelog
 
 0.8.3
 =====
@@ -1140,7 +1146,7 @@ File: docoRDVuW.info,  Node: 083,  Next: 082,  Prev: 09,  Up: Changelog
      used.)
 
 
-File: docoRDVuW.info,  Node: 082,  Next: 081,  Prev: 083,  Up: Changelog
+File: docVzgm7G.info,  Node: 082,  Next: 081,  Prev: 083,  Up: Changelog
 
 0.8.2
 =====
@@ -1150,7 +1156,7 @@ File: docoRDVuW.info,  Node: 082,  Next: 081,  Prev: 083,  Up: Changelog
    • Deduplicate grouped membership events.
 
 
-File: docoRDVuW.info,  Node: 081,  Next: 08,  Prev: 082,  Up: Changelog
+File: docVzgm7G.info,  Node: 081,  Next: 08,  Prev: 082,  Up: Changelog
 
 0.8.1
 =====
@@ -1158,7 +1164,7 @@ File: docoRDVuW.info,  Node: 081,  Next: 08,  Prev: 082,  Up: Changelog
 Added missing changelog entry (of course).
 
 
-File: docoRDVuW.info,  Node: 08,  Next: 07,  Prev: 081,  Up: Changelog
+File: docVzgm7G.info,  Node: 08,  Next: 07,  Prev: 081,  Up: Changelog
 
 0.8
 ===
@@ -1196,7 +1202,7 @@ File: docoRDVuW.info,  Node: 08,  Next: 07,  Prev: 081,  Up: Changelog
    • Prompts in commands ‘ement-leave-room’ and ‘ement-forget-room’.
 
 
-File: docoRDVuW.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
+File: docVzgm7G.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
 
 0.7
 ===
@@ -1230,7 +1236,7 @@ File: docoRDVuW.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
      on a room’s account data.
 
 
-File: docoRDVuW.info,  Node: 06,  Next: 052,  Prev: 07,  Up: Changelog
+File: docVzgm7G.info,  Node: 06,  Next: 052,  Prev: 07,  Up: Changelog
 
 0.6
 ===
@@ -1255,7 +1261,7 @@ File: docoRDVuW.info,  Node: 06,  Next: 052,  Prev: 07,  Up: Changelog
      (https://github.com/vizs).)
 
 
-File: docoRDVuW.info,  Node: 052,  Next: 051,  Prev: 06,  Up: Changelog
+File: docVzgm7G.info,  Node: 052,  Next: 051,  Prev: 06,  Up: Changelog
 
 0.5.2
 =====
@@ -1265,7 +1271,7 @@ File: docoRDVuW.info,  Node: 052,  Next: 051,  Prev: 06,  Up: Changelog
      homeserver is slow to respond).
 
 
-File: docoRDVuW.info,  Node: 051,  Next: 05,  Prev: 052,  Up: Changelog
+File: docVzgm7G.info,  Node: 051,  Next: 05,  Prev: 052,  Up: Changelog
 
 0.5.1
 =====
@@ -1275,7 +1281,7 @@ File: docoRDVuW.info,  Node: 051,  Next: 05,  Prev: 052,  Up: Changelog
    • Faces in ‘ement-directory’ listings.
 
 
-File: docoRDVuW.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
+File: docVzgm7G.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
 
 0.5
 ===
@@ -1299,7 +1305,7 @@ File: docoRDVuW.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
    • Replies may be written in compose buffers.
 
 
-File: docoRDVuW.info,  Node: 041,  Next: 04,  Prev: 05,  Up: Changelog
+File: docVzgm7G.info,  Node: 041,  Next: 04,  Prev: 05,  Up: Changelog
 
 0.4.1
 =====
@@ -1309,7 +1315,7 @@ File: docoRDVuW.info,  Node: 041,  Next: 04,  Prev: 05,  Up: Changelog
      marker’s position again.
 
 
-File: docoRDVuW.info,  Node: 04,  Next: 031,  Prev: 041,  Up: Changelog
+File: docVzgm7G.info,  Node: 04,  Next: 031,  Prev: 041,  Up: Changelog
 
 0.4
 ===
@@ -1344,7 +1350,7 @@ File: docoRDVuW.info,  Node: 04,  Next: 031,  Prev: 041,  Up: Changelog
    • Highlighting of ‘@room’ mentions.
 
 
-File: docoRDVuW.info,  Node: 031,  Next: 03,  Prev: 04,  Up: Changelog
+File: docVzgm7G.info,  Node: 031,  Next: 03,  Prev: 04,  Up: Changelog
 
 0.3.1
 =====
@@ -1354,7 +1360,7 @@ File: docoRDVuW.info,  Node: 031,  Next: 03,  Prev: 04,  Up: Changelog
      local user, the room is considered read).
 
 
-File: docoRDVuW.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
+File: docVzgm7G.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
 
 0.3
 ===
@@ -1386,7 +1392,7 @@ File: docoRDVuW.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
    • Compatibility with Emacs 27.
 
 
-File: docoRDVuW.info,  Node: 021,  Next: 02,  Prev: 03,  Up: Changelog
+File: docVzgm7G.info,  Node: 021,  Next: 02,  Prev: 03,  Up: Changelog
 
 0.2.1
 =====
@@ -1395,7 +1401,7 @@ File: docoRDVuW.info,  Node: 021,  Next: 02,  Prev: 03,  Up: Changelog
    • Info manual export filename.
 
 
-File: docoRDVuW.info,  Node: 02,  Next: 014 (1),  Prev: 021,  Up: Changelog
+File: docVzgm7G.info,  Node: 02,  Next: 014 (1),  Prev: 021,  Up: Changelog
 
 0.2
 ===
@@ -1429,7 +1435,7 @@ File: docoRDVuW.info,  Node: 02,  Next: 014 (1),  Prev: 021,  Up: Changelog
    • Prevent error when a room avatar image fails to load.
 
 
-File: docoRDVuW.info,  Node: 014 (1),  Next: 013 (1),  Prev: 02,  Up: Changelog
+File: docVzgm7G.info,  Node: 014 (1),  Next: 013 (1),  Prev: 02,  Up: Changelog
 
 0.1.4
 =====
@@ -1438,7 +1444,7 @@ File: docoRDVuW.info,  Node: 014 (1),  Next: 013 (1),  Prev: 02,  Up: Changelog
    • Info manual directory headers.
 
 
-File: docoRDVuW.info,  Node: 013 (1),  Next: 012 (1),  Prev: 014 (1),  Up: Changelog
+File: docVzgm7G.info,  Node: 013 (1),  Next: 012 (1),  Prev: 014 (1),  Up: Changelog
 
 0.1.3
 =====
@@ -1450,7 +1456,7 @@ File: docoRDVuW.info,  Node: 013 (1),  Next: 012 (1),  Prev: 014 (1),  Up: Chang
      be re-enabled in a future release.)
 
 
-File: docoRDVuW.info,  Node: 012 (1),  Next: 011 (1),  Prev: 013 (1),  Up: Changelog
+File: docVzgm7G.info,  Node: 012 (1),  Next: 011 (1),  Prev: 013 (1),  Up: Changelog
 
 0.1.2
 =====
@@ -1463,7 +1469,7 @@ File: docoRDVuW.info,  Node: 012 (1),  Next: 011 (1),  Prev: 013 (1),  Up: Chang
      Tassilo Horn (https://github.com/tsdh).)
 
 
-File: docoRDVuW.info,  Node: 011 (1),  Next: 01,  Prev: 012 (1),  Up: Changelog
+File: docVzgm7G.info,  Node: 011 (1),  Next: 01,  Prev: 012 (1),  Up: Changelog
 
 0.1.1
 =====
@@ -1475,7 +1481,7 @@ File: docoRDVuW.info,  Node: 011 (1),  Next: 01,  Prev: 012 (1),  Up: Changelog
      ‘display-images-p’ returns.
 
 
-File: docoRDVuW.info,  Node: 01,  Prev: 011 (1),  Up: Changelog
+File: docVzgm7G.info,  Node: 01,  Prev: 011 (1),  Up: Changelog
 
 0.1
 ===
@@ -1484,7 +1490,7 @@ After almost two years of development, the first tagged release.
 Submitted to GNU ELPA.
 
 
-File: docoRDVuW.info,  Node: Development,  Next: License,  Prev: Changelog,  Up: Top
+File: docVzgm7G.info,  Node: Development,  Next: License,  Prev: Changelog,  Up: Top
 
 4 Development
 *************
@@ -1498,7 +1504,7 @@ Bug reports, feature requests, suggestions — _oh my_!
 * Rationale::
 
 
-File: docoRDVuW.info,  Node: Copyright Assignment,  Next: Matrix spec in Org format,  Up: Development
+File: docVzgm7G.info,  Node: Copyright Assignment,  Next: Matrix spec in Org format,  Up: Development
 
 Copyright Assignment
 ====================
@@ -1510,7 +1516,7 @@ FSF.  Authors who are interested in doing so may contact assign@gnu.org
 <assign@gnu.org> to request the appropriate form.
 
 
-File: docoRDVuW.info,  Node: Matrix spec in Org format,  Next: Rationale,  Prev: Copyright Assignment,  Up: Development
+File: docVzgm7G.info,  Node: Matrix spec in Org format,  Next: Rationale,  Prev: Copyright Assignment,  Up: Development
 
 Matrix spec in Org format
 =========================
@@ -1519,7 +1525,7 @@ An Org-formatted version of the Matrix spec is available in the
 meta/spec (https://github.com/alphapapa/ement.el/tree/meta/spec) branch.
 
 
-File: docoRDVuW.info,  Node: Rationale,  Prev: Matrix spec in Org format,  Up: Development
+File: docVzgm7G.info,  Node: Rationale,  Prev: Matrix spec in Org format,  Up: Development
 
 Rationale
 =========
@@ -1583,7 +1589,7 @@ only reason to choose ‘matrix-client’ instead is if one is using an
 older version of Emacs that isn’t supported by Ement.el.
 
 
-File: docoRDVuW.info,  Node: License,  Prev: Development,  Up: Top
+File: docVzgm7G.info,  Node: License,  Prev: Development,  Up: Top
 
 5 License
 *********
@@ -1613,46 +1619,46 @@ Node: Displaying symbols and emojis15029
 Node: Encrypted room support through Pantalaimon15644
 Node: Changelog16200
 Node: 017-pre16774
-Node: 01617159
-Node: 015119939
-Node: 01520510
-Node: Compose buffer enhancements24673
-Node: ement-room-self-insert-mode28059
-Node: Image display28940
-Node: 01429596
-Node: 01330996
-Node: 01232596
-Node: 01135354
-Node: 01037453
-Node: 09340841
-Node: 09241064
-Node: 09141249
-Node: 0941411
-Node: 08343079
-Node: 08243707
-Node: 08143852
-Node: 0843984
-Node: 0745610
-Node: 0646786
-Node: 05247583
-Node: 05147796
-Node: 0547989
-Node: 04148831
-Node: 0449035
-Node: 03150547
-Node: 0350762
-Node: 02151986
-Node: 0252118
-Node: 014 (1)53751
-Node: 013 (1)53894
-Node: 012 (1)54191
-Node: 011 (1)54607
-Node: 0154910
-Node: Development55075
-Node: Copyright Assignment55328
-Node: Matrix spec in Org format55806
-Node: Rationale56120
-Node: License59704
+Node: 01617571
+Node: 015120351
+Node: 01520922
+Node: Compose buffer enhancements25085
+Node: ement-room-self-insert-mode28471
+Node: Image display29352
+Node: 01430008
+Node: 01331408
+Node: 01233008
+Node: 01135766
+Node: 01037865
+Node: 09341253
+Node: 09241476
+Node: 09141661
+Node: 0941823
+Node: 08343491
+Node: 08244119
+Node: 08144264
+Node: 0844396
+Node: 0746022
+Node: 0647198
+Node: 05247995
+Node: 05148208
+Node: 0548401
+Node: 04149243
+Node: 0449447
+Node: 03150959
+Node: 0351174
+Node: 02152398
+Node: 0252530
+Node: 014 (1)54163
+Node: 013 (1)54306
+Node: 012 (1)54603
+Node: 011 (1)55019
+Node: 0155322
+Node: Development55487
+Node: Copyright Assignment55740
+Node: Matrix spec in Org format56218
+Node: Rationale56532
+Node: License60116
 
 End Tag Table
 
