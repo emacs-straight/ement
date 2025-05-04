@@ -427,6 +427,10 @@ Encrypted room support through Pantalaimon
     useful for room moderators, but users should keep in mind that doing
     so will leave unpleasant content visible in the current session,
     even after being redacted by moderators.
+  ⁃ Option `ement-room-list-avatars-generation': if disabled, SVG-based
+    room avatars are not generated.  This option automatically tests
+    whether SVG support is available in Emacs, and should allow use with
+    builds of Emacs that lack `librsvg' support.
 
   *Changes*
 
