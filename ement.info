@@ -1,4 +1,4 @@
-This is doco7D5Ao.info, produced by makeinfo version 6.8 from
+This is doc9NAMSt.info, produced by makeinfo version 6.8 from
 ement.texi.
 
 INFO-DIR-SECTION Emacs
@@ -7,7 +7,7 @@ START-INFO-DIR-ENTRY
 END-INFO-DIR-ENTRY
 
 
-File: doco7D5Ao.info,  Node: Top,  Next: Installation,  Up: (dir)
+File: doc9NAMSt.info,  Node: Top,  Next: Installation,  Up: (dir)
 
 Ement.el
 ********
@@ -53,7 +53,7 @@ Usage
 
 Changelog
 
-* 0.17-pre: 017-pre.
+* 0.17: 017.
 * 0.16: 016.
 * 0.15.1: 0151.
 * 0.15: 015.
@@ -97,7 +97,7 @@ Development
 
 
 
-File: doco7D5Ao.info,  Node: Installation,  Next: Usage,  Prev: Top,  Up: Top
+File: doc9NAMSt.info,  Node: Installation,  Next: Usage,  Prev: Top,  Up: Top
 
 1 Installation
 **************
@@ -113,7 +113,7 @@ File: doco7D5Ao.info,  Node: Installation,  Next: Usage,  Prev: Top,  Up: Top
 * Manual::
 
 
-File: doco7D5Ao.info,  Node: GNU ELPA,  Next: GNU Guix,  Up: Installation
+File: doc9NAMSt.info,  Node: GNU ELPA,  Next: GNU Guix,  Up: Installation
 
 GNU ELPA
 ========
@@ -128,7 +128,7 @@ stable release.
 (https://elpa.gnu.org/devel/ement.html) or from Git (see below).
 
 
-File: doco7D5Ao.info,  Node: GNU Guix,  Next: Debian Ubuntu,  Prev: GNU ELPA,  Up: Installation
+File: doc9NAMSt.info,  Node: GNU Guix,  Next: Debian Ubuntu,  Prev: GNU ELPA,  Up: Installation
 
 GNU Guix
 ========
@@ -137,7 +137,7 @@ Ement.el is available in GNU Guix (https://guix.gnu.org/) as emacs-ement
 (https://packages.guix.gnu.org/packages/emacs-ement/).
 
 
-File: doco7D5Ao.info,  Node: Debian Ubuntu,  Next: Nix,  Prev: GNU Guix,  Up: Installation
+File: doc9NAMSt.info,  Node: Debian Ubuntu,  Next: Nix,  Prev: GNU Guix,  Up: Installation
 
 Debian, Ubuntu
 ==============
@@ -147,7 +147,7 @@ Ement.el is available in Debian as elpa-ement
 (https://packages.ubuntu.com/search?suite=default&section=all&arch=any&keywords=elpa-ement&searchon=names).
 
 
-File: doco7D5Ao.info,  Node: Nix,  Next: Other distributions,  Prev: Debian Ubuntu,  Up: Installation
+File: doc9NAMSt.info,  Node: Nix,  Next: Other distributions,  Prev: Debian Ubuntu,  Up: Installation
 
 Nix
 ===
@@ -157,7 +157,7 @@ emacsPackages.ement
 (https://search.nixos.org/packages?channel=23.05&show=emacsPackages.ement&from=0&size=50&sort=relevance&type=packages&query=ement).
 
 
-File: doco7D5Ao.info,  Node: Other distributions,  Next: Git master,  Prev: Nix,  Up: Installation
+File: doc9NAMSt.info,  Node: Other distributions,  Next: Git master,  Prev: Nix,  Up: Installation
 
 Other distributions
 ===================
@@ -166,7 +166,7 @@ Ement.el is also available in some other distributions.  See Repology
 (https://repology.org/project/emacs:ement/related) for details.
 
 
-File: doco7D5Ao.info,  Node: Git master,  Next: Manual,  Prev: Other distributions,  Up: Installation
+File: doc9NAMSt.info,  Node: Git master,  Next: Manual,  Prev: Other distributions,  Up: Installation
 
 Git master
 ==========
@@ -196,7 +196,7 @@ DOOM (https://github.com/doomemacs/doomemacs)), but the author cannot
 offer support for them.
 
 
-File: doco7D5Ao.info,  Node: Manual,  Prev: Git master,  Up: Installation
+File: doc9NAMSt.info,  Node: Manual,  Prev: Git master,  Up: Installation
 
 Manual
 ======
@@ -206,7 +206,7 @@ will ensure that the required autoloads are generated, etc.  If you
 choose to install it manually, you’re on your own.
 
 
-File: doco7D5Ao.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: Top
+File: doc9NAMSt.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: Top
 
 2 Usage
 *******
@@ -262,7 +262,7 @@ File: doco7D5Ao.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: 
 * Encrypted room support through Pantalaimon::
 
 
-File: doco7D5Ao.info,  Node: Bindings,  Next: Tips,  Up: Usage
+File: doc9NAMSt.info,  Node: Bindings,  Next: Tips,  Up: Usage
 
 Bindings
 ========
@@ -282,7 +282,7 @@ These bindings are common to all of the following buffer types:
 * Mentions/notifications buffers::
 
 
-File: doco7D5Ao.info,  Node: Room buffers,  Next: Room list buffer,  Up: Bindings
+File: doc9NAMSt.info,  Node: Room buffers,  Next: Room list buffer,  Up: Bindings
 
 Room buffers
 ------------
@@ -375,7 +375,7 @@ mode.)
      prefix to force new sync): ‘g’
 
 
-File: doco7D5Ao.info,  Node: Room list buffer,  Next: Directory buffers,  Prev: Room buffers,  Up: Bindings
+File: doc9NAMSt.info,  Node: Room list buffer,  Next: Directory buffers,  Prev: Room buffers,  Up: Bindings
 
 Room list buffer
 ----------------
@@ -388,7 +388,7 @@ Room list buffer
    • Toggle room’s membership in a space: ‘s’
 
 
-File: doco7D5Ao.info,  Node: Directory buffers,  Next: Mentions/notifications buffers,  Prev: Room list buffer,  Up: Bindings
+File: doc9NAMSt.info,  Node: Directory buffers,  Next: Mentions/notifications buffers,  Prev: Room list buffer,  Up: Bindings
 
 Directory buffers
 -----------------
@@ -397,7 +397,7 @@ Directory buffers
    • Load next batch of rooms: ‘+’
 
 
-File: doco7D5Ao.info,  Node: Mentions/notifications buffers,  Prev: Directory buffers,  Up: Bindings
+File: doc9NAMSt.info,  Node: Mentions/notifications buffers,  Prev: Directory buffers,  Up: Bindings
 
 Mentions/notifications buffers
 ------------------------------
@@ -408,7 +408,7 @@ Mentions/notifications buffers
      writing): ‘S-<return>’
 
 
-File: doco7D5Ao.info,  Node: Tips,  Next: Encrypted room support through Pantalaimon,  Prev: Bindings,  Up: Usage
+File: doc9NAMSt.info,  Node: Tips,  Next: Encrypted room support through Pantalaimon,  Prev: Bindings,  Up: Usage
 
 Tips
 ====
@@ -464,7 +464,7 @@ Tips
 * Displaying symbols and emojis::
 
 
-File: doco7D5Ao.info,  Node: Displaying symbols and emojis,  Up: Tips
+File: doc9NAMSt.info,  Node: Displaying symbols and emojis,  Up: Tips
 
 Displaying symbols and emojis
 -----------------------------
@@ -481,7 +481,7 @@ code:
      (set-fontset-font t 'unicode "Noto Emoji" nil 'append)
 
 
-File: doco7D5Ao.info,  Node: Encrypted room support through Pantalaimon,  Prev: Tips,  Up: Usage
+File: doc9NAMSt.info,  Node: Encrypted room support through Pantalaimon,  Prev: Tips,  Up: Usage
 
 Encrypted room support through Pantalaimon
 ==========================================
@@ -495,14 +495,14 @@ appropriate hostname and port, like:
      (ement-connect :uri-prefix "http://localhost:8009")
 
 
-File: doco7D5Ao.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: Top
+File: doc9NAMSt.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: Top
 
 3 Changelog
 ***********
 
 * Menu:
 
-* 0.17-pre: 017-pre.
+* 0.17: 017.
 * 0.16: 016.
 * 0.15.1: 0151.
 * 0.15: 015.
@@ -537,10 +537,10 @@ File: doco7D5Ao.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: T
 * 0.1: 01.
 
 
-File: doco7D5Ao.info,  Node: 017-pre,  Next: 016,  Up: Changelog
+File: doc9NAMSt.info,  Node: 017,  Next: 016,  Up: Changelog
 
-0.17-pre
-========
+0.17
+====
 
 *Additions*
 
@@ -556,7 +556,7 @@ File: doco7D5Ao.info,  Node: 017-pre,  Next: 016,  Up: Changelog
      be useful for room moderators, but users should keep in mind that
      doing so will leave unpleasant content visible in the current
      session, even after being redacted by moderators.
-   • Option ‘ement-room-list-avatars-generation’: if disabled, SVG-based
+   • Option ‘ement-room-list-avatar-generation’: if disabled, SVG-based
      room avatars are not generated.  This option automatically tests
      whether SVG support is available in Emacs, and should allow use
      with builds of Emacs that lack ‘librsvg’ support.
@@ -575,9 +575,15 @@ File: doco7D5Ao.info,  Node: 017-pre,  Next: 016,  Up: Changelog
      different browser).  (#323
      (https://github.com/alphapapa/ement.el/pull/323).  Thanks to Arto
      Jantunen (https://github.com/viiru-).)
+   • Workaround change in ‘magit-section’ that broke fontification in
+     room-list and directory buffers.  (See #331
+     (https://github.com/alphapapa/ement.el/issues/331).)
+   • Handle non-symbol commands in ‘command-history’.  (#330
+     (https://github.com/alphapapa/ement.el/issues/330).  Thanks to Alex
+     Bennée (https://github.com/stsquad) for reporting.)
 
 
-File: doco7D5Ao.info,  Node: 016,  Next: 0151,  Prev: 017-pre,  Up: Changelog
+File: doc9NAMSt.info,  Node: 016,  Next: 0151,  Prev: 017,  Up: Changelog
 
 0.16
 ====
@@ -635,7 +641,7 @@ File: doco7D5Ao.info,  Node: 016,  Next: 0151,  Prev: 017-pre,  Up: Changelog
      Bernoulli (https://github.com/tarsius).)
 
 
-File: doco7D5Ao.info,  Node: 0151,  Next: 015,  Prev: 016,  Up: Changelog
+File: doc9NAMSt.info,  Node: 0151,  Next: 015,  Prev: 016,  Up: Changelog
 
 0.15.1
 ======
@@ -650,7 +656,7 @@ File: doco7D5Ao.info,  Node: 0151,  Next: 015,  Prev: 016,  Up: Changelog
      to Adam Bark (https://github.com/AdamBark) for reporting.)
 
 
-File: doco7D5Ao.info,  Node: 015,  Next: 014,  Prev: 0151,  Up: Changelog
+File: doc9NAMSt.info,  Node: 015,  Next: 014,  Prev: 0151,  Up: Changelog
 
 0.15
 ====
@@ -734,7 +740,7 @@ Options affecting how images are displayed in room buffers.
 * Image display::
 
 
-File: doco7D5Ao.info,  Node: Compose buffer enhancements,  Next: ement-room-self-insert-mode,  Up: 015
+File: doc9NAMSt.info,  Node: Compose buffer enhancements,  Next: ement-room-self-insert-mode,  Up: 015
 
 Compose buffer enhancements
 ---------------------------
@@ -794,7 +800,7 @@ Compose buffer enhancements
      or ‘C-s’.)
 
 
-File: doco7D5Ao.info,  Node: ement-room-self-insert-mode,  Next: Image display,  Prev: Compose buffer enhancements,  Up: 015
+File: doc9NAMSt.info,  Node: ement-room-self-insert-mode,  Next: Image display,  Prev: Compose buffer enhancements,  Up: 015
 
 ‘ement-room-self-insert-mode’
 -----------------------------
@@ -812,7 +818,7 @@ File: doco7D5Ao.info,  Node: ement-room-self-insert-mode,  Next: Image display, 
      ‘DEL’.)
 
 
-File: doco7D5Ao.info,  Node: Image display,  Prev: ement-room-self-insert-mode,  Up: 015
+File: doc9NAMSt.info,  Node: Image display,  Prev: ement-room-self-insert-mode,  Up: 015
 
 Image display
 -------------
@@ -828,7 +834,7 @@ Image display
      height for thumbnail images (by default, 30 pixels).
 
 
-File: doco7D5Ao.info,  Node: 014,  Next: 013,  Prev: 015,  Up: Changelog
+File: doc9NAMSt.info,  Node: 014,  Next: 013,  Prev: 015,  Up: Changelog
 
 0.14
 ====
@@ -864,7 +870,7 @@ File: doco7D5Ao.info,  Node: 014,  Next: 013,  Prev: 015,  Up: Changelog
      (Thanks to Phil Sainty (https://github.com/phil-s).)
 
 
-File: doco7D5Ao.info,  Node: 013,  Next: 012,  Prev: 014,  Up: Changelog
+File: doc9NAMSt.info,  Node: 013,  Next: 012,  Prev: 014,  Up: Changelog
 
 0.13
 ====
@@ -903,7 +909,7 @@ File: doco7D5Ao.info,  Node: 013,  Next: 012,  Prev: 014,  Up: Changelog
    • Command ‘ement-room-flush-colors’ maintains point position.
 
 
-File: doco7D5Ao.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
+File: doc9NAMSt.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
 
 0.12
 ====
@@ -959,7 +965,7 @@ File: doco7D5Ao.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
      discover this problem.)
 
 
-File: doco7D5Ao.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
+File: doc9NAMSt.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
 
 0.11
 ====
@@ -1008,7 +1014,7 @@ File: doco7D5Ao.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
      Sainty (https://github.com/phil-s).)
 
 
-File: doco7D5Ao.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
+File: doc9NAMSt.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
 
 0.10
 ====
@@ -1077,7 +1083,7 @@ File: doco7D5Ao.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
      replaced.
 
 
-File: doco7D5Ao.info,  Node: 093,  Next: 092,  Prev: 010,  Up: Changelog
+File: doc9NAMSt.info,  Node: 093,  Next: 092,  Prev: 010,  Up: Changelog
 
 0.9.3
 =====
@@ -1087,7 +1093,7 @@ File: doco7D5Ao.info,  Node: 093,  Next: 092,  Prev: 010,  Up: Changelog
    • Command ‘ement-room-list-next-unread’.
 
 
-File: doco7D5Ao.info,  Node: 092,  Next: 091,  Prev: 093,  Up: Changelog
+File: doc9NAMSt.info,  Node: 092,  Next: 091,  Prev: 093,  Up: Changelog
 
 0.9.2
 =====
@@ -1097,7 +1103,7 @@ File: doco7D5Ao.info,  Node: 092,  Next: 091,  Prev: 093,  Up: Changelog
    • Completion in minibuffer.
 
 
-File: doco7D5Ao.info,  Node: 091,  Next: 09,  Prev: 092,  Up: Changelog
+File: doc9NAMSt.info,  Node: 091,  Next: 09,  Prev: 092,  Up: Changelog
 
 0.9.1
 =====
@@ -1106,7 +1112,7 @@ File: doco7D5Ao.info,  Node: 091,  Next: 09,  Prev: 092,  Up: Changelog
    • Error in ‘ement-room-list’ command upon initial sync.
 
 
-File: doco7D5Ao.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
+File: doc9NAMSt.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
 
 0.9
 ===
@@ -1146,7 +1152,7 @@ File: doco7D5Ao.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
      (https://github.com/chasecaleb) for reporting.)
 
 
-File: doco7D5Ao.info,  Node: 083,  Next: 082,  Prev: 09,  Up: Changelog
+File: doc9NAMSt.info,  Node: 083,  Next: 082,  Prev: 09,  Up: Changelog
 
 0.8.3
 =====
@@ -1163,7 +1169,7 @@ File: doco7D5Ao.info,  Node: 083,  Next: 082,  Prev: 09,  Up: Changelog
      used.)
 
 
-File: doco7D5Ao.info,  Node: 082,  Next: 081,  Prev: 083,  Up: Changelog
+File: doc9NAMSt.info,  Node: 082,  Next: 081,  Prev: 083,  Up: Changelog
 
 0.8.2
 =====
@@ -1173,7 +1179,7 @@ File: doco7D5Ao.info,  Node: 082,  Next: 081,  Prev: 083,  Up: Changelog
    • Deduplicate grouped membership events.
 
 
-File: doco7D5Ao.info,  Node: 081,  Next: 08,  Prev: 082,  Up: Changelog
+File: doc9NAMSt.info,  Node: 081,  Next: 08,  Prev: 082,  Up: Changelog
 
 0.8.1
 =====
@@ -1181,7 +1187,7 @@ File: doco7D5Ao.info,  Node: 081,  Next: 08,  Prev: 082,  Up: Changelog
 Added missing changelog entry (of course).
 
 
-File: doco7D5Ao.info,  Node: 08,  Next: 07,  Prev: 081,  Up: Changelog
+File: doc9NAMSt.info,  Node: 08,  Next: 07,  Prev: 081,  Up: Changelog
 
 0.8
 ===
@@ -1219,7 +1225,7 @@ File: doco7D5Ao.info,  Node: 08,  Next: 07,  Prev: 081,  Up: Changelog
    • Prompts in commands ‘ement-leave-room’ and ‘ement-forget-room’.
 
 
-File: doco7D5Ao.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
+File: doc9NAMSt.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
 
 0.7
 ===
@@ -1253,7 +1259,7 @@ File: doco7D5Ao.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
      on a room’s account data.
 
 
-File: doco7D5Ao.info,  Node: 06,  Next: 052,  Prev: 07,  Up: Changelog
+File: doc9NAMSt.info,  Node: 06,  Next: 052,  Prev: 07,  Up: Changelog
 
 0.6
 ===
@@ -1278,7 +1284,7 @@ File: doco7D5Ao.info,  Node: 06,  Next: 052,  Prev: 07,  Up: Changelog
      (https://github.com/vizs).)
 
 
-File: doco7D5Ao.info,  Node: 052,  Next: 051,  Prev: 06,  Up: Changelog
+File: doc9NAMSt.info,  Node: 052,  Next: 051,  Prev: 06,  Up: Changelog
 
 0.5.2
 =====
@@ -1288,7 +1294,7 @@ File: doco7D5Ao.info,  Node: 052,  Next: 051,  Prev: 06,  Up: Changelog
      homeserver is slow to respond).
 
 
-File: doco7D5Ao.info,  Node: 051,  Next: 05,  Prev: 052,  Up: Changelog
+File: doc9NAMSt.info,  Node: 051,  Next: 05,  Prev: 052,  Up: Changelog
 
 0.5.1
 =====
@@ -1298,7 +1304,7 @@ File: doco7D5Ao.info,  Node: 051,  Next: 05,  Prev: 052,  Up: Changelog
    • Faces in ‘ement-directory’ listings.
 
 
-File: doco7D5Ao.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
+File: doc9NAMSt.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
 
 0.5
 ===
@@ -1322,7 +1328,7 @@ File: doco7D5Ao.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
    • Replies may be written in compose buffers.
 
 
-File: doco7D5Ao.info,  Node: 041,  Next: 04,  Prev: 05,  Up: Changelog
+File: doc9NAMSt.info,  Node: 041,  Next: 04,  Prev: 05,  Up: Changelog
 
 0.4.1
 =====
@@ -1332,7 +1338,7 @@ File: doco7D5Ao.info,  Node: 041,  Next: 04,  Prev: 05,  Up: Changelog
      marker’s position again.
 
 
-File: doco7D5Ao.info,  Node: 04,  Next: 031,  Prev: 041,  Up: Changelog
+File: doc9NAMSt.info,  Node: 04,  Next: 031,  Prev: 041,  Up: Changelog
 
 0.4
 ===
@@ -1367,7 +1373,7 @@ File: doco7D5Ao.info,  Node: 04,  Next: 031,  Prev: 041,  Up: Changelog
    • Highlighting of ‘@room’ mentions.
 
 
-File: doco7D5Ao.info,  Node: 031,  Next: 03,  Prev: 04,  Up: Changelog
+File: doc9NAMSt.info,  Node: 031,  Next: 03,  Prev: 04,  Up: Changelog
 
 0.3.1
 =====
@@ -1377,7 +1383,7 @@ File: doco7D5Ao.info,  Node: 031,  Next: 03,  Prev: 04,  Up: Changelog
      local user, the room is considered read).
 
 
-File: doco7D5Ao.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
+File: doc9NAMSt.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
 
 0.3
 ===
@@ -1409,7 +1415,7 @@ File: doco7D5Ao.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
    • Compatibility with Emacs 27.
 
 
-File: doco7D5Ao.info,  Node: 021,  Next: 02,  Prev: 03,  Up: Changelog
+File: doc9NAMSt.info,  Node: 021,  Next: 02,  Prev: 03,  Up: Changelog
 
 0.2.1
 =====
@@ -1418,7 +1424,7 @@ File: doco7D5Ao.info,  Node: 021,  Next: 02,  Prev: 03,  Up: Changelog
    • Info manual export filename.
 
 
-File: doco7D5Ao.info,  Node: 02,  Next: 014 (1),  Prev: 021,  Up: Changelog
+File: doc9NAMSt.info,  Node: 02,  Next: 014 (1),  Prev: 021,  Up: Changelog
 
 0.2
 ===
@@ -1452,7 +1458,7 @@ File: doco7D5Ao.info,  Node: 02,  Next: 014 (1),  Prev: 021,  Up: Changelog
    • Prevent error when a room avatar image fails to load.
 
 
-File: doco7D5Ao.info,  Node: 014 (1),  Next: 013 (1),  Prev: 02,  Up: Changelog
+File: doc9NAMSt.info,  Node: 014 (1),  Next: 013 (1),  Prev: 02,  Up: Changelog
 
 0.1.4
 =====
@@ -1461,7 +1467,7 @@ File: doco7D5Ao.info,  Node: 014 (1),  Next: 013 (1),  Prev: 02,  Up: Changelog
    • Info manual directory headers.
 
 
-File: doco7D5Ao.info,  Node: 013 (1),  Next: 012 (1),  Prev: 014 (1),  Up: Changelog
+File: doc9NAMSt.info,  Node: 013 (1),  Next: 012 (1),  Prev: 014 (1),  Up: Changelog
 
 0.1.3
 =====
@@ -1473,7 +1479,7 @@ File: doco7D5Ao.info,  Node: 013 (1),  Next: 012 (1),  Prev: 014 (1),  Up: Chang
      be re-enabled in a future release.)
 
 
-File: doco7D5Ao.info,  Node: 012 (1),  Next: 011 (1),  Prev: 013 (1),  Up: Changelog
+File: doc9NAMSt.info,  Node: 012 (1),  Next: 011 (1),  Prev: 013 (1),  Up: Changelog
 
 0.1.2
 =====
@@ -1486,7 +1492,7 @@ File: doco7D5Ao.info,  Node: 012 (1),  Next: 011 (1),  Prev: 013 (1),  Up: Chang
      Tassilo Horn (https://github.com/tsdh).)
 
 
-File: doco7D5Ao.info,  Node: 011 (1),  Next: 01,  Prev: 012 (1),  Up: Changelog
+File: doc9NAMSt.info,  Node: 011 (1),  Next: 01,  Prev: 012 (1),  Up: Changelog
 
 0.1.1
 =====
@@ -1498,7 +1504,7 @@ File: doco7D5Ao.info,  Node: 011 (1),  Next: 01,  Prev: 012 (1),  Up: Changelog
      ‘display-images-p’ returns.
 
 
-File: doco7D5Ao.info,  Node: 01,  Prev: 011 (1),  Up: Changelog
+File: doc9NAMSt.info,  Node: 01,  Prev: 011 (1),  Up: Changelog
 
 0.1
 ===
@@ -1507,7 +1513,7 @@ After almost two years of development, the first tagged release.
 Submitted to GNU ELPA.
 
 
-File: doco7D5Ao.info,  Node: Development,  Next: License,  Prev: Changelog,  Up: Top
+File: doc9NAMSt.info,  Node: Development,  Next: License,  Prev: Changelog,  Up: Top
 
 4 Development
 *************
@@ -1521,7 +1527,7 @@ Bug reports, feature requests, suggestions — _oh my_!
 * Rationale::
 
 
-File: doco7D5Ao.info,  Node: Copyright Assignment,  Next: Matrix spec in Org format,  Up: Development
+File: doc9NAMSt.info,  Node: Copyright Assignment,  Next: Matrix spec in Org format,  Up: Development
 
 Copyright Assignment
 ====================
@@ -1533,7 +1539,7 @@ FSF.  Authors who are interested in doing so may contact assign@gnu.org
 <assign@gnu.org> to request the appropriate form.
 
 
-File: doco7D5Ao.info,  Node: Matrix spec in Org format,  Next: Rationale,  Prev: Copyright Assignment,  Up: Development
+File: doc9NAMSt.info,  Node: Matrix spec in Org format,  Next: Rationale,  Prev: Copyright Assignment,  Up: Development
 
 Matrix spec in Org format
 =========================
@@ -1542,7 +1548,7 @@ An Org-formatted version of the Matrix spec is available in the
 meta/spec (https://github.com/alphapapa/ement.el/tree/meta/spec) branch.
 
 
-File: doco7D5Ao.info,  Node: Rationale,  Prev: Matrix spec in Org format,  Up: Development
+File: doc9NAMSt.info,  Node: Rationale,  Prev: Matrix spec in Org format,  Up: Development
 
 Rationale
 =========
@@ -1606,7 +1612,7 @@ only reason to choose ‘matrix-client’ instead is if one is using an
 older version of Emacs that isn’t supported by Ement.el.
 
 
-File: doco7D5Ao.info,  Node: License,  Prev: Development,  Up: Top
+File: doc9NAMSt.info,  Node: License,  Prev: Development,  Up: Top
 
 5 License
 *********
@@ -1617,65 +1623,65 @@ GPLv3
 
 Tag Table:
 Node: Top188
-Node: Installation1610
-Node: GNU ELPA1849
-Node: GNU Guix2374
-Node: Debian Ubuntu2621
-Node: Nix2970
-Node: Other distributions3292
-Node: Git master3570
-Node: Manual4627
-Node: Usage4915
-Node: Bindings7575
-Node: Room buffers8039
-Node: Room list buffer11041
-Node: Directory buffers11437
-Node: Mentions/notifications buffers11696
-Node: Tips12082
-Node: Displaying symbols and emojis15029
-Node: Encrypted room support through Pantalaimon15644
-Node: Changelog16200
-Node: 017-pre16774
-Node: 01618474
-Node: 015121254
-Node: 01521825
-Node: Compose buffer enhancements25988
-Node: ement-room-self-insert-mode29374
-Node: Image display30255
-Node: 01430911
-Node: 01332311
-Node: 01233911
-Node: 01136669
-Node: 01038768
-Node: 09342156
-Node: 09242379
-Node: 09142564
-Node: 0942726
-Node: 08344394
-Node: 08245022
-Node: 08145167
-Node: 0845299
-Node: 0746925
-Node: 0648101
-Node: 05248898
-Node: 05149111
-Node: 0549304
-Node: 04150146
-Node: 0450350
-Node: 03151862
-Node: 0352077
-Node: 02153301
-Node: 0253433
-Node: 014 (1)55066
-Node: 013 (1)55209
-Node: 012 (1)55506
-Node: 011 (1)55922
-Node: 0156225
-Node: Development56390
-Node: Copyright Assignment56643
-Node: Matrix spec in Org format57121
-Node: Rationale57435
-Node: License61019
+Node: Installation1602
+Node: GNU ELPA1841
+Node: GNU Guix2366
+Node: Debian Ubuntu2613
+Node: Nix2962
+Node: Other distributions3284
+Node: Git master3562
+Node: Manual4619
+Node: Usage4907
+Node: Bindings7567
+Node: Room buffers8031
+Node: Room list buffer11033
+Node: Directory buffers11429
+Node: Mentions/notifications buffers11688
+Node: Tips12074
+Node: Displaying symbols and emojis15021
+Node: Encrypted room support through Pantalaimon15636
+Node: Changelog16192
+Node: 01716758
+Node: 01618826
+Node: 015121602
+Node: 01522173
+Node: Compose buffer enhancements26336
+Node: ement-room-self-insert-mode29722
+Node: Image display30603
+Node: 01431259
+Node: 01332659
+Node: 01234259
+Node: 01137017
+Node: 01039116
+Node: 09342504
+Node: 09242727
+Node: 09142912
+Node: 0943074
+Node: 08344742
+Node: 08245370
+Node: 08145515
+Node: 0845647
+Node: 0747273
+Node: 0648449
+Node: 05249246
+Node: 05149459
+Node: 0549652
+Node: 04150494
+Node: 0450698
+Node: 03152210
+Node: 0352425
+Node: 02153649
+Node: 0253781
+Node: 014 (1)55414
+Node: 013 (1)55557
+Node: 012 (1)55854
+Node: 011 (1)56270
+Node: 0156573
+Node: Development56738
+Node: Copyright Assignment56991
+Node: Matrix spec in Org format57469
+Node: Rationale57783
+Node: License61367
 
 End Tag Table
 
