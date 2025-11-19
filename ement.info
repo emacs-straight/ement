@@ -1,4 +1,4 @@
-This is doc9NAMSt.info, produced by makeinfo version 6.8 from
+This is docvl2dnt.info, produced by makeinfo version 6.8 from
 ement.texi.
 
 INFO-DIR-SECTION Emacs
@@ -7,7 +7,7 @@ START-INFO-DIR-ENTRY
 END-INFO-DIR-ENTRY
 
 
-File: doc9NAMSt.info,  Node: Top,  Next: Installation,  Up: (dir)
+File: docvl2dnt.info,  Node: Top,  Next: Installation,  Up: (dir)
 
 Ement.el
 ********
@@ -53,6 +53,7 @@ Usage
 
 Changelog
 
+* 0.18-pre: 018-pre.
 * 0.17: 017.
 * 0.16: 016.
 * 0.15.1: 0151.
@@ -97,7 +98,7 @@ Development
 
 
 
-File: doc9NAMSt.info,  Node: Installation,  Next: Usage,  Prev: Top,  Up: Top
+File: docvl2dnt.info,  Node: Installation,  Next: Usage,  Prev: Top,  Up: Top
 
 1 Installation
 **************
@@ -113,7 +114,7 @@ File: doc9NAMSt.info,  Node: Installation,  Next: Usage,  Prev: Top,  Up: Top
 * Manual::
 
 
-File: doc9NAMSt.info,  Node: GNU ELPA,  Next: GNU Guix,  Up: Installation
+File: docvl2dnt.info,  Node: GNU ELPA,  Next: GNU Guix,  Up: Installation
 
 GNU ELPA
 ========
@@ -128,7 +129,7 @@ stable release.
 (https://elpa.gnu.org/devel/ement.html) or from Git (see below).
 
 
-File: doc9NAMSt.info,  Node: GNU Guix,  Next: Debian Ubuntu,  Prev: GNU ELPA,  Up: Installation
+File: docvl2dnt.info,  Node: GNU Guix,  Next: Debian Ubuntu,  Prev: GNU ELPA,  Up: Installation
 
 GNU Guix
 ========
@@ -137,7 +138,7 @@ Ement.el is available in GNU Guix (https://guix.gnu.org/) as emacs-ement
 (https://packages.guix.gnu.org/packages/emacs-ement/).
 
 
-File: doc9NAMSt.info,  Node: Debian Ubuntu,  Next: Nix,  Prev: GNU Guix,  Up: Installation
+File: docvl2dnt.info,  Node: Debian Ubuntu,  Next: Nix,  Prev: GNU Guix,  Up: Installation
 
 Debian, Ubuntu
 ==============
@@ -147,7 +148,7 @@ Ement.el is available in Debian as elpa-ement
 (https://packages.ubuntu.com/search?suite=default&section=all&arch=any&keywords=elpa-ement&searchon=names).
 
 
-File: doc9NAMSt.info,  Node: Nix,  Next: Other distributions,  Prev: Debian Ubuntu,  Up: Installation
+File: docvl2dnt.info,  Node: Nix,  Next: Other distributions,  Prev: Debian Ubuntu,  Up: Installation
 
 Nix
 ===
@@ -157,7 +158,7 @@ emacsPackages.ement
 (https://search.nixos.org/packages?channel=23.05&show=emacsPackages.ement&from=0&size=50&sort=relevance&type=packages&query=ement).
 
 
-File: doc9NAMSt.info,  Node: Other distributions,  Next: Git master,  Prev: Nix,  Up: Installation
+File: docvl2dnt.info,  Node: Other distributions,  Next: Git master,  Prev: Nix,  Up: Installation
 
 Other distributions
 ===================
@@ -166,7 +167,7 @@ Ement.el is also available in some other distributions.  See Repology
 (https://repology.org/project/emacs:ement/related) for details.
 
 
-File: doc9NAMSt.info,  Node: Git master,  Next: Manual,  Prev: Other distributions,  Up: Installation
+File: docvl2dnt.info,  Node: Git master,  Next: Manual,  Prev: Other distributions,  Up: Installation
 
 Git master
 ==========
@@ -196,7 +197,7 @@ DOOM (https://github.com/doomemacs/doomemacs)), but the author cannot
 offer support for them.
 
 
-File: doc9NAMSt.info,  Node: Manual,  Prev: Git master,  Up: Installation
+File: docvl2dnt.info,  Node: Manual,  Prev: Git master,  Up: Installation
 
 Manual
 ======
@@ -206,7 +207,7 @@ will ensure that the required autoloads are generated, etc.  If you
 choose to install it manually, you’re on your own.
 
 
-File: doc9NAMSt.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: Top
+File: docvl2dnt.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: Top
 
 2 Usage
 *******
@@ -262,7 +263,7 @@ File: doc9NAMSt.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: 
 * Encrypted room support through Pantalaimon::
 
 
-File: doc9NAMSt.info,  Node: Bindings,  Next: Tips,  Up: Usage
+File: docvl2dnt.info,  Node: Bindings,  Next: Tips,  Up: Usage
 
 Bindings
 ========
@@ -282,7 +283,7 @@ These bindings are common to all of the following buffer types:
 * Mentions/notifications buffers::
 
 
-File: doc9NAMSt.info,  Node: Room buffers,  Next: Room list buffer,  Up: Bindings
+File: docvl2dnt.info,  Node: Room buffers,  Next: Room list buffer,  Up: Bindings
 
 Room buffers
 ------------
@@ -375,7 +376,7 @@ mode.)
      prefix to force new sync): ‘g’
 
 
-File: doc9NAMSt.info,  Node: Room list buffer,  Next: Directory buffers,  Prev: Room buffers,  Up: Bindings
+File: docvl2dnt.info,  Node: Room list buffer,  Next: Directory buffers,  Prev: Room buffers,  Up: Bindings
 
 Room list buffer
 ----------------
@@ -388,7 +389,7 @@ Room list buffer
    • Toggle room’s membership in a space: ‘s’
 
 
-File: doc9NAMSt.info,  Node: Directory buffers,  Next: Mentions/notifications buffers,  Prev: Room list buffer,  Up: Bindings
+File: docvl2dnt.info,  Node: Directory buffers,  Next: Mentions/notifications buffers,  Prev: Room list buffer,  Up: Bindings
 
 Directory buffers
 -----------------
@@ -397,7 +398,7 @@ Directory buffers
    • Load next batch of rooms: ‘+’
 
 
-File: doc9NAMSt.info,  Node: Mentions/notifications buffers,  Prev: Directory buffers,  Up: Bindings
+File: docvl2dnt.info,  Node: Mentions/notifications buffers,  Prev: Directory buffers,  Up: Bindings
 
 Mentions/notifications buffers
 ------------------------------
@@ -408,7 +409,7 @@ Mentions/notifications buffers
      writing): ‘S-<return>’
 
 
-File: doc9NAMSt.info,  Node: Tips,  Next: Encrypted room support through Pantalaimon,  Prev: Bindings,  Up: Usage
+File: docvl2dnt.info,  Node: Tips,  Next: Encrypted room support through Pantalaimon,  Prev: Bindings,  Up: Usage
 
 Tips
 ====
@@ -464,7 +465,7 @@ Tips
 * Displaying symbols and emojis::
 
 
-File: doc9NAMSt.info,  Node: Displaying symbols and emojis,  Up: Tips
+File: docvl2dnt.info,  Node: Displaying symbols and emojis,  Up: Tips
 
 Displaying symbols and emojis
 -----------------------------
@@ -481,7 +482,7 @@ code:
      (set-fontset-font t 'unicode "Noto Emoji" nil 'append)
 
 
-File: doc9NAMSt.info,  Node: Encrypted room support through Pantalaimon,  Prev: Tips,  Up: Usage
+File: docvl2dnt.info,  Node: Encrypted room support through Pantalaimon,  Prev: Tips,  Up: Usage
 
 Encrypted room support through Pantalaimon
 ==========================================
@@ -495,13 +496,14 @@ appropriate hostname and port, like:
      (ement-connect :uri-prefix "http://localhost:8009")
 
 
-File: doc9NAMSt.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: Top
+File: docvl2dnt.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: Top
 
 3 Changelog
 ***********
 
 * Menu:
 
+* 0.18-pre: 018-pre.
 * 0.17: 017.
 * 0.16: 016.
 * 0.15.1: 0151.
@@ -537,7 +539,15 @@ File: doc9NAMSt.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: T
 * 0.1: 01.
 
 
-File: doc9NAMSt.info,  Node: 017,  Next: 016,  Up: Changelog
+File: docvl2dnt.info,  Node: 018-pre,  Next: 017,  Up: Changelog
+
+0.18-pre
+========
+
+Nothing new yet.
+
+
+File: docvl2dnt.info,  Node: 017,  Next: 016,  Prev: 018-pre,  Up: Changelog
 
 0.17
 ====
@@ -583,7 +593,7 @@ File: doc9NAMSt.info,  Node: 017,  Next: 016,  Up: Changelog
      Bennée (https://github.com/stsquad) for reporting.)
 
 
-File: doc9NAMSt.info,  Node: 016,  Next: 0151,  Prev: 017,  Up: Changelog
+File: docvl2dnt.info,  Node: 016,  Next: 0151,  Prev: 017,  Up: Changelog
 
 0.16
 ====
@@ -641,7 +651,7 @@ File: doc9NAMSt.info,  Node: 016,  Next: 0151,  Prev: 017,  Up: Changelog
      Bernoulli (https://github.com/tarsius).)
 
 
-File: doc9NAMSt.info,  Node: 0151,  Next: 015,  Prev: 016,  Up: Changelog
+File: docvl2dnt.info,  Node: 0151,  Next: 015,  Prev: 016,  Up: Changelog
 
 0.15.1
 ======
@@ -656,7 +666,7 @@ File: doc9NAMSt.info,  Node: 0151,  Next: 015,  Prev: 016,  Up: Changelog
      to Adam Bark (https://github.com/AdamBark) for reporting.)
 
 
-File: doc9NAMSt.info,  Node: 015,  Next: 014,  Prev: 0151,  Up: Changelog
+File: docvl2dnt.info,  Node: 015,  Next: 014,  Prev: 0151,  Up: Changelog
 
 0.15
 ====
@@ -740,7 +750,7 @@ Options affecting how images are displayed in room buffers.
 * Image display::
 
 
-File: doc9NAMSt.info,  Node: Compose buffer enhancements,  Next: ement-room-self-insert-mode,  Up: 015
+File: docvl2dnt.info,  Node: Compose buffer enhancements,  Next: ement-room-self-insert-mode,  Up: 015
 
 Compose buffer enhancements
 ---------------------------
@@ -800,7 +810,7 @@ Compose buffer enhancements
      or ‘C-s’.)
 
 
-File: doc9NAMSt.info,  Node: ement-room-self-insert-mode,  Next: Image display,  Prev: Compose buffer enhancements,  Up: 015
+File: docvl2dnt.info,  Node: ement-room-self-insert-mode,  Next: Image display,  Prev: Compose buffer enhancements,  Up: 015
 
 ‘ement-room-self-insert-mode’
 -----------------------------
@@ -818,7 +828,7 @@ File: doc9NAMSt.info,  Node: ement-room-self-insert-mode,  Next: Image display, 
      ‘DEL’.)
 
 
-File: doc9NAMSt.info,  Node: Image display,  Prev: ement-room-self-insert-mode,  Up: 015
+File: docvl2dnt.info,  Node: Image display,  Prev: ement-room-self-insert-mode,  Up: 015
 
 Image display
 -------------
@@ -834,7 +844,7 @@ Image display
      height for thumbnail images (by default, 30 pixels).
 
 
-File: doc9NAMSt.info,  Node: 014,  Next: 013,  Prev: 015,  Up: Changelog
+File: docvl2dnt.info,  Node: 014,  Next: 013,  Prev: 015,  Up: Changelog
 
 0.14
 ====
@@ -870,7 +880,7 @@ File: doc9NAMSt.info,  Node: 014,  Next: 013,  Prev: 015,  Up: Changelog
      (Thanks to Phil Sainty (https://github.com/phil-s).)
 
 
-File: doc9NAMSt.info,  Node: 013,  Next: 012,  Prev: 014,  Up: Changelog
+File: docvl2dnt.info,  Node: 013,  Next: 012,  Prev: 014,  Up: Changelog
 
 0.13
 ====
@@ -909,7 +919,7 @@ File: doc9NAMSt.info,  Node: 013,  Next: 012,  Prev: 014,  Up: Changelog
    • Command ‘ement-room-flush-colors’ maintains point position.
 
 
-File: doc9NAMSt.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
+File: docvl2dnt.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
 
 0.12
 ====
@@ -965,7 +975,7 @@ File: doc9NAMSt.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
      discover this problem.)
 
 
-File: doc9NAMSt.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
+File: docvl2dnt.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
 
 0.11
 ====
@@ -1014,7 +1024,7 @@ File: doc9NAMSt.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
      Sainty (https://github.com/phil-s).)
 
 
-File: doc9NAMSt.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
+File: docvl2dnt.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
 
 0.10
 ====
@@ -1083,7 +1093,7 @@ File: doc9NAMSt.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
      replaced.
 
 
-File: doc9NAMSt.info,  Node: 093,  Next: 092,  Prev: 010,  Up: Changelog
+File: docvl2dnt.info,  Node: 093,  Next: 092,  Prev: 010,  Up: Changelog
 
 0.9.3
 =====
@@ -1093,7 +1103,7 @@ File: doc9NAMSt.info,  Node: 093,  Next: 092,  Prev: 010,  Up: Changelog
    • Command ‘ement-room-list-next-unread’.
 
 
-File: doc9NAMSt.info,  Node: 092,  Next: 091,  Prev: 093,  Up: Changelog
+File: docvl2dnt.info,  Node: 092,  Next: 091,  Prev: 093,  Up: Changelog
 
 0.9.2
 =====
@@ -1103,7 +1113,7 @@ File: doc9NAMSt.info,  Node: 092,  Next: 091,  Prev: 093,  Up: Changelog
    • Completion in minibuffer.
 
 
-File: doc9NAMSt.info,  Node: 091,  Next: 09,  Prev: 092,  Up: Changelog
+File: docvl2dnt.info,  Node: 091,  Next: 09,  Prev: 092,  Up: Changelog
 
 0.9.1
 =====
@@ -1112,7 +1122,7 @@ File: doc9NAMSt.info,  Node: 091,  Next: 09,  Prev: 092,  Up: Changelog
    • Error in ‘ement-room-list’ command upon initial sync.
 
 
-File: doc9NAMSt.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
+File: docvl2dnt.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
 
 0.9
 ===
@@ -1152,7 +1162,7 @@ File: doc9NAMSt.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
      (https://github.com/chasecaleb) for reporting.)
 
 
-File: doc9NAMSt.info,  Node: 083,  Next: 082,  Prev: 09,  Up: Changelog
+File: docvl2dnt.info,  Node: 083,  Next: 082,  Prev: 09,  Up: Changelog
 
 0.8.3
 =====
@@ -1169,7 +1179,7 @@ File: doc9NAMSt.info,  Node: 083,  Next: 082,  Prev: 09,  Up: Changelog
      used.)
 
 
-File: doc9NAMSt.info,  Node: 082,  Next: 081,  Prev: 083,  Up: Changelog
+File: docvl2dnt.info,  Node: 082,  Next: 081,  Prev: 083,  Up: Changelog
 
 0.8.2
 =====
@@ -1179,7 +1189,7 @@ File: doc9NAMSt.info,  Node: 082,  Next: 081,  Prev: 083,  Up: Changelog
    • Deduplicate grouped membership events.
 
 
-File: doc9NAMSt.info,  Node: 081,  Next: 08,  Prev: 082,  Up: Changelog
+File: docvl2dnt.info,  Node: 081,  Next: 08,  Prev: 082,  Up: Changelog
 
 0.8.1
 =====
@@ -1187,7 +1197,7 @@ File: doc9NAMSt.info,  Node: 081,  Next: 08,  Prev: 082,  Up: Changelog
 Added missing changelog entry (of course).
 
 
-File: doc9NAMSt.info,  Node: 08,  Next: 07,  Prev: 081,  Up: Changelog
+File: docvl2dnt.info,  Node: 08,  Next: 07,  Prev: 081,  Up: Changelog
 
 0.8
 ===
@@ -1225,7 +1235,7 @@ File: doc9NAMSt.info,  Node: 08,  Next: 07,  Prev: 081,  Up: Changelog
    • Prompts in commands ‘ement-leave-room’ and ‘ement-forget-room’.
 
 
-File: doc9NAMSt.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
+File: docvl2dnt.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
 
 0.7
 ===
@@ -1259,7 +1269,7 @@ File: doc9NAMSt.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
      on a room’s account data.
 
 
-File: doc9NAMSt.info,  Node: 06,  Next: 052,  Prev: 07,  Up: Changelog
+File: docvl2dnt.info,  Node: 06,  Next: 052,  Prev: 07,  Up: Changelog
 
 0.6
 ===
@@ -1284,7 +1294,7 @@ File: doc9NAMSt.info,  Node: 06,  Next: 052,  Prev: 07,  Up: Changelog
      (https://github.com/vizs).)
 
 
-File: doc9NAMSt.info,  Node: 052,  Next: 051,  Prev: 06,  Up: Changelog
+File: docvl2dnt.info,  Node: 052,  Next: 051,  Prev: 06,  Up: Changelog
 
 0.5.2
 =====
@@ -1294,7 +1304,7 @@ File: doc9NAMSt.info,  Node: 052,  Next: 051,  Prev: 06,  Up: Changelog
      homeserver is slow to respond).
 
 
-File: doc9NAMSt.info,  Node: 051,  Next: 05,  Prev: 052,  Up: Changelog
+File: docvl2dnt.info,  Node: 051,  Next: 05,  Prev: 052,  Up: Changelog
 
 0.5.1
 =====
@@ -1304,7 +1314,7 @@ File: doc9NAMSt.info,  Node: 051,  Next: 05,  Prev: 052,  Up: Changelog
    • Faces in ‘ement-directory’ listings.
 
 
-File: doc9NAMSt.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
+File: docvl2dnt.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
 
 0.5
 ===
@@ -1328,7 +1338,7 @@ File: doc9NAMSt.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
    • Replies may be written in compose buffers.
 
 
-File: doc9NAMSt.info,  Node: 041,  Next: 04,  Prev: 05,  Up: Changelog
+File: docvl2dnt.info,  Node: 041,  Next: 04,  Prev: 05,  Up: Changelog
 
 0.4.1
 =====
@@ -1338,7 +1348,7 @@ File: doc9NAMSt.info,  Node: 041,  Next: 04,  Prev: 05,  Up: Changelog
      marker’s position again.
 
 
-File: doc9NAMSt.info,  Node: 04,  Next: 031,  Prev: 041,  Up: Changelog
+File: docvl2dnt.info,  Node: 04,  Next: 031,  Prev: 041,  Up: Changelog
 
 0.4
 ===
@@ -1373,7 +1383,7 @@ File: doc9NAMSt.info,  Node: 04,  Next: 031,  Prev: 041,  Up: Changelog
    • Highlighting of ‘@room’ mentions.
 
 
-File: doc9NAMSt.info,  Node: 031,  Next: 03,  Prev: 04,  Up: Changelog
+File: docvl2dnt.info,  Node: 031,  Next: 03,  Prev: 04,  Up: Changelog
 
 0.3.1
 =====
@@ -1383,7 +1393,7 @@ File: doc9NAMSt.info,  Node: 031,  Next: 03,  Prev: 04,  Up: Changelog
      local user, the room is considered read).
 
 
-File: doc9NAMSt.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
+File: docvl2dnt.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
 
 0.3
 ===
@@ -1415,7 +1425,7 @@ File: doc9NAMSt.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
    • Compatibility with Emacs 27.
 
 
-File: doc9NAMSt.info,  Node: 021,  Next: 02,  Prev: 03,  Up: Changelog
+File: docvl2dnt.info,  Node: 021,  Next: 02,  Prev: 03,  Up: Changelog
 
 0.2.1
 =====
@@ -1424,7 +1434,7 @@ File: doc9NAMSt.info,  Node: 021,  Next: 02,  Prev: 03,  Up: Changelog
    • Info manual export filename.
 
 
-File: doc9NAMSt.info,  Node: 02,  Next: 014 (1),  Prev: 021,  Up: Changelog
+File: docvl2dnt.info,  Node: 02,  Next: 014 (1),  Prev: 021,  Up: Changelog
 
 0.2
 ===
@@ -1458,7 +1468,7 @@ File: doc9NAMSt.info,  Node: 02,  Next: 014 (1),  Prev: 021,  Up: Changelog
    • Prevent error when a room avatar image fails to load.
 
 
-File: doc9NAMSt.info,  Node: 014 (1),  Next: 013 (1),  Prev: 02,  Up: Changelog
+File: docvl2dnt.info,  Node: 014 (1),  Next: 013 (1),  Prev: 02,  Up: Changelog
 
 0.1.4
 =====
@@ -1467,7 +1477,7 @@ File: doc9NAMSt.info,  Node: 014 (1),  Next: 013 (1),  Prev: 02,  Up: Changelog
    • Info manual directory headers.
 
 
-File: doc9NAMSt.info,  Node: 013 (1),  Next: 012 (1),  Prev: 014 (1),  Up: Changelog
+File: docvl2dnt.info,  Node: 013 (1),  Next: 012 (1),  Prev: 014 (1),  Up: Changelog
 
 0.1.3
 =====
@@ -1479,7 +1489,7 @@ File: doc9NAMSt.info,  Node: 013 (1),  Next: 012 (1),  Prev: 014 (1),  Up: Chang
      be re-enabled in a future release.)
 
 
-File: doc9NAMSt.info,  Node: 012 (1),  Next: 011 (1),  Prev: 013 (1),  Up: Changelog
+File: docvl2dnt.info,  Node: 012 (1),  Next: 011 (1),  Prev: 013 (1),  Up: Changelog
 
 0.1.2
 =====
@@ -1492,7 +1502,7 @@ File: doc9NAMSt.info,  Node: 012 (1),  Next: 011 (1),  Prev: 013 (1),  Up: Chang
      Tassilo Horn (https://github.com/tsdh).)
 
 
-File: doc9NAMSt.info,  Node: 011 (1),  Next: 01,  Prev: 012 (1),  Up: Changelog
+File: docvl2dnt.info,  Node: 011 (1),  Next: 01,  Prev: 012 (1),  Up: Changelog
 
 0.1.1
 =====
@@ -1504,7 +1514,7 @@ File: doc9NAMSt.info,  Node: 011 (1),  Next: 01,  Prev: 012 (1),  Up: Changelog
      ‘display-images-p’ returns.
 
 
-File: doc9NAMSt.info,  Node: 01,  Prev: 011 (1),  Up: Changelog
+File: docvl2dnt.info,  Node: 01,  Prev: 011 (1),  Up: Changelog
 
 0.1
 ===
@@ -1513,7 +1523,7 @@ After almost two years of development, the first tagged release.
 Submitted to GNU ELPA.
 
 
-File: doc9NAMSt.info,  Node: Development,  Next: License,  Prev: Changelog,  Up: Top
+File: docvl2dnt.info,  Node: Development,  Next: License,  Prev: Changelog,  Up: Top
 
 4 Development
 *************
@@ -1527,7 +1537,7 @@ Bug reports, feature requests, suggestions — _oh my_!
 * Rationale::
 
 
-File: doc9NAMSt.info,  Node: Copyright Assignment,  Next: Matrix spec in Org format,  Up: Development
+File: docvl2dnt.info,  Node: Copyright Assignment,  Next: Matrix spec in Org format,  Up: Development
 
 Copyright Assignment
 ====================
@@ -1539,7 +1549,7 @@ FSF.  Authors who are interested in doing so may contact assign@gnu.org
 <assign@gnu.org> to request the appropriate form.
 
 
-File: doc9NAMSt.info,  Node: Matrix spec in Org format,  Next: Rationale,  Prev: Copyright Assignment,  Up: Development
+File: docvl2dnt.info,  Node: Matrix spec in Org format,  Next: Rationale,  Prev: Copyright Assignment,  Up: Development
 
 Matrix spec in Org format
 =========================
@@ -1548,7 +1558,7 @@ An Org-formatted version of the Matrix spec is available in the
 meta/spec (https://github.com/alphapapa/ement.el/tree/meta/spec) branch.
 
 
-File: doc9NAMSt.info,  Node: Rationale,  Prev: Matrix spec in Org format,  Up: Development
+File: docvl2dnt.info,  Node: Rationale,  Prev: Matrix spec in Org format,  Up: Development
 
 Rationale
 =========
@@ -1612,7 +1622,7 @@ only reason to choose ‘matrix-client’ instead is if one is using an
 older version of Emacs that isn’t supported by Ement.el.
 
 
-File: doc9NAMSt.info,  Node: License,  Prev: Development,  Up: Top
+File: docvl2dnt.info,  Node: License,  Prev: Development,  Up: Top
 
 5 License
 *********
@@ -1623,65 +1633,66 @@ GPLv3
 
 Tag Table:
 Node: Top188
-Node: Installation1602
-Node: GNU ELPA1841
-Node: GNU Guix2366
-Node: Debian Ubuntu2613
-Node: Nix2962
-Node: Other distributions3284
-Node: Git master3562
-Node: Manual4619
-Node: Usage4907
-Node: Bindings7567
-Node: Room buffers8031
-Node: Room list buffer11033
-Node: Directory buffers11429
-Node: Mentions/notifications buffers11688
-Node: Tips12074
-Node: Displaying symbols and emojis15021
-Node: Encrypted room support through Pantalaimon15636
-Node: Changelog16192
-Node: 01716758
-Node: 01618826
-Node: 015121602
-Node: 01522173
-Node: Compose buffer enhancements26336
-Node: ement-room-self-insert-mode29722
-Node: Image display30603
-Node: 01431259
-Node: 01332659
-Node: 01234259
-Node: 01137017
-Node: 01039116
-Node: 09342504
-Node: 09242727
-Node: 09142912
-Node: 0943074
-Node: 08344742
-Node: 08245370
-Node: 08145515
-Node: 0845647
-Node: 0747273
-Node: 0648449
-Node: 05249246
-Node: 05149459
-Node: 0549652
-Node: 04150494
-Node: 0450698
-Node: 03152210
-Node: 0352425
-Node: 02153649
-Node: 0253781
-Node: 014 (1)55414
-Node: 013 (1)55557
-Node: 012 (1)55854
-Node: 011 (1)56270
-Node: 0156573
-Node: Development56738
-Node: Copyright Assignment56991
-Node: Matrix spec in Org format57469
-Node: Rationale57783
-Node: License61367
+Node: Installation1623
+Node: GNU ELPA1862
+Node: GNU Guix2387
+Node: Debian Ubuntu2634
+Node: Nix2983
+Node: Other distributions3305
+Node: Git master3583
+Node: Manual4640
+Node: Usage4928
+Node: Bindings7588
+Node: Room buffers8052
+Node: Room list buffer11054
+Node: Directory buffers11450
+Node: Mentions/notifications buffers11709
+Node: Tips12095
+Node: Displaying symbols and emojis15042
+Node: Encrypted room support through Pantalaimon15657
+Node: Changelog16213
+Node: 018-pre16800
+Node: 01716905
+Node: 01618989
+Node: 015121765
+Node: 01522336
+Node: Compose buffer enhancements26499
+Node: ement-room-self-insert-mode29885
+Node: Image display30766
+Node: 01431422
+Node: 01332822
+Node: 01234422
+Node: 01137180
+Node: 01039279
+Node: 09342667
+Node: 09242890
+Node: 09143075
+Node: 0943237
+Node: 08344905
+Node: 08245533
+Node: 08145678
+Node: 0845810
+Node: 0747436
+Node: 0648612
+Node: 05249409
+Node: 05149622
+Node: 0549815
+Node: 04150657
+Node: 0450861
+Node: 03152373
+Node: 0352588
+Node: 02153812
+Node: 0253944
+Node: 014 (1)55577
+Node: 013 (1)55720
+Node: 012 (1)56017
+Node: 011 (1)56433
+Node: 0156736
+Node: Development56901
+Node: Copyright Assignment57154
+Node: Matrix spec in Org format57632
+Node: Rationale57946
+Node: License61530
 
 End Tag Table
 
