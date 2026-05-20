@@ -1,5 +1,4 @@
-This is docvl2dnt.info, produced by makeinfo version 6.8 from
-ement.texi.
+This is ement.info, produced by makeinfo version 7.1.1 from ement.texi.
 
 INFO-DIR-SECTION Emacs
 START-INFO-DIR-ENTRY
@@ -7,7 +6,7 @@ START-INFO-DIR-ENTRY
 END-INFO-DIR-ENTRY
 
 
-File: docvl2dnt.info,  Node: Top,  Next: Installation,  Up: (dir)
+File: ement.info,  Node: Top,  Next: Installation,  Up: (dir)
 
 Ement.el
 ********
@@ -31,7 +30,7 @@ https://img.shields.io/matrix/ement.el:matrix.org.svg?label=%23ement.el:matrix.o
 * Development::
 * License::
 
-— The Detailed Node Listing —
+-- The Detailed Node Listing --
 
 Installation
 
@@ -98,7 +97,7 @@ Development
 
 
 
-File: docvl2dnt.info,  Node: Installation,  Next: Usage,  Prev: Top,  Up: Top
+File: ement.info,  Node: Installation,  Next: Usage,  Prev: Top,  Up: Top
 
 1 Installation
 **************
@@ -114,7 +113,7 @@ File: docvl2dnt.info,  Node: Installation,  Next: Usage,  Prev: Top,  Up: Top
 * Manual::
 
 
-File: docvl2dnt.info,  Node: GNU ELPA,  Next: GNU Guix,  Up: Installation
+File: ement.info,  Node: GNU ELPA,  Next: GNU Guix,  Up: Installation
 
 GNU ELPA
 ========
@@ -129,7 +128,7 @@ stable release.
 (https://elpa.gnu.org/devel/ement.html) or from Git (see below).
 
 
-File: docvl2dnt.info,  Node: GNU Guix,  Next: Debian Ubuntu,  Prev: GNU ELPA,  Up: Installation
+File: ement.info,  Node: GNU Guix,  Next: Debian Ubuntu,  Prev: GNU ELPA,  Up: Installation
 
 GNU Guix
 ========
@@ -138,7 +137,7 @@ Ement.el is available in GNU Guix (https://guix.gnu.org/) as emacs-ement
 (https://packages.guix.gnu.org/packages/emacs-ement/).
 
 
-File: docvl2dnt.info,  Node: Debian Ubuntu,  Next: Nix,  Prev: GNU Guix,  Up: Installation
+File: ement.info,  Node: Debian Ubuntu,  Next: Nix,  Prev: GNU Guix,  Up: Installation
 
 Debian, Ubuntu
 ==============
@@ -148,7 +147,7 @@ Ement.el is available in Debian as elpa-ement
 (https://packages.ubuntu.com/search?suite=default&section=all&arch=any&keywords=elpa-ement&searchon=names).
 
 
-File: docvl2dnt.info,  Node: Nix,  Next: Other distributions,  Prev: Debian Ubuntu,  Up: Installation
+File: ement.info,  Node: Nix,  Next: Other distributions,  Prev: Debian Ubuntu,  Up: Installation
 
 Nix
 ===
@@ -158,7 +157,7 @@ emacsPackages.ement
 (https://search.nixos.org/packages?channel=23.05&show=emacsPackages.ement&from=0&size=50&sort=relevance&type=packages&query=ement).
 
 
-File: docvl2dnt.info,  Node: Other distributions,  Next: Git master,  Prev: Nix,  Up: Installation
+File: ement.info,  Node: Other distributions,  Next: Git master,  Prev: Nix,  Up: Installation
 
 Other distributions
 ===================
@@ -167,7 +166,7 @@ Ement.el is also available in some other distributions.  See Repology
 (https://repology.org/project/emacs:ement/related) for details.
 
 
-File: docvl2dnt.info,  Node: Git master,  Next: Manual,  Prev: Other distributions,  Up: Installation
+File: ement.info,  Node: Git master,  Next: Manual,  Prev: Other distributions,  Up: Installation
 
 Git master
 ==========
@@ -197,17 +196,17 @@ DOOM (https://github.com/doomemacs/doomemacs)), but the author cannot
 offer support for them.
 
 
-File: docvl2dnt.info,  Node: Manual,  Prev: Git master,  Up: Installation
+File: ement.info,  Node: Manual,  Prev: Git master,  Up: Installation
 
 Manual
 ======
 
-Ement.el is intended to be installed with Emacs’s package system, which
+Ement.el is intended to be installed with Emacs's package system, which
 will ensure that the required autoloads are generated, etc.  If you
-choose to install it manually, you’re on your own.
+choose to install it manually, you're on your own.
 
 
-File: docvl2dnt.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: Top
+File: ement.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: Top
 
 2 Usage
 *******
@@ -217,11 +216,11 @@ File: docvl2dnt.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: 
      supported: call the command again with a ‘C-u’ universal prefix to
      connect to another account.
   2. Wait for initial sync to complete (which can take a few
-     moments–initial sync JSON responses can be large).
+     moments-initial sync JSON responses can be large).
   3. Use these commands (room-related commands may be called with
      universal prefix to prompt for the room):
         • ‘ement-list-rooms’ to view the list of joined rooms.
-        • ‘ement-view-room’ to view a room’s buffer, selected with
+        • ‘ement-view-room’ to view a room's buffer, selected with
           completion.
         • ‘ement-create-room’ to create a new room.
         • ‘ement-create-space’ to create a space.
@@ -238,14 +237,14 @@ File: docvl2dnt.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: 
         • ‘ement-room-edit-message’ to edit a message at point.
         • ‘ement-room-send-file’ to send a file.
         • ‘ement-room-send-image’ to send an image.
-        • ‘ement-room-set-topic’ to set a room’s topic.
-        • ‘ement-room-occur’ to search in a room’s known events.
-        • ‘ement-room-override-name’ to override a room’s display name.
+        • ‘ement-room-set-topic’ to set a room's topic.
+        • ‘ement-room-occur’ to search in a room's known events.
+        • ‘ement-room-override-name’ to override a room's display name.
         • ‘ement-ignore-user’ to ignore a user (or with interactive
           prefix, un-ignore).
-        • ‘ement-room-set-message-format’ to set a room’s message format
+        • ‘ement-room-set-message-format’ to set a room's message format
           buffer-locally.
-        • ‘ement-room-toggle-space’ to toggle a room’s membership in a
+        • ‘ement-room-toggle-space’ to toggle a room's membership in a
           space (a way to group rooms in Matrix).
         • ‘ement-directory’ to view a room directory.
         • ‘ement-directory-search’ to search a room directory.
@@ -263,7 +262,7 @@ File: docvl2dnt.info,  Node: Usage,  Next: Changelog,  Prev: Installation,  Up: 
 * Encrypted room support through Pantalaimon::
 
 
-File: docvl2dnt.info,  Node: Bindings,  Next: Tips,  Up: Usage
+File: ement.info,  Node: Bindings,  Next: Tips,  Up: Usage
 
 Bindings
 ========
@@ -283,7 +282,7 @@ These bindings are common to all of the following buffer types:
 * Mentions/notifications buffers::
 
 
-File: docvl2dnt.info,  Node: Room buffers,  Next: Room list buffer,  Up: Bindings
+File: ement.info,  Node: Room buffers,  Next: Room list buffer,  Up: Bindings
 
 Room buffers
 ------------
@@ -322,8 +321,8 @@ mode.)
 
    • Write message: ‘RET’
    • Compose message in buffer: ‘M-RET’ (while writing in minibuffer:
-     ‘C-c '‍’).  Customize the option ‘ement-room-compose-method’ to
-     make ‘RET’ and the other message bindings use a compose buffer by
+     ‘C-c '‍’).  Customize the option ‘ement-room-compose-method’ to make
+     ‘RET’ and the other message bindings use a compose buffer by
      default.  Use command ‘ement-room-compose-org’ to activate Org mode
      in the compose buffer.
    • Write reply to event at point: ‘S-<return>’
@@ -368,7 +367,7 @@ mode.)
    • Join room: ‘R j’
    • Leave room: ‘R l’
    • Forget room: ‘R F’
-   • Toggle room’s spaces: ‘R s’
+   • Toggle room's spaces: ‘R s’
 
    *Other*
 
@@ -376,7 +375,7 @@ mode.)
      prefix to force new sync): ‘g’
 
 
-File: docvl2dnt.info,  Node: Room list buffer,  Next: Directory buffers,  Prev: Room buffers,  Up: Bindings
+File: ement.info,  Node: Room list buffer,  Next: Directory buffers,  Prev: Room buffers,  Up: Bindings
 
 Room list buffer
 ----------------
@@ -385,11 +384,11 @@ Room list buffer
    • Show buffer of next unread room: ‘SPC’
    • Move between room names: ‘TAB’ / ‘<backtab>’
 
-   • Kill room’s buffer: ‘k’
-   • Toggle room’s membership in a space: ‘s’
+   • Kill room's buffer: ‘k’
+   • Toggle room's membership in a space: ‘s’
 
 
-File: docvl2dnt.info,  Node: Directory buffers,  Next: Mentions/notifications buffers,  Prev: Room list buffer,  Up: Bindings
+File: ement.info,  Node: Directory buffers,  Next: Mentions/notifications buffers,  Prev: Room list buffer,  Up: Bindings
 
 Directory buffers
 -----------------
@@ -398,7 +397,7 @@ Directory buffers
    • Load next batch of rooms: ‘+’
 
 
-File: docvl2dnt.info,  Node: Mentions/notifications buffers,  Prev: Directory buffers,  Up: Bindings
+File: ement.info,  Node: Mentions/notifications buffers,  Prev: Directory buffers,  Up: Bindings
 
 Mentions/notifications buffers
 ------------------------------
@@ -409,7 +408,7 @@ Mentions/notifications buffers
      writing): ‘S-<return>’
 
 
-File: docvl2dnt.info,  Node: Tips,  Next: Encrypted room support through Pantalaimon,  Prev: Bindings,  Up: Usage
+File: ement.info,  Node: Tips,  Next: Encrypted room support through Pantalaimon,  Prev: Bindings,  Up: Usage
 
 Tips
 ====
@@ -438,7 +437,7 @@ Tips
           ‘(info "(org) Structure Templates")’ for details.
    • Starting in the room list buffer, by pressing ‘SPC’ repeatedly, you
      can cycle through and read all rooms with unread buffers.  (If a
-     room doesn’t have a buffer, it will not be included.)
+     room doesn't have a buffer, it will not be included.)
    • Room buffers and the room-list buffer can be bookmarked in Emacs,
      i.e.  using ‘C-x r m’.  This is especially useful with Burly
      (https://github.com/alphapapa/burly.el): you can arrange an Emacs
@@ -450,7 +449,7 @@ Tips
    • Images and other files can be uploaded to rooms using
      drag-and-drop.
    • Mention members by typing a ‘@’ followed by their displayname or
-     Matrix ID.  (Members’ names and rooms’ aliases/IDs may be completed
+     Matrix ID.  (Members' names and rooms' aliases/IDs may be completed
      with ‘completion-at-point’ commands.)
    • Customize ‘ement-room-use-variable-pitch’ to render messages using
      proportional fonts.
@@ -465,7 +464,7 @@ Tips
 * Displaying symbols and emojis::
 
 
-File: docvl2dnt.info,  Node: Displaying symbols and emojis,  Up: Tips
+File: ement.info,  Node: Displaying symbols and emojis,  Up: Tips
 
 Displaying symbols and emojis
 -----------------------------
@@ -482,12 +481,12 @@ code:
      (set-fontset-font t 'unicode "Noto Emoji" nil 'append)
 
 
-File: docvl2dnt.info,  Node: Encrypted room support through Pantalaimon,  Prev: Tips,  Up: Usage
+File: ement.info,  Node: Encrypted room support through Pantalaimon,  Prev: Tips,  Up: Usage
 
 Encrypted room support through Pantalaimon
 ==========================================
 
-Ement.el doesn’t support encrypted rooms natively, but it can be used
+Ement.el doesn't support encrypted rooms natively, but it can be used
 transparently with the E2EE-aware reverse proxy daemon Pantalaimon
 (https://github.com/matrix-org/pantalaimon/).  After configuring it
 according to its documentation, call ‘ement-connect’ with the
@@ -496,7 +495,7 @@ appropriate hostname and port, like:
      (ement-connect :uri-prefix "http://localhost:8009")
 
 
-File: docvl2dnt.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: Top
+File: ement.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: Top
 
 3 Changelog
 ***********
@@ -539,7 +538,7 @@ File: docvl2dnt.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: T
 * 0.1: 01.
 
 
-File: docvl2dnt.info,  Node: 018-pre,  Next: 017,  Up: Changelog
+File: ement.info,  Node: 018-pre,  Next: 017,  Up: Changelog
 
 0.18-pre
 ========
@@ -547,7 +546,7 @@ File: docvl2dnt.info,  Node: 018-pre,  Next: 017,  Up: Changelog
 Nothing new yet.
 
 
-File: docvl2dnt.info,  Node: 017,  Next: 016,  Prev: 018-pre,  Up: Changelog
+File: ement.info,  Node: 017,  Next: 016,  Prev: 018-pre,  Up: Changelog
 
 0.17
 ====
@@ -593,7 +592,7 @@ File: docvl2dnt.info,  Node: 017,  Next: 016,  Prev: 018-pre,  Up: Changelog
      Bennée (https://github.com/stsquad) for reporting.)
 
 
-File: docvl2dnt.info,  Node: 016,  Next: 0151,  Prev: 017,  Up: Changelog
+File: ement.info,  Node: 016,  Next: 0151,  Prev: 017,  Up: Changelog
 
 0.16
 ====
@@ -602,7 +601,7 @@ File: docvl2dnt.info,  Node: 016,  Next: 0151,  Prev: 017,  Up: Changelog
 
    • Use authenticated media requests (part of Matrix 1.11; see MSC3916
      (https://github.com/matrix-org/matrix-spec-proposals/pull/3916) and
-     matrix.org’s sunsetting unauthenticated media
+     matrix.org's sunsetting unauthenticated media
      (https://matrix.org/blog/2024/06/26/sunsetting-unauthenticated-media/)).
 
    *Additions*
@@ -651,7 +650,7 @@ File: docvl2dnt.info,  Node: 016,  Next: 0151,  Prev: 017,  Up: Changelog
      Bernoulli (https://github.com/tarsius).)
 
 
-File: docvl2dnt.info,  Node: 0151,  Next: 015,  Prev: 016,  Up: Changelog
+File: ement.info,  Node: 0151,  Next: 015,  Prev: 016,  Up: Changelog
 
 0.15.1
 ======
@@ -661,12 +660,12 @@ File: docvl2dnt.info,  Node: 0151,  Next: 015,  Prev: 016,  Up: Changelog
      (https://github.com/alphapapa/ement.el/issues/248).  Thanks to
      Hunter Jozwiak (https://github.com/hjozwiak) and Bharath Palavalli
      (https://github.com/bmp) for reporting.)
-   • Don’t use ‘cl-type’ ‘pcase’ form in Emacs versions before 28.
+   • Don't use ‘cl-type’ ‘pcase’ form in Emacs versions before 28.
      (#279 (https://github.com/alphapapa/ement.el/issues/279).  Thanks
      to Adam Bark (https://github.com/AdamBark) for reporting.)
 
 
-File: docvl2dnt.info,  Node: 015,  Next: 014,  Prev: 0151,  Up: Changelog
+File: ement.info,  Node: 015,  Next: 014,  Prev: 0151,  Up: Changelog
 
 0.15
 ====
@@ -750,7 +749,7 @@ Options affecting how images are displayed in room buffers.
 * Image display::
 
 
-File: docvl2dnt.info,  Node: Compose buffer enhancements,  Next: ement-room-self-insert-mode,  Up: 015
+File: ement.info,  Node: Compose buffer enhancements,  Next: ement-room-self-insert-mode,  Up: 015
 
 Compose buffer enhancements
 ---------------------------
@@ -810,7 +809,7 @@ Compose buffer enhancements
      or ‘C-s’.)
 
 
-File: docvl2dnt.info,  Node: ement-room-self-insert-mode,  Next: Image display,  Prev: Compose buffer enhancements,  Up: 015
+File: ement.info,  Node: ement-room-self-insert-mode,  Next: Image display,  Prev: Compose buffer enhancements,  Up: 015
 
 ‘ement-room-self-insert-mode’
 -----------------------------
@@ -828,7 +827,7 @@ File: docvl2dnt.info,  Node: ement-room-self-insert-mode,  Next: Image display, 
      ‘DEL’.)
 
 
-File: docvl2dnt.info,  Node: Image display,  Prev: ement-room-self-insert-mode,  Up: 015
+File: ement.info,  Node: Image display,  Prev: ement-room-self-insert-mode,  Up: 015
 
 Image display
 -------------
@@ -844,7 +843,7 @@ Image display
      height for thumbnail images (by default, 30 pixels).
 
 
-File: docvl2dnt.info,  Node: 014,  Next: 013,  Prev: 015,  Up: Changelog
+File: ement.info,  Node: 014,  Next: 013,  Prev: 015,  Up: Changelog
 
 0.14
 ====
@@ -880,7 +879,7 @@ File: docvl2dnt.info,  Node: 014,  Next: 013,  Prev: 015,  Up: Changelog
      (Thanks to Phil Sainty (https://github.com/phil-s).)
 
 
-File: docvl2dnt.info,  Node: 013,  Next: 012,  Prev: 014,  Up: Changelog
+File: ement.info,  Node: 013,  Next: 012,  Prev: 014,  Up: Changelog
 
 0.13
 ====
@@ -919,7 +918,7 @@ File: docvl2dnt.info,  Node: 013,  Next: 012,  Prev: 014,  Up: Changelog
    • Command ‘ement-room-flush-colors’ maintains point position.
 
 
-File: docvl2dnt.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
+File: ement.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
 
 0.12
 ====
@@ -950,7 +949,7 @@ File: docvl2dnt.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
    • Commands that read a string from the minibuffer in ‘ement-room’
      buffers and ‘ement-connect’ user ID prompts use separate history
      list variables.
-   • Use Emacs’s Jansson-based JSON-parsing functions when available.
+   • Use Emacs's Jansson-based JSON-parsing functions when available.
      (This results in a 3-5x speed improvement for parsing JSON
      responses, which can be significant for large initial sync
      responses.  Thanks to Ryan Rix (https://github.com/rrix/) for
@@ -964,18 +963,18 @@ File: docvl2dnt.info,  Node: 012,  Next: 011,  Prev: 013,  Up: Changelog
    • Underscores are no longer interpreted as denoting subscripts when
      sending messages in Org format.  (Thanks to Phil Sainty
      (https://github.com/phil-s).)
-   • Add workaround for ‘savehist-mode’’s serializing of the
-     ‘command-history’ variable’s arguments.  (For ‘ement-’ commands,
+   • Add workaround for ‘savehist-mode’'s serializing of the
+     ‘command-history’ variable's arguments.  (For ‘ement-’ commands,
      that may include large data structures, like ‘ement-session’
      structs, which should never be serialized or reused, and
-     ‘savehist’’s doing so could cause noticeable delays for users who
+     ‘savehist’'s doing so could cause noticeable delays for users who
      enabled it).  (See #216
      (https://github.com/alphapapa/ement.el/issues/216).  Thanks to Phil
      Sainty (https://github.com/phil-s) and other users who helped to
      discover this problem.)
 
 
-File: docvl2dnt.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
+File: ement.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
 
 0.11
 ====
@@ -997,18 +996,18 @@ File: docvl2dnt.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
 
    *Fixes*
    • Allow editing of already-edited events.
-   • Push rules’ actions may be listed in any order.  (Fixes
+   • Push rules' actions may be listed in any order.  (Fixes
      compatibility with v1.7 of the spec
      (https://spec.matrix.org/v1.7/client-server-api/#actions).  Thanks
      to Steven Allen (https://github.com/Stebalien).)
    • Call external browser for SSO login page.  (JavaScript is usually
-     required, which EWW doesn’t support, and loading the page twice
+     required, which EWW doesn't support, and loading the page twice
      seems to change state on the server that causes the SSO login to
-     fail, so it’s best to load the page in the external browser
+     fail, so it's best to load the page in the external browser
      directly).
    • Clean up SSO server process after two minutes in case SSO login
      fails.
-   • Don’t stop syncing if an error is signaled while sending a
+   • Don't stop syncing if an error is signaled while sending a
      notification.
    • Command ‘ement-room-list-next-unread’ could enter an infinite loop.
      (Thanks to Visuwesh (https://github.com/vizs) and
@@ -1024,14 +1023,14 @@ File: docvl2dnt.info,  Node: 011,  Next: 010,  Prev: 012,  Up: Changelog
      Sainty (https://github.com/phil-s).)
 
 
-File: docvl2dnt.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
+File: ement.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
 
 0.10
 ====
 
 *Security Fixes*
    • When uploading a GPG-encrypted file (i.e.  one whose filename ends
-     in ‘.gpg’), if the recipient’s private key or the symmetric
+     in ‘.gpg’), if the recipient's private key or the symmetric
      encryption key were cached by Emacs (or a configured agent, like
      ‘gpg-agent’), Emacs would automatically decrypt the file while
      reading its contents and then upload the decrypted contents.  (This
@@ -1064,9 +1063,9 @@ File: docvl2dnt.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
      rooms in the space).
    • Command ‘ement-describe-room’ shows whether a room is a space or a
      normal room.
-   • Command ‘ement-view-space’ shows the space’s name and alias.
+   • Command ‘ement-view-space’ shows the space's name and alias.
    • Command ‘ement-room-scroll-up-mark-read’ moves the fully read
-     marker to the top of the window (when the marker’s position is
+     marker to the top of the window (when the marker's position is
      within the range of known events), rather than only moving it when
      at the end of the buffer.  (This eases the process of gradually
      reading a long backlog of messages.)
@@ -1076,11 +1075,11 @@ File: docvl2dnt.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
    • Extra indentation of some membership events.  (Thanks to Steven
      Allen (https://github.com/Stebalien).)
    • Customization group for faces.
-   • Don’t reinitialize ‘ement-room-list-mode’ when room list buffer is
+   • Don't reinitialize ‘ement-room-list-mode’ when room list buffer is
      refreshed.  (#146
      (https://github.com/alphapapa/ement.el/issues/146).  Thanks to Ted
      Reed (https://github.com/treed) for reporting.)
-   • Don’t fetch old events when scrolling to the bottom of a room
+   • Don't fetch old events when scrolling to the bottom of a room
      buffer (only when scrolling to the top).  (Thanks to Steven Allen
      (https://github.com/Stebalien).)
    • Minor improvements to auto-detection of homeserver URIs.  (See #24
@@ -1089,11 +1088,11 @@ File: docvl2dnt.info,  Node: 010,  Next: 093,  Prev: 011,  Up: Changelog
    • Uploading of certain filetypes (e.g.  Emacs would decompress some
      archives before uploading).  Thanks to ‘@welkinsl:matrix.org’ for
      reporting.
-   • Messages edited multiple times sometimes weren’t correctly
+   • Messages edited multiple times sometimes weren't correctly
      replaced.
 
 
-File: docvl2dnt.info,  Node: 093,  Next: 092,  Prev: 010,  Up: Changelog
+File: ement.info,  Node: 093,  Next: 092,  Prev: 010,  Up: Changelog
 
 0.9.3
 =====
@@ -1103,7 +1102,7 @@ File: docvl2dnt.info,  Node: 093,  Next: 092,  Prev: 010,  Up: Changelog
    • Command ‘ement-room-list-next-unread’.
 
 
-File: docvl2dnt.info,  Node: 092,  Next: 091,  Prev: 093,  Up: Changelog
+File: ement.info,  Node: 092,  Next: 091,  Prev: 093,  Up: Changelog
 
 0.9.2
 =====
@@ -1113,7 +1112,7 @@ File: docvl2dnt.info,  Node: 092,  Next: 091,  Prev: 093,  Up: Changelog
    • Completion in minibuffer.
 
 
-File: docvl2dnt.info,  Node: 091,  Next: 09,  Prev: 092,  Up: Changelog
+File: ement.info,  Node: 091,  Next: 09,  Prev: 092,  Up: Changelog
 
 0.9.1
 =====
@@ -1122,7 +1121,7 @@ File: docvl2dnt.info,  Node: 091,  Next: 09,  Prev: 092,  Up: Changelog
    • Error in ‘ement-room-list’ command upon initial sync.
 
 
-File: docvl2dnt.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
+File: ement.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
 
 0.9
 ===
@@ -1152,7 +1151,7 @@ File: docvl2dnt.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
    • Unreadable room avatar images no longer cause errors.  (Fixes #147
      (https://github.com/alphapapa/ement.el/issues/147).  Thanks to
      @jgarte (https://github.com/jgarte) for reporting.)
-   • Don’t error in ‘ement-room-list’ when no rooms are joined.  (Fixes
+   • Don't error in ‘ement-room-list’ when no rooms are joined.  (Fixes
      #123 (https://github.com/alphapapa/ement.el/issues/123).  Thanks to
      @Kabouik (https://github.com/Kabouik) and Omar Antolín Camarena
      (https://github.com/oantolin) for reporting.)
@@ -1162,24 +1161,24 @@ File: docvl2dnt.info,  Node: 09,  Next: 083,  Prev: 091,  Up: Changelog
      (https://github.com/chasecaleb) for reporting.)
 
 
-File: docvl2dnt.info,  Node: 083,  Next: 082,  Prev: 09,  Up: Changelog
+File: ement.info,  Node: 083,  Next: 082,  Prev: 09,  Up: Changelog
 
 0.8.3
 =====
 
 *Fixes*
 
-   • Avoid use of ‘pcase’’s ‘(map :KEYWORD)’ form.  (This can cause a
+   • Avoid use of ‘pcase’'s ‘(map :KEYWORD)’ form.  (This can cause a
      broken installation on older versions of Emacs that have an older
      version of the ‘map’ library loaded, such as Emacs 27.2 included in
-     Debian 11.  Since there’s no way to force Emacs to actually load
+     Debian 11.  Since there's no way to force Emacs to actually load
      the version of ‘map’ required by this package before installing it
      (which would naturally happen upon restarting Emacs), we can only
      avoid using such forms while these versions of Emacs are widely
      used.)
 
 
-File: docvl2dnt.info,  Node: 082,  Next: 081,  Prev: 083,  Up: Changelog
+File: ement.info,  Node: 082,  Next: 081,  Prev: 083,  Up: Changelog
 
 0.8.2
 =====
@@ -1189,7 +1188,7 @@ File: docvl2dnt.info,  Node: 082,  Next: 081,  Prev: 083,  Up: Changelog
    • Deduplicate grouped membership events.
 
 
-File: docvl2dnt.info,  Node: 081,  Next: 08,  Prev: 082,  Up: Changelog
+File: ement.info,  Node: 081,  Next: 08,  Prev: 082,  Up: Changelog
 
 0.8.1
 =====
@@ -1197,17 +1196,17 @@ File: docvl2dnt.info,  Node: 081,  Next: 08,  Prev: 082,  Up: Changelog
 Added missing changelog entry (of course).
 
 
-File: docvl2dnt.info,  Node: 08,  Next: 07,  Prev: 081,  Up: Changelog
+File: ement.info,  Node: 08,  Next: 07,  Prev: 081,  Up: Changelog
 
 0.8
 ===
 
 *Additions*
    • Command ‘ement-create-space’ creates a new space.
-   • Command ‘ement-room-toggle-space’ toggles a room’s membership in a
+   • Command ‘ement-room-toggle-space’ toggles a room's membership in a
      space (a way to group rooms in Matrix).
    • Visibility of sections in the room list is saved across sessions.
-   • Command ‘ement-room-list-kill-buffer’ kills a room’s buffer from
+   • Command ‘ement-room-list-kill-buffer’ kills a room's buffer from
      the room list.
    • Set ‘device_id’ and ‘initial_device_display_name’ upon login (e.g.
      ‘Ement.el: username@hostname’).  (#134
@@ -1235,7 +1234,7 @@ File: docvl2dnt.info,  Node: 08,  Next: 07,  Prev: 081,  Up: Changelog
    • Prompts in commands ‘ement-leave-room’ and ‘ement-forget-room’.
 
 
-File: docvl2dnt.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
+File: ement.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
 
 0.7
 ===
@@ -1243,7 +1242,7 @@ File: docvl2dnt.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
 *Additions*
 
    • Command ‘ement-room-override-name’ sets a local override for a
-     room’s display name.  (Especially helpful for 1:1 rooms and bridged
+     room's display name.  (Especially helpful for 1:1 rooms and bridged
      rooms.  See MSC3015
      (https://github.com/matrix-org/matrix-spec-proposals/pull/3015#issuecomment-1451017296).)
 
@@ -1258,7 +1257,7 @@ File: docvl2dnt.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
 
    • Command ‘ement-view-space’ when called from a room buffer.  (Thanks
      to Richard Brežák (https://github.com/MagicRB) for reporting.)
-   • Don’t call ‘display-buffer’ when reverting room list buffer.
+   • Don't call ‘display-buffer’ when reverting room list buffer.
      (Fixes #121 (https://github.com/alphapapa/ement.el/issues/121).
      Thanks to mekeor (https://github.com/mekeor) for reporting.)
    • Retry sync for network timeouts.  (Accidentally broken in v0.6.)
@@ -1266,16 +1265,16 @@ File: docvl2dnt.info,  Node: 07,  Next: 06,  Prev: 08,  Up: Changelog
    *Internal*
 
    • Function ‘ement-put-account-data’ accepts ‘:room’ argument to put
-     on a room’s account data.
+     on a room's account data.
 
 
-File: docvl2dnt.info,  Node: 06,  Next: 052,  Prev: 07,  Up: Changelog
+File: ement.info,  Node: 06,  Next: 052,  Prev: 07,  Up: Changelog
 
 0.6
 ===
 
 *Additions*
-   • Command ‘ement-view-space’ to view a space’s rooms in a directory
+   • Command ‘ement-view-space’ to view a space's rooms in a directory
      buffer.
 
    *Changes*
@@ -1294,7 +1293,7 @@ File: docvl2dnt.info,  Node: 06,  Next: 052,  Prev: 07,  Up: Changelog
      (https://github.com/vizs).)
 
 
-File: docvl2dnt.info,  Node: 052,  Next: 051,  Prev: 06,  Up: Changelog
+File: ement.info,  Node: 052,  Next: 051,  Prev: 06,  Up: Changelog
 
 0.5.2
 =====
@@ -1304,7 +1303,7 @@ File: docvl2dnt.info,  Node: 052,  Next: 051,  Prev: 06,  Up: Changelog
      homeserver is slow to respond).
 
 
-File: docvl2dnt.info,  Node: 051,  Next: 05,  Prev: 052,  Up: Changelog
+File: ement.info,  Node: 051,  Next: 05,  Prev: 052,  Up: Changelog
 
 0.5.1
 =====
@@ -1314,7 +1313,7 @@ File: docvl2dnt.info,  Node: 051,  Next: 05,  Prev: 052,  Up: Changelog
    • Faces in ‘ement-directory’ listings.
 
 
-File: docvl2dnt.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
+File: ement.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
 
 0.5
 ===
@@ -1322,14 +1321,14 @@ File: docvl2dnt.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
 *Additions*
    • Present "joined-and-left" and "rejoined-and-left" membership event
      pairs as such.
-   • Process and show rooms’ canonical alias events.
+   • Process and show rooms' canonical alias events.
 
    *Changes*
    • The taxy.el (https://github.com/alphapapa/taxy.el)-based room list,
      with programmable, smart grouping, is now the default
      ‘ement-room-list’.  (The old, ‘tabulated-list-mode’-based room list
      is available as ‘ement-tabulated-room-list’.)
-   • When selecting a room to view with completion, don’t offer spaces.
+   • When selecting a room to view with completion, don't offer spaces.
    • When selecting a room with completion, empty aliases and topics are
      omitted instead of being displayed as nil.
 
@@ -1338,52 +1337,52 @@ File: docvl2dnt.info,  Node: 05,  Next: 041,  Prev: 051,  Up: Changelog
    • Replies may be written in compose buffers.
 
 
-File: docvl2dnt.info,  Node: 041,  Next: 04,  Prev: 05,  Up: Changelog
+File: ement.info,  Node: 041,  Next: 04,  Prev: 05,  Up: Changelog
 
 0.4.1
 =====
 
 *Fixes*
-   • Don’t show "curl process interrupted" message when updating a read
-     marker’s position again.
+   • Don't show "curl process interrupted" message when updating a read
+     marker's position again.
 
 
-File: docvl2dnt.info,  Node: 04,  Next: 031,  Prev: 041,  Up: Changelog
+File: ement.info,  Node: 04,  Next: 031,  Prev: 041,  Up: Changelog
 
 0.4
 ===
 
 *Additions*
    • Option ‘ement-room-unread-only-counts-notifications’, now enabled
-     by default, causes rooms’ unread status to be determined only by
+     by default, causes rooms' unread status to be determined only by
      their notification counts (which are set by the server and depend
-     on rooms’ notification settings).
-   • Command ‘ement-room-set-notification-state’ sets a room’s
-     notification state (imitating Element’s user-friendly presets).
-   • Room buffers’ Transient menus show the room’s notification state
-     (imitating Element’s user-friendly presets).
-   • Command ‘ement-set-display-name’ sets the user’s global
+     on rooms' notification settings).
+   • Command ‘ement-room-set-notification-state’ sets a room's
+     notification state (imitating Element's user-friendly presets).
+   • Room buffers' Transient menus show the room's notification state
+     (imitating Element's user-friendly presets).
+   • Command ‘ement-set-display-name’ sets the user's global
      displayname.
-   • Command ‘ement-room-set-display-name’ sets the user’s displayname
-     in a room (which is also now displayed in the room’s Transient
+   • Command ‘ement-room-set-display-name’ sets the user's displayname
+     in a room (which is also now displayed in the room's Transient
      menu).
    • Column ‘Notifications’ in the ‘ement-taxy-room-list’ buffer shows
-     rooms’ notification state.
+     rooms' notification state.
    • Option ‘ement-interrupted-sync-hook’ allows customization of how
      sync interruptions are handled.  (Now, by default, a warning is
      displayed instead of merely a message.)
 
    *Changes*
-   • When a room’s read receipt is updated, the room’s buffer is also
+   • When a room's read receipt is updated, the room's buffer is also
      marked as unmodified.  (In concert with the new option, this makes
-     rooms’ unread status more intuitive.)
+     rooms' unread status more intuitive.)
 
    *Fixes*
    • Binding of command ‘ement-forget-room’ in room buffers.
    • Highlighting of ‘@room’ mentions.
 
 
-File: docvl2dnt.info,  Node: 031,  Next: 03,  Prev: 04,  Up: Changelog
+File: ement.info,  Node: 031,  Next: 03,  Prev: 04,  Up: Changelog
 
 0.3.1
 =====
@@ -1393,14 +1392,14 @@ File: docvl2dnt.info,  Node: 031,  Next: 03,  Prev: 04,  Up: Changelog
      local user, the room is considered read).
 
 
-File: docvl2dnt.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
+File: ement.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
 
 0.3
 ===
 
 *Additions*
-   • Command ‘ement-directory’ shows a server’s room directory.
-   • Command ‘ement-directory-search’ searches a server’s room
+   • Command ‘ement-directory’ shows a server's room directory.
+   • Command ‘ement-directory-search’ searches a server's room
      directory.
    • Command ‘ement-directory-next’ fetches the next batch of rooms in a
      directory.
@@ -1411,7 +1410,7 @@ File: docvl2dnt.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
      it without prompting.
    • Option ‘ement-notify-mark-frame-urgent-predicates’ marks the frame
      as urgent when (by default) a message mentions the local user or
-     "@room" and the message’s room has an open buffer.
+     "@room" and the message's room has an open buffer.
 
    *Changes*
    • Minor improvements to date/time headers.
@@ -1425,7 +1424,7 @@ File: docvl2dnt.info,  Node: 03,  Next: 021,  Prev: 031,  Up: Changelog
    • Compatibility with Emacs 27.
 
 
-File: docvl2dnt.info,  Node: 021,  Next: 02,  Prev: 03,  Up: Changelog
+File: ement.info,  Node: 021,  Next: 02,  Prev: 03,  Up: Changelog
 
 0.2.1
 =====
@@ -1434,21 +1433,21 @@ File: docvl2dnt.info,  Node: 021,  Next: 02,  Prev: 03,  Up: Changelog
    • Info manual export filename.
 
 
-File: docvl2dnt.info,  Node: 02,  Next: 014 (1),  Prev: 021,  Up: Changelog
+File: ement.info,  Node: 02,  Next: 014 (1),  Prev: 021,  Up: Changelog
 
 0.2
 ===
 
 *Changes*
-   • Read receipts are re-enabled.  (They’re now implemented with a
+   • Read receipts are re-enabled.  (They're now implemented with a
      global idle timer rather than ‘window-scroll-functions’, which
      sometimes caused a strange race condition that could cause Emacs to
      become unresponsive or crash.)
    • When determining whether a room is considered unread, non-message
      events like membership changes, reactions, etc.  are ignored.  This
      fixes a bug that caused certain rooms that had no message events
-     (like some bridged rooms) to appear as unread when they shouldn’t
-     have.  But it’s unclear whether this is always preferable (e.g.
+     (like some bridged rooms) to appear as unread when they shouldn't
+     have.  But it's unclear whether this is always preferable (e.g.
      one might want a member leaving a room to cause it to be marked
      unread), so this is classified as a change rather than simply a
      fix, and more improvements may be made to this in the future.
@@ -1464,11 +1463,11 @@ File: docvl2dnt.info,  Node: 02,  Next: 014 (1),  Prev: 021,  Up: Changelog
    • Links to only rooms (as opposed to links to events in rooms) may be
      activated to join them.
    • Read receipts mark the last completely visible event (rather than
-     one that’s only partially displayed).
+     one that's only partially displayed).
    • Prevent error when a room avatar image fails to load.
 
 
-File: docvl2dnt.info,  Node: 014 (1),  Next: 013 (1),  Prev: 02,  Up: Changelog
+File: ement.info,  Node: 014 (1),  Next: 013 (1),  Prev: 02,  Up: Changelog
 
 0.1.4
 =====
@@ -1477,7 +1476,7 @@ File: docvl2dnt.info,  Node: 014 (1),  Next: 013 (1),  Prev: 02,  Up: Changelog
    • Info manual directory headers.
 
 
-File: docvl2dnt.info,  Node: 013 (1),  Next: 012 (1),  Prev: 014 (1),  Up: Changelog
+File: ement.info,  Node: 013 (1),  Next: 012 (1),  Prev: 014 (1),  Up: Changelog
 
 0.1.3
 =====
@@ -1489,7 +1488,7 @@ File: docvl2dnt.info,  Node: 013 (1),  Next: 012 (1),  Prev: 014 (1),  Up: Chang
      be re-enabled in a future release.)
 
 
-File: docvl2dnt.info,  Node: 012 (1),  Next: 011 (1),  Prev: 013 (1),  Up: Changelog
+File: ement.info,  Node: 012 (1),  Next: 011 (1),  Prev: 013 (1),  Up: Changelog
 
 0.1.2
 =====
@@ -1502,7 +1501,7 @@ File: docvl2dnt.info,  Node: 012 (1),  Next: 011 (1),  Prev: 013 (1),  Up: Chang
      Tassilo Horn (https://github.com/tsdh).)
 
 
-File: docvl2dnt.info,  Node: 011 (1),  Next: 01,  Prev: 012 (1),  Up: Changelog
+File: ement.info,  Node: 011 (1),  Next: 01,  Prev: 012 (1),  Up: Changelog
 
 0.1.1
 =====
@@ -1514,7 +1513,7 @@ File: docvl2dnt.info,  Node: 011 (1),  Next: 01,  Prev: 012 (1),  Up: Changelog
      ‘display-images-p’ returns.
 
 
-File: docvl2dnt.info,  Node: 01,  Prev: 011 (1),  Up: Changelog
+File: ement.info,  Node: 01,  Prev: 011 (1),  Up: Changelog
 
 0.1
 ===
@@ -1523,7 +1522,7 @@ After almost two years of development, the first tagged release.
 Submitted to GNU ELPA.
 
 
-File: docvl2dnt.info,  Node: Development,  Next: License,  Prev: Changelog,  Up: Top
+File: ement.info,  Node: Development,  Next: License,  Prev: Changelog,  Up: Top
 
 4 Development
 *************
@@ -1537,7 +1536,7 @@ Bug reports, feature requests, suggestions — _oh my_!
 * Rationale::
 
 
-File: docvl2dnt.info,  Node: Copyright Assignment,  Next: Matrix spec in Org format,  Up: Development
+File: ement.info,  Node: Copyright Assignment,  Next: Matrix spec in Org format,  Up: Development
 
 Copyright Assignment
 ====================
@@ -1546,10 +1545,10 @@ Ement.el is published in GNU ELPA and is considered part of GNU Emacs.
 Therefore, cumulative contributions of more than 15 lines of code
 require that the author assign copyright of such contributions to the
 FSF.  Authors who are interested in doing so may contact assign@gnu.org
-<assign@gnu.org> to request the appropriate form.
+<mailto:assign@gnu.org> to request the appropriate form.
 
 
-File: docvl2dnt.info,  Node: Matrix spec in Org format,  Next: Rationale,  Prev: Copyright Assignment,  Up: Development
+File: ement.info,  Node: Matrix spec in Org format,  Next: Rationale,  Prev: Copyright Assignment,  Up: Development
 
 Matrix spec in Org format
 =========================
@@ -1558,7 +1557,7 @@ An Org-formatted version of the Matrix spec is available in the
 meta/spec (https://github.com/alphapapa/ement.el/tree/meta/spec) branch.
 
 
-File: docvl2dnt.info,  Node: Rationale,  Prev: Matrix spec in Org format,  Up: Development
+File: ement.info,  Node: Rationale,  Prev: Matrix spec in Org format,  Up: Development
 
 Rationale
 =========
@@ -1575,21 +1574,21 @@ same author, no less?  A few reasons:
      with the current version of the spec, r0.6.1, would be more work
      than to begin with the current version.  Ement.el targets r0.6.1
      from the beginning.
-   • ‘matrix-client’ does not use Matrix’s lazy-loading feature (which
+   • ‘matrix-client’ does not use Matrix's lazy-loading feature (which
      was added to the specification later), so initial sync requests can
      take a long time for the server to process and can be large
      (sometimes tens of megabytes of JSON for the client to process!).
      Ement.el uses lazy-loading, which significantly improves
      performance.
    • ‘matrix-client’ automatically makes buffers for every room a user
-     has joined, even if the user doesn’t currently want to watch a
+     has joined, even if the user doesn't currently want to watch a
      room.  Ement.el opens room buffers on-demand, improving performance
      by not having to insert events into buffers for rooms the user
-     isn’t watching.
+     isn't watching.
    • ‘matrix-client’ was developed without the intention of publishing
      it to, e.g.  MELPA or ELPA.  It has several dependencies, and its
      code does not always install or compile cleanly due to
-     macro-expansion issues (apparently depending on the user’s Emacs
+     macro-expansion issues (apparently depending on the user's Emacs
      config).  Ement.el is designed to have minimal dependencies outside
      of Emacs (currently only one, ‘plz’, which could be imported into
      the project), and every file is linted and compiles cleanly using
@@ -1599,30 +1598,30 @@ same author, no less?  A few reasons:
      structs instead.
    • ‘matrix-client’ uses bespoke code for inserting messages into
      buffers, which works pretty well, but has a few minor bugs which
-     are difficult to track down.  Ement.el uses Emacs’s built-in (and
+     are difficult to track down.  Ement.el uses Emacs's built-in (and
      perhaps little-known) ‘ewoc’ library, which makes it much simpler
      and more reliable to insert and update messages in buffers, and
      enables the development of advanced UI features more easily.
    • ‘matrix-client’ was, to a certain extent, designed to imitate other
      messaging apps.  The result is, at least when used with the
-     ‘matrix-client-frame’ command, fairly pleasing to use, but isn’t
+     ‘matrix-client-frame’ command, fairly pleasing to use, but isn't
      especially "Emacsy."  Ement.el is intended to better fit into
-     Emacs’s paradigms.
-   • ‘matrix-client’’s long name makes for long symbol names, which
+     Emacs's paradigms.
+   • ‘matrix-client’'s long name makes for long symbol names, which
      makes for tedious, verbose code.  ‘ement’ is easy to type and makes
      for concise, readable code.
    • The author has learned much since writing ‘matrix-client’ and hopes
      to write simpler, more readable, more maintainable code in
-     Ement.el.  It’s hoped that this will enable others to contribute
+     Ement.el.  It's hoped that this will enable others to contribute
      more easily.
 
    Note that, while ‘matrix-client’ remains usable, and probably will
 for some time to come, Ement.el has now surpassed it in every way.  The
 only reason to choose ‘matrix-client’ instead is if one is using an
-older version of Emacs that isn’t supported by Ement.el.
+older version of Emacs that isn't supported by Ement.el.
 
 
-File: docvl2dnt.info,  Node: License,  Prev: Development,  Up: Top
+File: ement.info,  Node: License,  Prev: Development,  Up: Top
 
 5 License
 *********
@@ -1632,67 +1631,67 @@ GPLv3
 
 
 Tag Table:
-Node: Top188
-Node: Installation1623
-Node: GNU ELPA1862
-Node: GNU Guix2387
-Node: Debian Ubuntu2634
-Node: Nix2983
-Node: Other distributions3305
-Node: Git master3583
-Node: Manual4640
-Node: Usage4928
-Node: Bindings7588
-Node: Room buffers8052
-Node: Room list buffer11054
-Node: Directory buffers11450
-Node: Mentions/notifications buffers11709
-Node: Tips12095
-Node: Displaying symbols and emojis15042
-Node: Encrypted room support through Pantalaimon15657
-Node: Changelog16213
-Node: 018-pre16800
-Node: 01716905
-Node: 01618989
-Node: 015121765
-Node: 01522336
-Node: Compose buffer enhancements26499
-Node: ement-room-self-insert-mode29885
-Node: Image display30766
-Node: 01431422
-Node: 01332822
-Node: 01234422
-Node: 01137180
-Node: 01039279
-Node: 09342667
-Node: 09242890
-Node: 09143075
-Node: 0943237
-Node: 08344905
-Node: 08245533
-Node: 08145678
-Node: 0845810
-Node: 0747436
-Node: 0648612
-Node: 05249409
-Node: 05149622
-Node: 0549815
-Node: 04150657
-Node: 0450861
-Node: 03152373
-Node: 0352588
-Node: 02153812
-Node: 0253944
-Node: 014 (1)55577
-Node: 013 (1)55720
-Node: 012 (1)56017
-Node: 011 (1)56433
-Node: 0156736
-Node: Development56901
-Node: Copyright Assignment57154
-Node: Matrix spec in Org format57632
-Node: Rationale57946
-Node: License61530
+Node: Top186
+Node: Installation1615
+Node: GNU ELPA1850
+Node: GNU Guix2371
+Node: Debian Ubuntu2614
+Node: Nix2959
+Node: Other distributions3277
+Node: Git master3551
+Node: Manual4604
+Node: Usage4884
+Node: Bindings7526
+Node: Room buffers7986
+Node: Room list buffer10982
+Node: Directory buffers11370
+Node: Mentions/notifications buffers11625
+Node: Tips12007
+Node: Displaying symbols and emojis14944
+Node: Encrypted room support through Pantalaimon15555
+Node: Changelog16105
+Node: 018-pre16688
+Node: 01716789
+Node: 01618869
+Node: 015121639
+Node: 01522204
+Node: Compose buffer enhancements26363
+Node: ement-room-self-insert-mode29745
+Node: Image display30622
+Node: 01431274
+Node: 01332670
+Node: 01234266
+Node: 01137012
+Node: 01039099
+Node: 09342471
+Node: 09242690
+Node: 09142871
+Node: 0943029
+Node: 08344691
+Node: 08245311
+Node: 08145452
+Node: 0845580
+Node: 0747198
+Node: 0648364
+Node: 05249155
+Node: 05149364
+Node: 0549553
+Node: 04150387
+Node: 0450583
+Node: 03152063
+Node: 0352274
+Node: 02153488
+Node: 0253616
+Node: 014 (1)55237
+Node: 013 (1)55376
+Node: 012 (1)55669
+Node: 011 (1)56081
+Node: 0156380
+Node: Development56541
+Node: Copyright Assignment56790
+Node: Matrix spec in Org format57271
+Node: Rationale57581
+Node: License61141
 
 End Tag Table
 
